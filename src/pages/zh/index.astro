@@ -1,0 +1,27 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Navigation from '../../components/Navigation.astro';
+import Hero from '../../components/Hero.astro';
+import Features from '../../components/Features.astro';
+import ProductShowcase from '../../components/ProductShowcase.astro';
+import Pricing from '../../components/Pricing.astro';
+import CTA from '../../components/CTA.astro';
+import Footer from '../../components/Footer.astro';
+
+const locale = 'zh';
+---
+
+<Layout
+  title="Vale - 餐厅和酒店智能停车管理"
+  description="Vale帮助餐厅、酒店和活动场所为客户提供专属停车位。"
+>
+  <Navigation locale={locale} />
+  <main>
+    <Hero locale={locale} />
+    <Features locale={locale} />
+    <ProductShowcase locale={locale} />
+    <Pricing locale={locale} />
+    <CTA locale={locale} />
+  </main>
+  <Footer locale={locale} />
+</Layout>

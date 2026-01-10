@@ -6,10 +6,11 @@ interface Props {
 
 const { title, description = 'Vale - Smart Parking Management Platform for Businesses' } = Astro.props;
 const currentLocale = Astro.currentLocale || 'en';
+const isRTL = currentLocale === 'ar';
 ---
 
 <!doctype html>
-<html lang={currentLocale}>
+<html lang={currentLocale} dir={isRTL ? 'rtl' : 'ltr'}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
