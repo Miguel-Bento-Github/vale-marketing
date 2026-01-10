@@ -13,10 +13,10 @@ export const handler = async (event) => {
     const { name, company, email, phone, message } = JSON.parse(event.body);
 
     // Basic validation
-    if (!email || !name || !company) {
+    if (!email || !message) {
       return {
         statusCode: 400,
-        body: JSON.stringify({ error: 'Name, company and email are required' }),
+        body: JSON.stringify({ error: 'Email and message are required' }),
       };
     }
 
@@ -44,18 +44,20 @@ export const handler = async (event) => {
     const mailOptions = {
       from: `"Vale Contact Form" <${process.env.SMTP_USER}>`,
       to: process.env.CONTACT_EMAIL || 'sales@valepark.org',
-      subject: `New Contact Form Submission - ${company}`,
+      subject: `New Contact Form Submission${company ? ` - ${company}` : ''}`,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
           <h2 style="color: #5B5EFF; border-bottom: 2px solid #5B5EFF; padding-bottom: 10px;">
             New Contact Form Submission
           </h2>
 
+          ${(name || company) ? `
           <div style="background: #f9f9f9; padding: 20px; border-radius: 8px; margin: 20px 0;">
             <h3 style="color: #333; margin-top: 0;">Business Information</h3>
-            <p><strong>Company:</strong> ${company}</p>
-            <p><strong>Contact Name:</strong> ${name}</p>
+            ${company ? `<p><strong>Company:</strong> ${company}</p>` : ''}
+            ${name ? `<p><strong>Contact Name:</strong> ${name}</p>` : ''}
           </div>
+          ` : ''}
 
           <div style="background: #f9f9f9; padding: 20px; border-radius: 8px; margin: 20px 0;">
             <h3 style="color: #333; margin-top: 0;">Contact Information</h3>
@@ -91,7 +93,7 @@ export const handler = async (event) => {
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
           <h2 style="color: #5B5EFF;">Thank you for your interest in Vale!</h2>
 
-          <p>Hello ${name},</p>
+          <p>Hello${name ? ` ${name}` : ''},</p>
 
           <p>We've received your message and will get back to you within 24 hours.</p>
 

@@ -26,14 +26,12 @@ const t = getTranslations(locale);
             type="text"
             name="name"
             placeholder={locale === 'pt' ? 'Nome' : 'Name'}
-            required
             class="w-full px-4 py-3 rounded-xl bg-themed-secondary border border-themed text-themed placeholder-gray-400 dark:placeholder-gray-500 focus:border-vale-primary focus:outline-none focus:ring-1 focus:ring-vale-primary transition-colors"
           />
           <input
             type="text"
             name="company"
             placeholder={locale === 'pt' ? 'Empresa' : 'Company'}
-            required
             class="w-full px-4 py-3 rounded-xl bg-themed-secondary border border-themed text-themed placeholder-gray-400 dark:placeholder-gray-500 focus:border-vale-primary focus:outline-none focus:ring-1 focus:ring-vale-primary transition-colors"
           />
         </div>
@@ -53,7 +51,8 @@ const t = getTranslations(locale);
         <textarea
           name="message"
           rows="4"
-          placeholder={locale === 'pt' ? 'Mensagem (opcional)' : 'Message (optional)'}
+          placeholder={locale === 'pt' ? 'Mensagem' : 'Message'}
+          required
           class="w-full px-4 py-3 rounded-xl bg-themed-secondary border border-themed text-themed placeholder-gray-400 dark:placeholder-gray-500 focus:border-vale-primary focus:outline-none focus:ring-1 focus:ring-vale-primary transition-colors resize-none"
         ></textarea>
 
