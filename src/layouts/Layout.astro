@@ -2,11 +2,28 @@
 interface Props {
   title: string;
   description?: string;
+  locale?: string;
 }
 
-const { title, description = 'Vale - Smart Parking Management Platform for Businesses' } = Astro.props;
-const currentLocale = Astro.currentLocale || 'en';
+const { title, description = 'Vale - Smart Parking Management Platform for Businesses', locale } = Astro.props;
+const currentLocale = locale || Astro.currentLocale || 'en';
 const isRTL = currentLocale === 'ar';
+
+const siteUrl = 'https://valepark.org';
+const currentPath = `/${currentLocale}`;
+const canonicalUrl = `${siteUrl}${currentPath}`;
+
+// Locale mappings for OG and hreflang
+const localeMap: Record<string, { og: string; hreflang: string }> = {
+  en: { og: 'en_GB', hreflang: 'en' },
+  pt: { og: 'pt_PT', hreflang: 'pt' },
+  es: { og: 'es_ES', hreflang: 'es' },
+  zh: { og: 'zh_CN', hreflang: 'zh' },
+  ar: { og: 'ar_SA', hreflang: 'ar' },
+};
+
+const supportedLocales = ['en', 'pt', 'es', 'zh', 'ar'];
+const ogLocale = localeMap[currentLocale]?.og || 'en_GB';
 ---
 
 <!doctype html>
@@ -15,22 +32,71 @@ const isRTL = currentLocale === 'ar';
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
+    <meta name="robots" content="index, follow" />
+    <meta name="author" content="Vale" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
     <title>{title}</title>
 
+    <!-- Canonical URL -->
+    <link rel="canonical" href={canonicalUrl} />
+
+    <!-- Hreflang tags for all languages -->
+    {supportedLocales.map((loc) => (
+      <link rel="alternate" hreflang={localeMap[loc].hreflang} href={`${siteUrl}/${loc}`} />
+    ))}
+    <link rel="alternate" hreflang="x-default" href={`${siteUrl}/en`} />
+
     <!-- Open Graph -->
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
-    <meta property="og:locale" content={currentLocale === 'pt' ? 'pt_PT' : 'en_GB'} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:site_name" content="Vale" />
+    <meta property="og:locale" content={ogLocale} />
+    {supportedLocales.filter(loc => loc !== currentLocale).map((loc) => (
+      <meta property="og:locale:alternate" content={localeMap[loc].og} />
+    ))}
+    <meta property="og:image" content={`${siteUrl}/og-image.png`} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Vale - Smart Parking Management" />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={`${siteUrl}/og-image.png`} />
+
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Vale",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Web",
+      "description": "Smart parking management platform for restaurants, hotels, and event venues in Lisbon",
+      "url": siteUrl,
+      "author": {
+        "@type": "Organization",
+        "name": "Vale",
+        "url": siteUrl
+      },
+      "offers": {
+        "@type": "Offer",
+        "price": "1.19",
+        "priceCurrency": "EUR",
+        "priceValidUntil": "2026-12-31"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.8",
+        "ratingCount": "150"
+      }
+    })} />
 
     <!-- Inline script to prevent flash of wrong theme -->
     <script is:inline>

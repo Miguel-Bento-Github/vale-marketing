@@ -1,0 +1,9 @@
+# https://www.robotstxt.org/robotstxt.html
+User-agent: *
+Allow: /
+
+# Sitemaps
+Sitemap: https://valepark.org/sitemap-index.xml
+
+# Disallow admin/private paths (none currently)
+# Disallow: /admin/
