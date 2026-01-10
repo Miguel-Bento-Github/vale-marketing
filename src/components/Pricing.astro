@@ -1,0 +1,71 @@
+---
+import { getTranslations } from '../i18n/translations';
+
+interface Props {
+  locale: string;
+}
+
+const { locale } = Astro.props;
+const t = getTranslations(locale);
+---
+
+<section id="pricing" class="py-24 relative bg-themed">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Section header -->
+    <div class="text-center mb-16">
+      <h2 class="text-headline mb-4 text-themed">{t.pricing.title}</h2>
+      <p class="text-xl text-themed-secondary max-w-2xl mx-auto">{t.pricing.subtitle}</p>
+    </div>
+
+    <!-- Pricing cards -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+      {t.pricing.tiers.map((tier) => (
+        <div
+          class={`relative p-8 rounded-2xl transition-all duration-300 hover:-translate-y-1 ${
+            tier.popular
+              ? 'bg-gradient-to-b from-vale-primary/20 to-vale-primary/5 border-2 border-vale-primary'
+              : 'bg-themed-secondary border border-themed hover:border-vale-primary/30'
+          }`}
+        >
+          {tier.popular && (
+            <div class="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 bg-vale-primary text-white text-sm font-semibold rounded-full">
+              Most Popular
+            </div>
+          )}
+
+          <div class="text-center mb-8">
+            <h3 class="text-xl font-semibold text-themed mb-2">{tier.name}</h3>
+            <div class="flex items-baseline justify-center gap-1">
+              <span class="text-4xl font-bold text-themed">{tier.price}</span>
+              <span class="text-themed-secondary">{tier.unit}</span>
+            </div>
+            <p class="text-themed-tertiary mt-2 text-sm">{tier.description}</p>
+          </div>
+
+          <ul class="space-y-4 mb-8">
+            {tier.features.map((feature) => (
+              <li class="flex items-center gap-3 text-themed-secondary">
+                <svg class="w-5 h-5 text-vale-accent flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
+                <span>{feature}</span>
+              </li>
+            ))}
+          </ul>
+
+          <a
+            href={`/${locale}#contact`}
+            class={`block w-full py-3 px-6 rounded-xl font-semibold text-center transition-all ${
+              tier.popular
+                ? 'bg-vale-primary hover:bg-vale-primary/90 text-white hover:shadow-lg hover:shadow-vale-primary/25'
+                : 'glass hover:bg-vale-primary/10 text-themed'
+            }`}
+          >
+            {t.pricing.cta}
+          </a>
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>
