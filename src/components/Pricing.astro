@@ -1,5 +1,6 @@
 ---
 import { getTranslations } from '../i18n/translations';
+import { currencies, prices, getDefaultCurrency } from '../utils/currency';
 
 interface Props {
   locale: string;
@@ -7,6 +8,7 @@ interface Props {
 
 const { locale } = Astro.props;
 const t = getTranslations(locale);
+const defaultCurrency = getDefaultCurrency(locale);
 ---
 
 <section id="pricing" class="py-24 relative bg-themed">
@@ -15,57 +17,167 @@ const t = getTranslations(locale);
     <div class="text-center mb-16">
       <h2 class="text-headline mb-4 text-themed">{t.pricing.title}</h2>
       <p class="text-xl text-themed-secondary max-w-2xl mx-auto">{t.pricing.subtitle}</p>
+
+      <!-- Currency Selector -->
+      <div class="mt-6 inline-flex items-center gap-2">
+        <span class="text-sm text-themed-tertiary">{locale === 'pt' ? 'Moeda:' : locale === 'es' ? 'Moneda:' : locale === 'zh' ? '货币:' : locale === 'ar' ? 'العملة:' : 'Currency:'}</span>
+        <div class="relative">
+          <select
+            id="currency-select"
+            class="appearance-none bg-themed-secondary border border-themed rounded-lg px-4 py-2 pr-8 text-sm text-themed focus:border-vale-primary focus:outline-none focus:ring-1 focus:ring-vale-primary cursor-pointer"
+          >
+            {currencies.map((currency) => (
+              <option value={currency.code} selected={currency.code === defaultCurrency}>
+                {currency.code} ({currency.symbol})
+              </option>
+            ))}
+          </select>
+          <svg class="absolute right-2 top-1/2 -translate-y-1/2 w-4 h-4 text-themed-secondary pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </div>
+      </div>
     </div>
 
     <!-- Pricing cards -->
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-      {t.pricing.tiers.map((tier) => (
-        <div
-          class={`relative p-8 rounded-2xl transition-all duration-300 hover:-translate-y-1 ${
-            tier.popular
-              ? 'bg-gradient-to-b from-vale-primary/20 to-vale-primary/5 border-2 border-vale-primary'
-              : 'bg-themed-secondary border border-themed hover:border-vale-primary/30'
-          }`}
-        >
-          {tier.popular && (
-            <div class="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 bg-vale-primary text-white text-sm font-semibold rounded-full">
-              Most Popular
-            </div>
-          )}
-
-          <div class="text-center mb-8">
-            <h3 class="text-xl font-semibold text-themed mb-2">{tier.name}</h3>
-            <div class="flex items-baseline justify-center gap-1">
-              <span class="text-4xl font-bold text-themed">{tier.price}</span>
-              <span class="text-themed-secondary">{tier.unit}</span>
-            </div>
-            <p class="text-themed-tertiary mt-2 text-sm">{tier.description}</p>
+      <!-- Starter -->
+      <div class="relative p-8 rounded-2xl transition-all duration-300 hover:-translate-y-1 bg-themed-secondary border border-themed hover:border-vale-primary/30">
+        <div class="text-center mb-8">
+          <h3 class="text-xl font-semibold text-themed mb-2">{t.pricing.tiers[0].name}</h3>
+          <div class="flex items-baseline justify-center gap-1">
+            <span id="price-starter" class="text-4xl font-bold text-themed" data-prices={JSON.stringify(prices)}></span>
+            <span class="text-themed-secondary">{t.pricing.tiers[0].unit}</span>
           </div>
-
-          <ul class="space-y-4 mb-8">
-            {tier.features.map((feature) => (
-              <li class="flex items-center gap-3 text-themed-secondary">
-                <svg class="w-5 h-5 text-vale-accent flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                </svg>
-                <span>{feature}</span>
-              </li>
-            ))}
-          </ul>
-
-          <a
-            href={`/${locale}#contact`}
-            class={`block w-full py-3 px-6 rounded-xl font-semibold text-center transition-all ${
-              tier.popular
-                ? 'bg-vale-primary hover:bg-vale-primary/90 text-white hover:shadow-lg hover:shadow-vale-primary/25'
-                : 'glass hover:bg-vale-primary/10 text-themed'
-            }`}
-          >
-            {t.pricing.cta}
-          </a>
+          <p class="text-themed-tertiary mt-2 text-sm">{t.pricing.tiers[0].description}</p>
         </div>
-      ))}
-    </div>
 
+        <ul class="space-y-4 mb-8">
+          {t.pricing.tiers[0].features.map((feature) => (
+            <li class="flex items-center gap-3 text-themed-secondary">
+              <svg class="w-5 h-5 text-vale-accent flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              <span>{feature}</span>
+            </li>
+          ))}
+        </ul>
+
+        <a href={`/${locale}#contact`} class="block w-full py-3 px-6 rounded-xl font-semibold text-center transition-all glass hover:bg-vale-primary/10 text-themed">
+          {t.pricing.cta}
+        </a>
+      </div>
+
+      <!-- Business (Popular) -->
+      <div class="relative p-8 rounded-2xl transition-all duration-300 hover:-translate-y-1 bg-gradient-to-b from-vale-primary/20 to-vale-primary/5 border-2 border-vale-primary">
+        <div class="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 bg-vale-primary text-white text-sm font-semibold rounded-full">
+          {locale === 'pt' ? 'Mais Popular' : locale === 'es' ? 'Más Popular' : locale === 'zh' ? '最受欢迎' : locale === 'ar' ? 'الأكثر شعبية' : 'Most Popular'}
+        </div>
+
+        <div class="text-center mb-8">
+          <h3 class="text-xl font-semibold text-themed mb-2">{t.pricing.tiers[1].name}</h3>
+          <div class="flex items-baseline justify-center gap-1">
+            <span id="price-business" class="text-4xl font-bold text-themed"></span>
+            <span class="text-themed-secondary">{t.pricing.tiers[1].unit}</span>
+          </div>
+          <p class="text-themed-tertiary mt-2 text-sm">{t.pricing.tiers[1].description}</p>
+        </div>
+
+        <ul class="space-y-4 mb-8">
+          {t.pricing.tiers[1].features.map((feature) => (
+            <li class="flex items-center gap-3 text-themed-secondary">
+              <svg class="w-5 h-5 text-vale-accent flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              <span>{feature}</span>
+            </li>
+          ))}
+        </ul>
+
+        <a href={`/${locale}#contact`} class="block w-full py-3 px-6 rounded-xl font-semibold text-center transition-all bg-vale-primary hover:bg-vale-primary/90 text-white hover:shadow-lg hover:shadow-vale-primary/25">
+          {t.pricing.cta}
+        </a>
+      </div>
+
+      <!-- Enterprise -->
+      <div class="relative p-8 rounded-2xl transition-all duration-300 hover:-translate-y-1 bg-themed-secondary border border-themed hover:border-vale-primary/30">
+        <div class="text-center mb-8">
+          <h3 class="text-xl font-semibold text-themed mb-2">{t.pricing.tiers[2].name}</h3>
+          <div class="flex items-baseline justify-center gap-1">
+            <span id="price-enterprise" class="text-4xl font-bold text-themed">{t.pricing.tiers[2].price}</span>
+            <span class="text-themed-secondary">{t.pricing.tiers[2].unit}</span>
+          </div>
+          <p class="text-themed-tertiary mt-2 text-sm">{t.pricing.tiers[2].description}</p>
+        </div>
+
+        <ul class="space-y-4 mb-8">
+          {t.pricing.tiers[2].features.map((feature) => (
+            <li class="flex items-center gap-3 text-themed-secondary">
+              <svg class="w-5 h-5 text-vale-accent flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              <span>{feature}</span>
+            </li>
+          ))}
+        </ul>
+
+        <a href={`/${locale}#contact`} class="block w-full py-3 px-6 rounded-xl font-semibold text-center transition-all glass hover:bg-vale-primary/10 text-themed">
+          {t.pricing.cta}
+        </a>
+      </div>
+    </div>
   </div>
 </section>
+
+<script>
+  const prices: Record<string, { starter: number; business: number }> = {
+    EUR: { starter: 99, business: 299 },
+    USD: { starter: 109, business: 329 },
+    GBP: { starter: 85, business: 259 },
+    BRL: { starter: 549, business: 1649 },
+    CNY: { starter: 779, business: 2349 },
+  };
+
+  const currencyLocales: Record<string, string> = {
+    EUR: 'de-DE',
+    USD: 'en-US',
+    GBP: 'en-GB',
+    BRL: 'pt-BR',
+    CNY: 'zh-CN',
+  };
+
+  function formatPrice(amount: number, currency: string): string {
+    return new Intl.NumberFormat(currencyLocales[currency] || 'en-US', {
+      style: 'currency',
+      currency: currency,
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0,
+    }).format(amount);
+  }
+
+  function updatePrices(currency: string) {
+    const priceData = prices[currency] || prices.EUR;
+    const starterEl = document.getElementById('price-starter');
+    const businessEl = document.getElementById('price-business');
+
+    if (starterEl) starterEl.textContent = formatPrice(priceData.starter, currency);
+    if (businessEl) businessEl.textContent = formatPrice(priceData.business, currency);
+
+    // Save preference
+    localStorage.setItem('vale-currency', currency);
+  }
+
+  // Initialize
+  const select = document.getElementById('currency-select') as HTMLSelectElement;
+  const savedCurrency = localStorage.getItem('vale-currency');
+
+  if (savedCurrency && select) {
+    select.value = savedCurrency;
+  }
+
+  updatePrices(select?.value || 'EUR');
+
+  select?.addEventListener('change', (e) => {
+    updatePrices((e.target as HTMLSelectElement).value);
+  });
+</script>
