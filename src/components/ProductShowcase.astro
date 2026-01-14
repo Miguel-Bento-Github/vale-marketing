@@ -8,12 +8,36 @@ interface Props {
 const { locale } = Astro.props;
 const t = getTranslations(locale);
 
-// Map screens to actual screenshot files (light and dark versions)
+// Map screens to actual screenshot files (light and dark versions, with WebP and PNG)
 const screenshots = [
-  { id: 'calendar', lightSrc: '/screenshots/booking-calendar-light.png', darkSrc: '/screenshots/booking-calendar-dark.png' },
-  { id: 'timeline', lightSrc: '/screenshots/timeline-light.png', darkSrc: '/screenshots/timeline-dark.png' },
-  { id: 'analytics', lightSrc: '/screenshots/analytics-dashboard-light.png', darkSrc: '/screenshots/analytics-dashboard-dark.png' },
-  { id: 'api', lightSrc: '/screenshots/api-docs-light.png', darkSrc: '/screenshots/api-docs-dark.png' },
+  {
+    id: 'calendar',
+    lightWebp: '/screenshots/booking-calendar-light.webp',
+    lightPng: '/screenshots/booking-calendar-light.png',
+    darkWebp: '/screenshots/booking-calendar-dark.webp',
+    darkPng: '/screenshots/booking-calendar-dark.png'
+  },
+  {
+    id: 'timeline',
+    lightWebp: '/screenshots/timeline-light.webp',
+    lightPng: '/screenshots/timeline-light.png',
+    darkWebp: '/screenshots/timeline-dark.webp',
+    darkPng: '/screenshots/timeline-dark.png'
+  },
+  {
+    id: 'analytics',
+    lightWebp: '/screenshots/analytics-dashboard-light.webp',
+    lightPng: '/screenshots/analytics-dashboard-light.png',
+    darkWebp: '/screenshots/analytics-dashboard-dark.webp',
+    darkPng: '/screenshots/analytics-dashboard-dark.png'
+  },
+  {
+    id: 'api',
+    lightWebp: '/screenshots/api-docs-light.webp',
+    lightPng: '/screenshots/api-docs-light.png',
+    darkWebp: '/screenshots/api-docs-dark.webp',
+    darkPng: '/screenshots/api-docs-dark.png'
+  },
 ];
 ---
 
@@ -37,21 +61,31 @@ const screenshots = [
           class="aspect-video bg-themed-secondary rounded-lg overflow-hidden relative border border-themed"
         >
           <!-- Light mode screenshot -->
-          <img
-            id="screenshot-image-light"
-            src={screenshots[0].lightSrc}
-            alt={t.product.screens[0].title}
-            class="w-full h-full object-cover object-top transition-opacity duration-300 light-only"
-            loading="eager"
-          />
+          <picture class="light-only">
+            <source srcset={screenshots[0].lightWebp} type="image/webp" />
+            <img
+              id="screenshot-image-light"
+              src={screenshots[0].lightPng}
+              alt={t.product.screens[0].title}
+              class="w-full h-full object-cover object-top transition-opacity duration-300"
+              loading="eager"
+              width="1280"
+              height="800"
+            />
+          </picture>
           <!-- Dark mode screenshot -->
-          <img
-            id="screenshot-image-dark"
-            src={screenshots[0].darkSrc}
-            alt={t.product.screens[0].title}
-            class="w-full h-full object-cover object-top transition-opacity duration-300 dark-only absolute inset-0"
-            loading="eager"
-          />
+          <picture class="dark-only absolute inset-0">
+            <source srcset={screenshots[0].darkWebp} type="image/webp" />
+            <img
+              id="screenshot-image-dark"
+              src={screenshots[0].darkPng}
+              alt={t.product.screens[0].title}
+              class="w-full h-full object-cover object-top transition-opacity duration-300"
+              loading="eager"
+              width="1280"
+              height="800"
+            />
+          </picture>
 
           <!-- Loading overlay -->
           <div id="screenshot-loading" class="absolute inset-0 bg-themed-secondary flex items-center justify-center opacity-0 transition-opacity duration-300 pointer-events-none">
@@ -84,8 +118,10 @@ const screenshots = [
           data-index={index}
           data-title={screen.title}
           data-description={screen.description}
-          data-light-src={screenshots[index]?.lightSrc || ''}
-          data-dark-src={screenshots[index]?.darkSrc || ''}
+          data-light-webp={screenshots[index]?.lightWebp || ''}
+          data-light-png={screenshots[index]?.lightPng || ''}
+          data-dark-webp={screenshots[index]?.darkWebp || ''}
+          data-dark-png={screenshots[index]?.darkPng || ''}
         >
           {screen.title}
         </button>
@@ -100,10 +136,30 @@ const screenshots = [
   const screenshotImageDark = document.getElementById('screenshot-image-dark') as HTMLImageElement;
   const loadingOverlay = document.getElementById('screenshot-loading');
 
-  // Preload all images (both light and dark versions)
+  // Check WebP support
+  const supportsWebP = (() => {
+    const canvas = document.createElement('canvas');
+    canvas.width = 1;
+    canvas.height = 1;
+    return canvas.toDataURL('image/webp').startsWith('data:image/webp');
+  })();
+
+  // Get the best image source (WebP if supported, otherwise PNG)
+  const getImageSrc = (webp: string | null, png: string | null): string => {
+    if (supportsWebP && webp) return webp;
+    return png || '';
+  };
+
+  // Preload all images (both light and dark versions, prefer WebP)
   Array.from(tabs).forEach(tab => {
-    const lightSrc = tab.getAttribute('data-light-src');
-    const darkSrc = tab.getAttribute('data-dark-src');
+    const lightWebp = tab.getAttribute('data-light-webp');
+    const lightPng = tab.getAttribute('data-light-png');
+    const darkWebp = tab.getAttribute('data-dark-webp');
+    const darkPng = tab.getAttribute('data-dark-png');
+
+    const lightSrc = getImageSrc(lightWebp, lightPng);
+    const darkSrc = getImageSrc(darkWebp, darkPng);
+
     if (lightSrc) {
       const img = new Image();
       img.src = lightSrc;
@@ -124,10 +180,15 @@ const screenshots = [
       tab.classList.remove('glass', 'text-themed-secondary');
       tab.classList.add('bg-vale-primary', 'text-white');
 
-      // Load new screenshots
-      const lightSrc = tab.getAttribute('data-light-src');
-      const darkSrc = tab.getAttribute('data-dark-src');
+      // Get image sources (prefer WebP)
+      const lightWebp = tab.getAttribute('data-light-webp');
+      const lightPng = tab.getAttribute('data-light-png');
+      const darkWebp = tab.getAttribute('data-dark-webp');
+      const darkPng = tab.getAttribute('data-dark-png');
       const newTitle = tab.getAttribute('data-title');
+
+      const lightSrc = getImageSrc(lightWebp, lightPng);
+      const darkSrc = getImageSrc(darkWebp, darkPng);
 
       // Show loading state
       if (loadingOverlay) {
