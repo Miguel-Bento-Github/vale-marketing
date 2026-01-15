@@ -130,10 +130,10 @@ const screenshots = [
   </div>
 </section>
 
-<script>
+<script is:inline>
   const tabs = document.querySelectorAll('.screenshot-tab');
-  const screenshotImageLight = document.getElementById('screenshot-image-light') as HTMLImageElement;
-  const screenshotImageDark = document.getElementById('screenshot-image-dark') as HTMLImageElement;
+  const screenshotImageLight = document.getElementById('screenshot-image-light');
+  const screenshotImageDark = document.getElementById('screenshot-image-dark');
   const loadingOverlay = document.getElementById('screenshot-loading');
 
   // Check WebP support
@@ -145,7 +145,7 @@ const screenshots = [
   })();
 
   // Get the best image source (WebP if supported, otherwise PNG)
-  const getImageSrc = (webp: string | null, png: string | null): string => {
+  const getImageSrc = (webp, png) => {
     if (supportsWebP && webp) return webp;
     return png || '';
   };
