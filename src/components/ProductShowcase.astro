@@ -62,7 +62,7 @@ const screenshots = [
         >
           <!-- Light mode screenshot -->
           <picture class="light-only">
-            <source srcset={screenshots[0].lightWebp} type="image/webp" />
+            <source id="screenshot-source-light" srcset={screenshots[0].lightWebp} type="image/webp" />
             <img
               id="screenshot-image-light"
               src={screenshots[0].lightPng}
@@ -75,7 +75,7 @@ const screenshots = [
           </picture>
           <!-- Dark mode screenshot -->
           <picture class="dark-only absolute inset-0">
-            <source srcset={screenshots[0].darkWebp} type="image/webp" />
+            <source id="screenshot-source-dark" srcset={screenshots[0].darkWebp} type="image/webp" />
             <img
               id="screenshot-image-dark"
               src={screenshots[0].darkPng}
@@ -134,6 +134,8 @@ const screenshots = [
   const tabs = document.querySelectorAll('.screenshot-tab');
   const screenshotImageLight = document.getElementById('screenshot-image-light');
   const screenshotImageDark = document.getElementById('screenshot-image-dark');
+  const screenshotSourceLight = document.getElementById('screenshot-source-light');
+  const screenshotSourceDark = document.getElementById('screenshot-source-dark');
   const loadingOverlay = document.getElementById('screenshot-loading');
 
   // Check WebP support
@@ -207,12 +209,20 @@ const screenshots = [
 
       if (lightSrc && screenshotImageLight) {
         screenshotImageLight.onload = checkLoaded;
+        // Update both the source srcset and img src
+        if (screenshotSourceLight && lightWebp) {
+          screenshotSourceLight.setAttribute('srcset', lightWebp);
+        }
         screenshotImageLight.src = lightSrc;
         screenshotImageLight.alt = newTitle || '';
       }
 
       if (darkSrc && screenshotImageDark) {
         screenshotImageDark.onload = checkLoaded;
+        // Update both the source srcset and img src
+        if (screenshotSourceDark && darkWebp) {
+          screenshotSourceDark.setAttribute('srcset', darkWebp);
+        }
         screenshotImageDark.src = darkSrc;
         screenshotImageDark.alt = newTitle || '';
       }
