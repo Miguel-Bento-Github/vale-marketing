@@ -10,11 +10,11 @@ export const translations = {
     },
     hero: {
       badge: 'Smart Parking Management Platform',
-      title: 'Modern Parking Operations',
-      titleHighlight: 'for Modern Businesses',
+      title: 'Parking Operations',
+      titleHighlight: 'for Businesses',
       subtitle: '',
       description:
-        'Vale is a B2B parking management platform that helps businesses offer guaranteed parking to their customers. IoT-powered gate access, real-time booking management, and powerful analytics — all in one dashboard.',
+        'Vale is a B2B parking management platform that helps businesses offer guaranteed parking to their customers All in one dashboard.',
       cta: 'Request a Demo',
       ctaSecondary: 'See How It Works',
       stats: {
@@ -66,16 +66,10 @@ export const translations = {
             'Visual calendar and timeline views. Manage reservations, assign slots to customers, staff, or VIPs.',
         },
         {
-          icon: 'gate',
-          title: 'IoT Gate Control',
+          icon: 'users',
+          title: 'Multi-Tenant Platform',
           description:
-            'Integrate with Shelly devices for automated gate access. Secure tokens, no physical keys required.',
-        },
-        {
-          icon: 'chart',
-          title: 'Analytics Dashboard',
-          description:
-            'Real-time insights into utilization, peak hours, and revenue. Make data-driven decisions.',
+            'Manage multiple companies and locations. Role-based access for supervisors and admins.',
         },
         {
           icon: 'pricing',
@@ -84,16 +78,22 @@ export const translations = {
             'Set peak, standard, and off-peak rates. Time-based pricing to maximize revenue.',
         },
         {
-          icon: 'users',
-          title: 'Multi-Tenant Platform',
-          description:
-            'Manage multiple companies and locations. Role-based access for supervisors and admins.',
-        },
-        {
           icon: 'timeline',
           title: 'Real-Time Updates',
           description:
             'Live booking status, gate access logs, and instant notifications via WebSocket.',
+        },
+        {
+          icon: 'chart',
+          title: 'Analytics Dashboard',
+          description:
+            'Real-time insights into utilization, peak hours, and revenue. Make data-driven decisions.',
+        },
+        {
+          icon: 'gate',
+          title: 'IoT Gate Control',
+          description:
+            'Integrate with Shelly devices for automated gate access. Secure tokens, no physical keys required.',
         },
       ],
     },
@@ -101,8 +101,8 @@ export const translations = {
       title: 'See Vale in Action',
       subtitle: 'A powerful dashboard designed for parking operations',
       screens: [
-        { title: 'Booking Calendar', description: 'Manage all reservations in one view' },
         { title: 'Timeline View', description: 'Real-time slot utilization' },
+        { title: 'Booking Calendar', description: 'Manage all reservations in one view' },
         { title: 'Analytics', description: 'Insights and performance metrics' },
         { title: 'API Documentation', description: 'Integrate with our REST API' },
       ],
@@ -176,10 +176,10 @@ export const translations = {
     hero: {
       badge: 'Plataforma de Gestão de Estacionamento',
       title: 'Operações de Estacionamento',
-      titleHighlight: 'Modernas para Negócios Modernos',
+      titleHighlight: 'para Negócios',
       subtitle: '',
       description:
-        'A Vale é uma plataforma B2B de gestão de estacionamento que ajuda empresas a oferecer estacionamento garantido aos seus clientes. Acesso por IoT, gestão de reservas em tempo real e analytics poderosos — tudo num só dashboard.',
+        'A Vale é uma plataforma B2B de gestão de estacionamento que ajuda empresas a oferecer estacionamento garantido aos seus clientes. Tudo num só dashboard.',
       cta: 'Pedir Demonstração',
       ctaSecondary: 'Ver Como Funciona',
       stats: {
@@ -231,16 +231,10 @@ export const translations = {
             'Vistas de calendário e timeline. Gira reservas, atribui lugares a clientes, funcionários ou VIPs.',
         },
         {
-          icon: 'gate',
-          title: 'Controlo IoT de Portões',
+          icon: 'users',
+          title: 'Plataforma Multi-Tenant',
           description:
-            'Integração com dispositivos Shelly para acesso automatizado. Tokens seguros, sem chaves físicas.',
-        },
-        {
-          icon: 'chart',
-          title: 'Dashboard de Analytics',
-          description:
-            'Insights em tempo real sobre utilização, horas de pico e receita. Decisões baseadas em dados.',
+            'Gira múltiplas empresas e localizações. Acessos baseados em roles para supervisores e admins.',
         },
         {
           icon: 'pricing',
@@ -249,16 +243,22 @@ export const translations = {
             'Defina tarifas de pico, standard e fora de pico. Preços baseados no tempo para maximizar receita.',
         },
         {
-          icon: 'users',
-          title: 'Plataforma Multi-Tenant',
-          description:
-            'Gira múltiplas empresas e localizações. Acessos baseados em roles para supervisores e admins.',
-        },
-        {
           icon: 'timeline',
           title: 'Atualizações em Tempo Real',
           description:
             'Estado de reservas ao vivo, logs de acesso aos portões e notificações instantâneas via WebSocket.',
+        },
+        {
+          icon: 'chart',
+          title: 'Dashboard de Analytics',
+          description:
+            'Insights em tempo real sobre utilização, horas de pico e receita. Decisões baseadas em dados.',
+        },
+        {
+          icon: 'gate',
+          title: 'Controlo IoT de Portões',
+          description:
+            'Integração com dispositivos Shelly para acesso automatizado. Tokens seguros, sem chaves físicas.',
         },
       ],
     },
@@ -266,8 +266,8 @@ export const translations = {
       title: 'Veja a Vale em Ação',
       subtitle: 'Um dashboard poderoso desenhado para operações de estacionamento',
       screens: [
-        { title: 'Calendário de Reservas', description: 'Gira todas as reservas numa só vista' },
         { title: 'Vista Timeline', description: 'Utilização de lugares em tempo real' },
+        { title: 'Calendário de Reservas', description: 'Gira todas as reservas numa só vista' },
         { title: 'Analytics', description: 'Insights e métricas de performance' },
         { title: 'Documentação API', description: 'Integre com a nossa API REST' },
       ],
@@ -341,10 +341,10 @@ export const translations = {
     hero: {
       badge: 'Plataforma de Gestión de Estacionamiento',
       title: 'Operaciones de Estacionamiento',
-      titleHighlight: 'Modernas para Negocios Modernos',
+      titleHighlight: 'para Negocios',
       subtitle: '',
       description:
-        'Vale es una plataforma B2B de gestión de estacionamiento que ayuda a las empresas a ofrecer estacionamiento garantizado a sus clientes. Acceso IoT, gestión de reservas en tiempo real y analíticas potentes — todo en un dashboard.',
+        'Vale es una plataforma B2B de gestión de estacionamiento que ayuda a las empresas a ofrecer estacionamiento garantizado a sus clientes. Todo en un dashboard.',
       cta: 'Solicitar Demo',
       ctaSecondary: 'Ver Cómo Funciona',
       stats: {
@@ -396,16 +396,10 @@ export const translations = {
             'Vistas de calendario y timeline. Gestione reservas, asigne lugares a clientes, empleados o VIPs.',
         },
         {
-          icon: 'gate',
-          title: 'Control IoT de Puertas',
+          icon: 'users',
+          title: 'Plataforma Multi-Tenant',
           description:
-            'Integración con dispositivos Shelly para acceso automatizado. Tokens seguros, sin llaves físicas.',
-        },
-        {
-          icon: 'chart',
-          title: 'Dashboard de Analíticas',
-          description:
-            'Insights en tiempo real sobre utilización, horas pico e ingresos. Decisiones basadas en datos.',
+            'Gestione múltiples empresas y ubicaciones. Accesos basados en roles para supervisores y admins.',
         },
         {
           icon: 'pricing',
@@ -414,16 +408,22 @@ export const translations = {
             'Defina tarifas de pico, estándar y fuera de pico. Precios basados en tiempo para maximizar ingresos.',
         },
         {
-          icon: 'users',
-          title: 'Plataforma Multi-Tenant',
-          description:
-            'Gestione múltiples empresas y ubicaciones. Accesos basados en roles para supervisores y admins.',
-        },
-        {
           icon: 'timeline',
           title: 'Actualizaciones en Tiempo Real',
           description:
             'Estado de reservas en vivo, logs de acceso a puertas y notificaciones instantáneas via WebSocket.',
+        },
+        {
+          icon: 'chart',
+          title: 'Dashboard de Analíticas',
+          description:
+            'Insights en tiempo real sobre utilización, horas pico e ingresos. Decisiones basadas en datos.',
+        },
+        {
+          icon: 'gate',
+          title: 'Control IoT de Puertas',
+          description:
+            'Integración con dispositivos Shelly para acceso automatizado. Tokens seguros, sin llaves físicas.',
         },
       ],
     },
@@ -431,8 +431,8 @@ export const translations = {
       title: 'Vea Vale en Acción',
       subtitle: 'Un dashboard potente diseñado para operaciones de estacionamiento',
       screens: [
-        { title: 'Calendario de Reservas', description: 'Gestione todas las reservas en una vista' },
         { title: 'Vista Timeline', description: 'Utilización de lugares en tiempo real' },
+        { title: 'Calendario de Reservas', description: 'Gestione todas las reservas en una vista' },
         { title: 'Analíticas', description: 'Insights y métricas de rendimiento' },
         { title: 'Documentación API', description: 'Integre con nuestra API REST' },
       ],
@@ -505,11 +505,11 @@ export const translations = {
     },
     hero: {
       badge: '智能停车管理平台',
-      title: '现代化停车运营',
-      titleHighlight: '为现代企业打造',
+      title: '停车运营',
+      titleHighlight: '为企业打造',
       subtitle: '',
       description:
-        'Vale是一个B2B停车管理平台，帮助企业为客户提供有保障的停车位。物联网门禁控制、实时预订管理和强大的数据分析——尽在一个仪表板中。',
+        'Vale是一个B2B停车管理平台，帮助企业为客户提供有保障的停车位。尽在一个仪表板中。',
       cta: '申请演示',
       ctaSecondary: '了解详情',
       stats: {
@@ -561,16 +561,10 @@ export const translations = {
             '可视化日历和时间线视图。管理预订，将车位分配给客户、员工或VIP。',
         },
         {
-          icon: 'gate',
-          title: '物联网门禁控制',
+          icon: 'users',
+          title: '多租户平台',
           description:
-            '与Shelly设备集成，实现自动门禁。安全令牌，无需实体钥匙。',
-        },
-        {
-          icon: 'chart',
-          title: '数据分析仪表板',
-          description:
-            '实时洞察利用率、高峰时段和收入。做出数据驱动的决策。',
+            '管理多个公司和位置。为主管和管理员提供基于角色的访问控制。',
         },
         {
           icon: 'pricing',
@@ -579,16 +573,22 @@ export const translations = {
             '设置高峰、标准和非高峰时段费率。基于时间的定价以最大化收入。',
         },
         {
-          icon: 'users',
-          title: '多租户平台',
-          description:
-            '管理多个公司和位置。为主管和管理员提供基于角色的访问控制。',
-        },
-        {
           icon: 'timeline',
           title: '实时更新',
           description:
             '实时预订状态、门禁访问日志和通过WebSocket的即时通知。',
+        },
+        {
+          icon: 'chart',
+          title: '数据分析仪表板',
+          description:
+            '实时洞察利用率、高峰时段和收入。做出数据驱动的决策。',
+        },
+        {
+          icon: 'gate',
+          title: '物联网门禁控制',
+          description:
+            '与Shelly设备集成，实现自动门禁。安全令牌，无需实体钥匙。',
         },
       ],
     },
@@ -596,8 +596,8 @@ export const translations = {
       title: '查看Vale实际运行',
       subtitle: '专为停车运营设计的强大仪表板',
       screens: [
-        { title: '预订日历', description: '在一个视图中管理所有预订' },
         { title: '时间线视图', description: '实时车位利用率' },
+        { title: '预订日历', description: '在一个视图中管理所有预订' },
         { title: '数据分析', description: '洞察和绩效指标' },
         { title: 'API文档', description: '与我们的REST API集成' },
       ],
@@ -671,10 +671,10 @@ export const translations = {
     hero: {
       badge: 'منصة إدارة المواقف الذكية',
       title: 'عمليات مواقف',
-      titleHighlight: 'حديثة لأعمال حديثة',
+      titleHighlight: 'للأعمال',
       subtitle: '',
       description:
-        'Vale هي منصة B2B لإدارة المواقف تساعد الشركات على توفير مواقف مضمونة لعملائها. التحكم في البوابات عبر إنترنت الأشياء، إدارة الحجوزات في الوقت الفعلي، وتحليلات قوية — كل ذلك في لوحة تحكم واحدة.',
+        'Vale هي منصة B2B لإدارة المواقف تساعد الشركات على توفير مواقف مضمونة لعملائها. كل ذلك في لوحة تحكم واحدة.',
       cta: 'طلب عرض توضيحي',
       ctaSecondary: 'شاهد كيف يعمل',
       stats: {
@@ -726,16 +726,10 @@ export const translations = {
             'عروض التقويم والجدول الزمني. إدارة الحجوزات، تخصيص الأماكن للعملاء والموظفين أو كبار الشخصيات.',
         },
         {
-          icon: 'gate',
-          title: 'التحكم في البوابات عبر IoT',
+          icon: 'users',
+          title: 'منصة متعددة المستأجرين',
           description:
-            'التكامل مع أجهزة Shelly للوصول الآلي. رموز آمنة، لا حاجة لمفاتيح فعلية.',
-        },
-        {
-          icon: 'chart',
-          title: 'لوحة التحليلات',
-          description:
-            'رؤى في الوقت الفعلي حول الاستخدام وساعات الذروة والإيرادات. قرارات مبنية على البيانات.',
+            'إدارة شركات ومواقع متعددة. وصول مبني على الأدوار للمشرفين والمسؤولين.',
         },
         {
           icon: 'pricing',
@@ -744,16 +738,22 @@ export const translations = {
             'حدد أسعار الذروة والعادية وخارج الذروة. تسعير مبني على الوقت لتعظيم الإيرادات.',
         },
         {
-          icon: 'users',
-          title: 'منصة متعددة المستأجرين',
-          description:
-            'إدارة شركات ومواقع متعددة. وصول مبني على الأدوار للمشرفين والمسؤولين.',
-        },
-        {
           icon: 'timeline',
           title: 'تحديثات في الوقت الفعلي',
           description:
             'حالة الحجوزات المباشرة، سجلات الوصول للبوابات، وإشعارات فورية عبر WebSocket.',
+        },
+        {
+          icon: 'chart',
+          title: 'لوحة التحليلات',
+          description:
+            'رؤى في الوقت الفعلي حول الاستخدام وساعات الذروة والإيرادات. قرارات مبنية على البيانات.',
+        },
+        {
+          icon: 'gate',
+          title: 'التحكم في البوابات عبر IoT',
+          description:
+            'التكامل مع أجهزة Shelly للوصول الآلي. رموز آمنة، لا حاجة لمفاتيح فعلية.',
         },
       ],
     },
@@ -761,8 +761,8 @@ export const translations = {
       title: 'شاهد Vale قيد العمل',
       subtitle: 'لوحة تحكم قوية مصممة لعمليات المواقف',
       screens: [
-        { title: 'تقويم الحجوزات', description: 'إدارة جميع الحجوزات في عرض واحد' },
         { title: 'عرض الجدول الزمني', description: 'استخدام الأماكن في الوقت الفعلي' },
+        { title: 'تقويم الحجوزات', description: 'إدارة جميع الحجوزات في عرض واحد' },
         { title: 'التحليلات', description: 'رؤى ومقاييس الأداء' },
         { title: 'توثيق API', description: 'التكامل مع REST API الخاص بنا' },
       ],
