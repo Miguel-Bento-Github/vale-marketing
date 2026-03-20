@@ -1,0 +1,29 @@
+# Marketing Development Dockerfile - Hot-reloading enabled
+FROM node:20-alpine
+
+WORKDIR /app
+
+# Install dumb-init for proper signal handling
+RUN apk add --no-cache dumb-init
+
+# Copy package files
+COPY package*.json ./
+
+# Install all dependencies (including devDependencies)
+RUN npm ci --ignore-scripts
+
+# Copy source code (will be overridden by volume mount in development)
+COPY . .
+
+# Expose Astro dev server port
+EXPOSE 4321
+
+# Health check for dev server
+HEALTHCHECK --interval=30s --timeout=3s --start-period=30s --retries=3 \
+  CMD wget --no-verbose --tries=1 --spider http://localhost:4321/ || exit 1
+
+# Use dumb-init to handle signals properly
+ENTRYPOINT ["dumb-init", "--"]
+
+# Start Astro development server
+CMD ["npm", "run", "dev"]
