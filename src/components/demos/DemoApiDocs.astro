@@ -1,0 +1,287 @@
+---
+// Static API docs demo - no Vue needed, uses native <details>
+---
+
+<div class="demo-api-docs">
+  <div class="api-header">
+    <span class="api-title">Vale REST API</span>
+    <span class="api-version">v1.0</span>
+    <span class="api-base">Base URL: https://api.valepark.org/api</span>
+  </div>
+
+  <div class="api-sections">
+    <details class="api-group" open>
+      <summary class="group-title">
+        <span class="method get">GET</span>
+        Authentication
+      </summary>
+      <div class="endpoints">
+        <div class="endpoint">
+          <div class="endpoint-header">
+            <span class="method-badge post">POST</span>
+            <code>/auth/login</code>
+            <span class="endpoint-desc">Authenticate user and receive tokens</span>
+          </div>
+          <div class="endpoint-body">
+            <div class="code-block">
+              <pre><code set:html={`{\n  "email": "user@example.com",\n  "password": "********"\n}`} /></pre>
+            </div>
+            <div class="response">
+              <span class="response-label">Response 200</span>
+              <pre><code set:html={`{\n  "accessToken": "eyJhbG...",\n  "refreshToken": "eyJhbG...",\n  "user": { "id": "...", "role": "SUPERVISOR" }\n}`} /></pre>
+            </div>
+          </div>
+        </div>
+        <div class="endpoint">
+          <div class="endpoint-header">
+            <span class="method-badge post">POST</span>
+            <code>/auth/refresh</code>
+            <span class="endpoint-desc">Refresh access token</span>
+          </div>
+        </div>
+        <div class="endpoint">
+          <div class="endpoint-header">
+            <span class="method-badge post">POST</span>
+            <code>/auth/register</code>
+            <span class="endpoint-desc">Create a new user account</span>
+          </div>
+        </div>
+      </div>
+    </details>
+
+    <details class="api-group">
+      <summary class="group-title">
+        <span class="method get">GET</span>
+        Locations
+      </summary>
+      <div class="endpoints">
+        <div class="endpoint">
+          <div class="endpoint-header">
+            <span class="method-badge get">GET</span>
+            <code>/locations</code>
+            <span class="endpoint-desc">List all locations</span>
+          </div>
+        </div>
+        <div class="endpoint">
+          <div class="endpoint-header">
+            <span class="method-badge get">GET</span>
+            <code>/locations/nearby?lat=38.7&lng=-9.1&radius=5</code>
+            <span class="endpoint-desc">Find nearby locations (geospatial)</span>
+          </div>
+        </div>
+        <div class="endpoint">
+          <div class="endpoint-header">
+            <span class="method-badge post">POST</span>
+            <code>/locations</code>
+            <span class="endpoint-desc">Create a new parking location</span>
+          </div>
+        </div>
+      </div>
+    </details>
+
+    <details class="api-group">
+      <summary class="group-title">
+        <span class="method get">GET</span>
+        Bookings
+      </summary>
+      <div class="endpoints">
+        <div class="endpoint">
+          <div class="endpoint-header">
+            <span class="method-badge post">POST</span>
+            <code>/bookings</code>
+            <span class="endpoint-desc">Create a new booking</span>
+          </div>
+        </div>
+        <div class="endpoint">
+          <div class="endpoint-header">
+            <span class="method-badge get">GET</span>
+            <code>/bookings/:id</code>
+            <span class="endpoint-desc">Get booking details</span>
+          </div>
+        </div>
+        <div class="endpoint">
+          <div class="endpoint-header">
+            <span class="method-badge put">PUT</span>
+            <code>/bookings/:id/status</code>
+            <span class="endpoint-desc">Update booking status</span>
+          </div>
+        </div>
+      </div>
+    </details>
+
+    <details class="api-group">
+      <summary class="group-title">
+        <span class="method get">GET</span>
+        Payments
+      </summary>
+      <div class="endpoints">
+        <div class="endpoint">
+          <div class="endpoint-header">
+            <span class="method-badge post">POST</span>
+            <code>/payments/create-intent</code>
+            <span class="endpoint-desc">Create Stripe payment intent</span>
+          </div>
+        </div>
+        <div class="endpoint">
+          <div class="endpoint-header">
+            <span class="method-badge post">POST</span>
+            <code>/webhooks/stripe</code>
+            <span class="endpoint-desc">Stripe webhook handler</span>
+          </div>
+        </div>
+      </div>
+    </details>
+  </div>
+</div>
+
+<style>
+  .demo-api-docs {
+    background: var(--demo-surface, #ffffff);
+    border-radius: 12px;
+    overflow: hidden;
+    font-family: system-ui, -apple-system, sans-serif;
+    font-size: 13px;
+    color: var(--demo-text, #1f2937);
+    border: 1px solid var(--demo-border, #e5e7eb);
+    max-height: 480px;
+    overflow-y: auto;
+  }
+
+  .api-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 16px;
+    border-bottom: 1px solid var(--demo-border, #e5e7eb);
+    background: var(--demo-surface-elevated, #f9fafb);
+    flex-wrap: wrap;
+  }
+
+  .api-title { font-weight: 700; font-size: 15px; }
+  .api-version {
+    font-size: 11px; font-weight: 600; padding: 2px 8px;
+    border-radius: 4px; background: rgba(109,40,217,0.1); color: #6d28d9;
+  }
+  .api-base {
+    font-size: 11px; color: var(--demo-text-muted, #6b7280);
+    margin-left: auto;
+    font-family: ui-monospace, monospace;
+  }
+
+  .api-sections { padding: 8px; }
+
+  .api-group {
+    border: 1px solid var(--demo-border-light, #f3f4f6);
+    border-radius: 8px;
+    margin-bottom: 8px;
+    overflow: hidden;
+  }
+
+  .group-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 14px;
+    font-weight: 600;
+    font-size: 13px;
+    cursor: pointer;
+    background: var(--demo-surface-elevated, #f9fafb);
+    user-select: none;
+    list-style: none;
+  }
+  .group-title::-webkit-details-marker { display: none; }
+  .group-title::before {
+    content: '▶';
+    font-size: 9px;
+    transition: transform 0.2s;
+    color: var(--demo-text-muted, #6b7280);
+  }
+  details[open] > .group-title::before { transform: rotate(90deg); }
+
+  .endpoints { padding: 4px 8px 8px; }
+
+  .endpoint {
+    border: 1px solid var(--demo-border-light, #f3f4f6);
+    border-radius: 6px;
+    margin-bottom: 6px;
+    overflow: hidden;
+  }
+
+  .endpoint-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    flex-wrap: wrap;
+  }
+
+  .method-badge {
+    font-size: 10px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    flex-shrink: 0;
+  }
+  .method-badge.get { background: rgba(56,142,60,0.1); color: #388e3c; }
+  .method-badge.post { background: rgba(25,118,210,0.1); color: #1976d2; }
+  .method-badge.put { background: rgba(245,124,0,0.1); color: #f57c00; }
+  .method-badge.delete { background: rgba(211,47,47,0.1); color: #d32f2f; }
+
+  .method { display: none; }
+
+  .endpoint-header code {
+    font-family: ui-monospace, monospace;
+    font-size: 12px;
+    font-weight: 500;
+  }
+
+  .endpoint-desc {
+    font-size: 11px;
+    color: var(--demo-text-muted, #6b7280);
+    margin-left: auto;
+  }
+
+  .endpoint-body {
+    padding: 8px 12px;
+    border-top: 1px solid var(--demo-border-light, #f3f4f6);
+    background: var(--demo-surface-elevated, #f9fafb);
+  }
+
+  .code-block, .response {
+    margin-bottom: 8px;
+  }
+
+  .response-label {
+    font-size: 10px;
+    font-weight: 600;
+    color: #388e3c;
+    margin-bottom: 4px;
+    display: block;
+  }
+
+  .endpoint-body pre {
+    margin: 0;
+    padding: 8px 12px;
+    background: var(--demo-surface, #1e1e2e);
+    border-radius: 6px;
+    overflow-x: auto;
+    font-size: 11px;
+    line-height: 1.5;
+  }
+
+  .endpoint-body code {
+    font-family: ui-monospace, monospace;
+    color: var(--demo-text, #e5e7eb);
+  }
+
+  /* Use site theme variables */
+  .demo-api-docs {
+    --demo-surface: var(--bg-primary, #ffffff);
+    --demo-surface-elevated: var(--bg-secondary, #f9fafb);
+    --demo-border: var(--border-color, #e5e7eb);
+    --demo-border-light: var(--bg-tertiary, #f3f4f6);
+    --demo-text: var(--text-primary, #1f2937);
+    --demo-text-muted: var(--text-tertiary, #6b7280);
+  }
+</style>
