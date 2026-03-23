@@ -84,15 +84,22 @@ const demoIds = ['timeline', 'calendar', 'analytics', 'api'];
 </section>
 
 <style>
+  .demo-container {
+    position: relative;
+    height: 520px;
+    background: var(--surface, transparent);
+  }
   .demo-panel {
-    display: none;
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.2s ease, visibility 0.2s ease;
   }
   .demo-panel.active {
-    display: block;
-  }
-  .demo-container {
-    min-height: 400px;
-    background: var(--surface, transparent);
+    visibility: visible;
+    opacity: 1;
   }
 </style>
 
