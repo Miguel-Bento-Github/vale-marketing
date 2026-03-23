@@ -37,130 +37,8 @@ export const statusColors: Record<string, string> = {
 };
 
 // --- Timeline Data ---
+// Day 0 = "today" (mixed statuses), days 1-4 = future (CONFIRMED/PENDING)
 export const timelineData: DemoTimelineDay[] = [
-  {
-    date: '2026-03-16',
-    dayLabel: 'Mon 16',
-    isToday: false,
-    slots: [
-      {
-        label: 'Spot A1',
-        location: 'Restaurante Belém',
-        bookings: [
-          { id: 'b1', clientName: 'James Wilson', startHour: 9, endHour: 12, status: 'COMPLETED', slotLabel: 'A1' },
-          { id: 'b2', clientName: 'Yuki Tanaka', startHour: 13, endHour: 16, status: 'COMPLETED', slotLabel: 'A1' },
-          { id: 'b3', clientName: 'Liam O\'Brien', startHour: 18, endHour: 21, status: 'COMPLETED', slotLabel: 'A1' },
-        ],
-      },
-      {
-        label: 'Spot A2',
-        location: 'Restaurante Belém',
-        bookings: [
-          { id: 'b4', clientName: 'Sara Nielsen', startHour: 10, endHour: 14, status: 'COMPLETED', slotLabel: 'A2' },
-          { id: 'b5', clientName: 'Marco Rossi', startHour: 17, endHour: 20, status: 'COMPLETED', slotLabel: 'A2' },
-        ],
-      },
-      {
-        label: 'Spot B1',
-        location: 'Hotel Chiado',
-        bookings: [
-          { id: 'b6', clientName: 'Priya Sharma', startHour: 8, endHour: 18, status: 'COMPLETED', slotLabel: 'B1' },
-        ],
-      },
-    ],
-  },
-  {
-    date: '2026-03-17',
-    dayLabel: 'Tue 17',
-    isToday: false,
-    slots: [
-      {
-        label: 'Spot A1',
-        location: 'Restaurante Belém',
-        bookings: [
-          { id: 'b7', clientName: 'Emma Chen', startHour: 11, endHour: 14, status: 'COMPLETED', slotLabel: 'A1' },
-          { id: 'b8', clientName: 'David Kim', startHour: 15, endHour: 19, status: 'COMPLETED', slotLabel: 'A1' },
-        ],
-      },
-      {
-        label: 'Spot A2',
-        location: 'Restaurante Belém',
-        bookings: [
-          { id: 'b9', clientName: 'Anna Müller', startHour: 9, endHour: 11, status: 'COMPLETED', slotLabel: 'A2' },
-          { id: 'b10', clientName: 'Carlos Herrera', startHour: 12, endHour: 17, status: 'COMPLETED', slotLabel: 'A2' },
-        ],
-      },
-      {
-        label: 'Spot B1',
-        location: 'Hotel Chiado',
-        bookings: [
-          { id: 'b11', clientName: 'Fatima Al-Rashid', startHour: 9, endHour: 13, status: 'COMPLETED', slotLabel: 'B1' },
-          { id: 'b12', clientName: 'Lucas Martin', startHour: 14, endHour: 20, status: 'COMPLETED', slotLabel: 'B1' },
-        ],
-      },
-    ],
-  },
-  {
-    date: '2026-03-18',
-    dayLabel: 'Wed 18',
-    isToday: false,
-    slots: [
-      {
-        label: 'Spot A1',
-        location: 'Restaurante Belém',
-        bookings: [
-          { id: 'b13', clientName: 'Sophie Laurent', startHour: 10, endHour: 13, status: 'COMPLETED', slotLabel: 'A1' },
-          { id: 'b14', clientName: 'Alex Thompson', startHour: 14, endHour: 18, status: 'COMPLETED', slotLabel: 'A1' },
-        ],
-      },
-      {
-        label: 'Spot A2',
-        location: 'Restaurante Belém',
-        bookings: [
-          { id: 'b15', clientName: 'Nina Petrov', startHour: 8, endHour: 12, status: 'COMPLETED', slotLabel: 'A2' },
-          { id: 'b16', clientName: 'Omar Hassan', startHour: 19, endHour: 22, status: 'COMPLETED', slotLabel: 'A2' },
-        ],
-      },
-      {
-        label: 'Spot B1',
-        location: 'Hotel Chiado',
-        bookings: [
-          { id: 'b17', clientName: 'Rachel Green', startHour: 10, endHour: 20, status: 'COMPLETED', slotLabel: 'B1' },
-        ],
-      },
-    ],
-  },
-  {
-    date: '2026-03-19',
-    dayLabel: 'Thu 19',
-    isToday: false,
-    slots: [
-      {
-        label: 'Spot A1',
-        location: 'Restaurante Belém',
-        bookings: [
-          { id: 'b18', clientName: 'Kenji Nakamura', startHour: 9, endHour: 12, status: 'COMPLETED', slotLabel: 'A1' },
-          { id: 'b19', clientName: 'Elena Volkov', startHour: 13, endHour: 17, status: 'COMPLETED', slotLabel: 'A1' },
-          { id: 'b20', clientName: 'Ben Taylor', startHour: 19, endHour: 22, status: 'COMPLETED', slotLabel: 'A1' },
-        ],
-      },
-      {
-        label: 'Spot A2',
-        location: 'Restaurante Belém',
-        bookings: [
-          { id: 'b21', clientName: 'Aisha Okafor', startHour: 11, endHour: 15, status: 'COMPLETED', slotLabel: 'A2' },
-        ],
-      },
-      {
-        label: 'Spot B1',
-        location: 'Hotel Chiado',
-        bookings: [
-          { id: 'b22', clientName: 'Tom Anderson', startHour: 8, endHour: 14, status: 'COMPLETED', slotLabel: 'B1' },
-          { id: 'b23', clientName: 'Mei Lin', startHour: 15, endHour: 21, status: 'COMPLETED', slotLabel: 'B1' },
-        ],
-      },
-    ],
-  },
   {
     date: '2026-03-20',
     dayLabel: 'Fri 20',
@@ -170,25 +48,150 @@ export const timelineData: DemoTimelineDay[] = [
         label: 'Spot A1',
         location: 'Restaurante Belém',
         bookings: [
-          { id: 'b24', clientName: 'Sarah Mitchell', startHour: 9, endHour: 11, status: 'CONFIRMED', slotLabel: 'A1' },
-          { id: 'b25', clientName: 'Hans Weber', startHour: 12, endHour: 15, status: 'IN_PROGRESS', slotLabel: 'A1' },
-          { id: 'b26', clientName: 'Chloe Dubois', startHour: 18, endHour: 22, status: 'PENDING', slotLabel: 'A1' },
+          { id: 'b1', clientName: 'James Wilson', startHour: 8, endHour: 10, status: 'COMPLETED', slotLabel: 'A1' },
+          { id: 'b2', clientName: 'Hans Weber', startHour: 11, endHour: 14, status: 'IN_PROGRESS', slotLabel: 'A1' },
+          { id: 'b3', clientName: 'Chloe Dubois', startHour: 16, endHour: 19, status: 'CONFIRMED', slotLabel: 'A1' },
+          { id: 'b4', clientName: 'Liam O\'Brien', startHour: 20, endHour: 22, status: 'PENDING', slotLabel: 'A1' },
         ],
       },
       {
         label: 'Spot A2',
         location: 'Restaurante Belém',
         bookings: [
-          { id: 'b27', clientName: 'Raj Patel', startHour: 10, endHour: 14, status: 'IN_PROGRESS', slotLabel: 'A2' },
-          { id: 'b28', clientName: 'Lisa Chang', startHour: 16, endHour: 20, status: 'CONFIRMED', slotLabel: 'A2' },
+          { id: 'b5', clientName: 'Sara Nielsen', startHour: 9, endHour: 12, status: 'COMPLETED', slotLabel: 'A2' },
+          { id: 'b6', clientName: 'Raj Patel', startHour: 13, endHour: 17, status: 'IN_PROGRESS', slotLabel: 'A2' },
+          { id: 'b7', clientName: 'Lisa Chang', startHour: 18, endHour: 21, status: 'CONFIRMED', slotLabel: 'A2' },
         ],
       },
       {
         label: 'Spot B1',
         location: 'Hotel Chiado',
         bookings: [
-          { id: 'b29', clientName: 'Mike Johnson', startHour: 8, endHour: 18, status: 'IN_PROGRESS', slotLabel: 'B1' },
-          { id: 'b30', clientName: 'Julia Santos', startHour: 19, endHour: 23, status: 'PENDING', slotLabel: 'B1' },
+          { id: 'b8', clientName: 'Priya Sharma', startHour: 8, endHour: 13, status: 'COMPLETED', slotLabel: 'B1' },
+          { id: 'b9', clientName: 'Mike Johnson', startHour: 14, endHour: 18, status: 'IN_PROGRESS', slotLabel: 'B1' },
+          { id: 'b10', clientName: 'Julia Santos', startHour: 19, endHour: 22, status: 'PENDING', slotLabel: 'B1' },
+        ],
+      },
+    ],
+  },
+  {
+    date: '2026-03-21',
+    dayLabel: 'Sat 21',
+    isToday: false,
+    slots: [
+      {
+        label: 'Spot A1',
+        location: 'Restaurante Belém',
+        bookings: [
+          { id: 'b11', clientName: 'Emma Chen', startHour: 10, endHour: 13, status: 'CONFIRMED', slotLabel: 'A1' },
+          { id: 'b12', clientName: 'David Kim', startHour: 15, endHour: 19, status: 'CONFIRMED', slotLabel: 'A1' },
+        ],
+      },
+      {
+        label: 'Spot A2',
+        location: 'Restaurante Belém',
+        bookings: [
+          { id: 'b13', clientName: 'Anna Müller', startHour: 9, endHour: 12, status: 'CONFIRMED', slotLabel: 'A2' },
+          { id: 'b14', clientName: 'Carlos Herrera', startHour: 14, endHour: 18, status: 'PENDING', slotLabel: 'A2' },
+        ],
+      },
+      {
+        label: 'Spot B1',
+        location: 'Hotel Chiado',
+        bookings: [
+          { id: 'b15', clientName: 'Fatima Al-Rashid', startHour: 9, endHour: 14, status: 'CONFIRMED', slotLabel: 'B1' },
+          { id: 'b16', clientName: 'Lucas Martin', startHour: 16, endHour: 21, status: 'PENDING', slotLabel: 'B1' },
+        ],
+      },
+    ],
+  },
+  {
+    date: '2026-03-22',
+    dayLabel: 'Sun 22',
+    isToday: false,
+    slots: [
+      {
+        label: 'Spot A1',
+        location: 'Restaurante Belém',
+        bookings: [
+          { id: 'b17', clientName: 'Sophie Laurent', startHour: 11, endHour: 14, status: 'CONFIRMED', slotLabel: 'A1' },
+          { id: 'b18', clientName: 'Alex Thompson', startHour: 16, endHour: 20, status: 'PENDING', slotLabel: 'A1' },
+        ],
+      },
+      {
+        label: 'Spot A2',
+        location: 'Restaurante Belém',
+        bookings: [
+          { id: 'b19', clientName: 'Nina Petrov', startHour: 9, endHour: 13, status: 'CONFIRMED', slotLabel: 'A2' },
+          { id: 'b20', clientName: 'Omar Hassan', startHour: 17, endHour: 21, status: 'CONFIRMED', slotLabel: 'A2' },
+        ],
+      },
+      {
+        label: 'Spot B1',
+        location: 'Hotel Chiado',
+        bookings: [
+          { id: 'b21', clientName: 'Rachel Green', startHour: 10, endHour: 18, status: 'CONFIRMED', slotLabel: 'B1' },
+        ],
+      },
+    ],
+  },
+  {
+    date: '2026-03-23',
+    dayLabel: 'Mon 23',
+    isToday: false,
+    slots: [
+      {
+        label: 'Spot A1',
+        location: 'Restaurante Belém',
+        bookings: [
+          { id: 'b22', clientName: 'Kenji Nakamura', startHour: 9, endHour: 12, status: 'CONFIRMED', slotLabel: 'A1' },
+          { id: 'b23', clientName: 'Elena Volkov', startHour: 14, endHour: 18, status: 'PENDING', slotLabel: 'A1' },
+        ],
+      },
+      {
+        label: 'Spot A2',
+        location: 'Restaurante Belém',
+        bookings: [
+          { id: 'b24', clientName: 'Aisha Okafor', startHour: 11, endHour: 15, status: 'CONFIRMED', slotLabel: 'A2' },
+          { id: 'b25', clientName: 'Ben Taylor', startHour: 17, endHour: 21, status: 'PENDING', slotLabel: 'A2' },
+        ],
+      },
+      {
+        label: 'Spot B1',
+        location: 'Hotel Chiado',
+        bookings: [
+          { id: 'b26', clientName: 'Tom Anderson', startHour: 8, endHour: 14, status: 'CONFIRMED', slotLabel: 'B1' },
+          { id: 'b27', clientName: 'Mei Lin', startHour: 15, endHour: 20, status: 'CONFIRMED', slotLabel: 'B1' },
+        ],
+      },
+    ],
+  },
+  {
+    date: '2026-03-24',
+    dayLabel: 'Tue 24',
+    isToday: false,
+    slots: [
+      {
+        label: 'Spot A1',
+        location: 'Restaurante Belém',
+        bookings: [
+          { id: 'b28', clientName: 'Sarah Mitchell', startHour: 10, endHour: 13, status: 'CONFIRMED', slotLabel: 'A1' },
+          { id: 'b29', clientName: 'Marco Rossi', startHour: 15, endHour: 19, status: 'PENDING', slotLabel: 'A1' },
+        ],
+      },
+      {
+        label: 'Spot A2',
+        location: 'Restaurante Belém',
+        bookings: [
+          { id: 'b30', clientName: 'Yuki Tanaka', startHour: 9, endHour: 14, status: 'CONFIRMED', slotLabel: 'A2' },
+        ],
+      },
+      {
+        label: 'Spot B1',
+        location: 'Hotel Chiado',
+        bookings: [
+          { id: 'b31', clientName: 'Chloe Dubois', startHour: 8, endHour: 16, status: 'CONFIRMED', slotLabel: 'B1' },
+          { id: 'b32', clientName: 'Raj Patel', startHour: 18, endHour: 22, status: 'PENDING', slotLabel: 'B1' },
         ],
       },
     ],
