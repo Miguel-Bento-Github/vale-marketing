@@ -1,5 +1,9 @@
 ---
 import { getTranslations } from '../i18n/translations';
+import DemoTimeline from './demos/DemoTimeline.vue';
+import DemoCalendar from './demos/DemoCalendar.vue';
+import DemoAnalytics from './demos/DemoAnalytics.vue';
+import DemoApiDocs from './demos/DemoApiDocs.astro';
 
 interface Props {
   locale: string;
@@ -8,37 +12,7 @@ interface Props {
 const { locale } = Astro.props;
 const t = getTranslations(locale);
 
-// Map screens to actual screenshot files (light and dark versions, with WebP and PNG)
-const screenshots = [
-  {
-    id: 'timeline',
-    lightWebp: '/screenshots/timeline-light.webp',
-    lightPng: '/screenshots/timeline-light.png',
-    darkWebp: '/screenshots/timeline-dark.webp',
-    darkPng: '/screenshots/timeline-dark.png'
-  },
-  {
-    id: 'calendar',
-    lightWebp: '/screenshots/booking-calendar-light.webp',
-    lightPng: '/screenshots/booking-calendar-light.png',
-    darkWebp: '/screenshots/booking-calendar-dark.webp',
-    darkPng: '/screenshots/booking-calendar-dark.png'
-  },
-  {
-    id: 'analytics',
-    lightWebp: '/screenshots/analytics-dashboard-light.webp',
-    lightPng: '/screenshots/analytics-dashboard-light.png',
-    darkWebp: '/screenshots/analytics-dashboard-dark.webp',
-    darkPng: '/screenshots/analytics-dashboard-dark.png'
-  },
-  {
-    id: 'api',
-    lightWebp: '/screenshots/api-docs-light.webp',
-    lightPng: '/screenshots/api-docs-light.png',
-    darkWebp: '/screenshots/api-docs-dark.webp',
-    darkPng: '/screenshots/api-docs-dark.png'
-  },
-];
+const demoIds = ['timeline', 'calendar', 'analytics', 'api'];
 ---
 
 <section id="product" class="py-24 relative overflow-hidden bg-themed">
@@ -52,44 +26,29 @@ const screenshots = [
       <p class="text-xl text-themed-secondary max-w-2xl mx-auto">{t.product.subtitle}</p>
     </div>
 
-    <!-- Main screenshot showcase -->
+    <!-- Interactive demo showcase -->
     <div class="relative mb-16">
-      <div class="screenshot-frame max-w-5xl mx-auto">
-        <!-- Screenshot container -->
-        <div
-          id="main-screenshot"
-          class="aspect-video bg-themed-secondary rounded-lg overflow-hidden relative border border-themed"
-        >
-          <!-- Light mode screenshot -->
-          <picture class="light-only">
-            <source id="screenshot-source-light" srcset={screenshots[0].lightWebp} type="image/webp" />
-            <img
-              id="screenshot-image-light"
-              src={screenshots[0].lightPng}
-              alt={t.product.screens[0].title}
-              class="w-full h-full object-cover object-top transition-opacity duration-300"
-              loading="eager"
-              width="1280"
-              height="800"
-            />
-          </picture>
-          <!-- Dark mode screenshot -->
-          <picture class="dark-only absolute inset-0">
-            <source id="screenshot-source-dark" srcset={screenshots[0].darkWebp} type="image/webp" />
-            <img
-              id="screenshot-image-dark"
-              src={screenshots[0].darkPng}
-              alt={t.product.screens[0].title}
-              class="w-full h-full object-cover object-top transition-opacity duration-300"
-              loading="eager"
-              width="1280"
-              height="800"
-            />
-          </picture>
+      <div class="demo-frame max-w-5xl mx-auto">
+        <!-- Demo container -->
+        <div class="demo-container rounded-xl overflow-hidden border border-themed shadow-2xl shadow-vale-primary/10">
+          <!-- Timeline Demo (default visible) -->
+          <div id="demo-timeline" class="demo-panel active">
+            <DemoTimeline client:visible />
+          </div>
 
-          <!-- Loading overlay -->
-          <div id="screenshot-loading" class="absolute inset-0 bg-themed-secondary flex items-center justify-center opacity-0 transition-opacity duration-300 pointer-events-none">
-            <div class="w-8 h-8 border-2 border-vale-primary border-t-transparent rounded-full animate-spin"></div>
+          <!-- Calendar Demo -->
+          <div id="demo-calendar" class="demo-panel">
+            <DemoCalendar client:visible />
+          </div>
+
+          <!-- Analytics Demo -->
+          <div id="demo-analytics" class="demo-panel">
+            <DemoAnalytics client:visible />
+          </div>
+
+          <!-- API Docs Demo -->
+          <div id="demo-api" class="demo-panel">
+            <DemoApiDocs />
           </div>
         </div>
       </div>
@@ -106,22 +65,16 @@ const screenshots = [
       </div>
     </div>
 
-    <!-- Screenshot selector tabs -->
+    <!-- Tab selector -->
     <div class="flex flex-wrap justify-center gap-4">
       {t.product.screens.map((screen, index) => (
         <button
-          class={`screenshot-tab px-6 py-3 rounded-xl font-medium transition-all ${
+          class={`demo-tab px-6 py-3 rounded-xl font-medium transition-all ${
             index === 0
               ? 'bg-vale-primary text-white'
               : 'glass text-themed-secondary hover:text-themed hover:bg-white/10'
           }`}
-          data-index={index}
-          data-title={screen.title}
-          data-description={screen.description}
-          data-light-webp={screenshots[index]?.lightWebp || ''}
-          data-light-png={screenshots[index]?.lightPng || ''}
-          data-dark-webp={screenshots[index]?.darkWebp || ''}
-          data-dark-png={screenshots[index]?.darkPng || ''}
+          data-demo={demoIds[index]}
         >
           {screen.title}
         </button>
@@ -130,102 +83,43 @@ const screenshots = [
   </div>
 </section>
 
+<style>
+  .demo-panel {
+    display: none;
+  }
+  .demo-panel.active {
+    display: block;
+  }
+  .demo-container {
+    min-height: 400px;
+    background: var(--surface, transparent);
+  }
+</style>
+
 <script is:inline>
-  const tabs = document.querySelectorAll('.screenshot-tab');
-  const screenshotImageLight = document.getElementById('screenshot-image-light');
-  const screenshotImageDark = document.getElementById('screenshot-image-dark');
-  const screenshotSourceLight = document.getElementById('screenshot-source-light');
-  const screenshotSourceDark = document.getElementById('screenshot-source-dark');
-  const loadingOverlay = document.getElementById('screenshot-loading');
+  const demoTabs = document.querySelectorAll('.demo-tab');
+  const demoPanels = document.querySelectorAll('.demo-panel');
 
-  // Check WebP support
-  const supportsWebP = (() => {
-    const canvas = document.createElement('canvas');
-    canvas.width = 1;
-    canvas.height = 1;
-    return canvas.toDataURL('image/webp').startsWith('data:image/webp');
-  })();
-
-  // Get the best image source (WebP if supported, otherwise PNG)
-  const getImageSrc = (webp, png) => {
-    if (supportsWebP && webp) return webp;
-    return png || '';
-  };
-
-  // Preload all images (both light and dark versions, prefer WebP)
-  Array.from(tabs).forEach(tab => {
-    const lightWebp = tab.getAttribute('data-light-webp');
-    const lightPng = tab.getAttribute('data-light-png');
-    const darkWebp = tab.getAttribute('data-dark-webp');
-    const darkPng = tab.getAttribute('data-dark-png');
-
-    const lightSrc = getImageSrc(lightWebp, lightPng);
-    const darkSrc = getImageSrc(darkWebp, darkPng);
-
-    if (lightSrc) {
-      const img = new Image();
-      img.src = lightSrc;
-    }
-    if (darkSrc) {
-      const img = new Image();
-      img.src = darkSrc;
-    }
-  });
-
-  tabs.forEach((tab) => {
+  demoTabs.forEach((tab) => {
     tab.addEventListener('click', () => {
-      // Update active state
-      tabs.forEach((t) => {
+      const targetId = 'demo-' + tab.getAttribute('data-demo');
+
+      // Update tab styles
+      demoTabs.forEach((t) => {
         t.classList.remove('bg-vale-primary', 'text-white');
         t.classList.add('glass', 'text-themed-secondary');
       });
       tab.classList.remove('glass', 'text-themed-secondary');
       tab.classList.add('bg-vale-primary', 'text-white');
 
-      // Get image sources (prefer WebP)
-      const lightWebp = tab.getAttribute('data-light-webp');
-      const lightPng = tab.getAttribute('data-light-png');
-      const darkWebp = tab.getAttribute('data-dark-webp');
-      const darkPng = tab.getAttribute('data-dark-png');
-      const newTitle = tab.getAttribute('data-title');
-
-      const lightSrc = getImageSrc(lightWebp, lightPng);
-      const darkSrc = getImageSrc(darkWebp, darkPng);
-
-      // Show loading state
-      if (loadingOverlay) {
-        loadingOverlay.classList.remove('opacity-0');
-        loadingOverlay.classList.add('opacity-100');
-      }
-
-      let loadedCount = 0;
-      const checkLoaded = () => {
-        loadedCount++;
-        if (loadedCount >= 2 && loadingOverlay) {
-          loadingOverlay.classList.remove('opacity-100');
-          loadingOverlay.classList.add('opacity-0');
+      // Show/hide panels
+      demoPanels.forEach((panel) => {
+        if (panel.id === targetId) {
+          panel.classList.add('active');
+        } else {
+          panel.classList.remove('active');
         }
-      };
-
-      if (lightSrc && screenshotImageLight) {
-        screenshotImageLight.onload = checkLoaded;
-        // Update both the source srcset and img src
-        if (screenshotSourceLight && lightWebp) {
-          screenshotSourceLight.setAttribute('srcset', lightWebp);
-        }
-        screenshotImageLight.src = lightSrc;
-        screenshotImageLight.alt = newTitle || '';
-      }
-
-      if (darkSrc && screenshotImageDark) {
-        screenshotImageDark.onload = checkLoaded;
-        // Update both the source srcset and img src
-        if (screenshotSourceDark && darkWebp) {
-          screenshotSourceDark.setAttribute('srcset', darkWebp);
-        }
-        screenshotImageDark.src = darkSrc;
-        screenshotImageDark.alt = newTitle || '';
-      }
+      });
     });
   });
 </script>
