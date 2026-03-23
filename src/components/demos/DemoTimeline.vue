@@ -6,7 +6,7 @@
         <button class="nav-btn" @click="scrollLeft">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
         </button>
-        <span class="period-label">Mar 16 – 20, 2026</span>
+        <span class="period-label">{{ periodLabel }}</span>
         <button class="nav-btn" @click="scrollRight">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
         </button>
@@ -136,7 +136,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, reactive } from 'vue';
+import { ref, reactive, computed } from 'vue';
 import { timelineData as initialData, type DemoTimelineDay, type DemoBooking } from '../../data/demo-data';
 
 const hours = Array.from({ length: 16 }, (_, i) => i + 7);
@@ -145,8 +145,40 @@ const scrollContainer = ref<HTMLElement>();
 const selectedBooking = ref<DemoBooking | null>(null);
 const selectedSlotLabel = ref('');
 
-// Make data reactive so we can add bookings
-const days = reactive(JSON.parse(JSON.stringify(initialData)) as DemoTimelineDay[]);
+// Build days relative to today so the demo always feels current
+const buildDays = (): DemoTimelineDay[] => {
+  const raw = JSON.parse(JSON.stringify(initialData)) as DemoTimelineDay[];
+  const today = new Date();
+  const dayNames = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+
+  return raw.map((day, i) => {
+    const d = new Date(today);
+    d.setDate(d.getDate() + i);
+    const yyyy = d.getFullYear();
+    const mm = String(d.getMonth() + 1).padStart(2, '0');
+    const dd = String(d.getDate()).padStart(2, '0');
+    return {
+      ...day,
+      date: `${yyyy}-${mm}-${dd}`,
+      dayLabel: `${dayNames[d.getDay()]} ${d.getDate()}`,
+      isToday: i === 0,
+    };
+  });
+};
+
+const days = reactive(buildDays());
+
+const periodLabel = computed(() => {
+  if (days.length === 0) return '';
+  const first = new Date(days[0].date);
+  const last = new Date(days[days.length - 1].date);
+  const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+  const sameMonth = first.getMonth() === last.getMonth();
+  if (sameMonth) {
+    return `${months[first.getMonth()]} ${first.getDate()} – ${last.getDate()}, ${first.getFullYear()}`;
+  }
+  return `${months[first.getMonth()]} ${first.getDate()} – ${months[last.getMonth()]} ${last.getDate()}, ${last.getFullYear()}`;
+});
 
 interface NewBookingState {
   dayIndex: number;
@@ -164,8 +196,9 @@ let bookingCounter = 100;
 const formatHour = (h: number) => `${h.toString().padStart(2, '0')}:00`;
 
 const isPast = (day: DemoTimelineDay, hour: number) => {
-  if (!day.isToday) return new Date(day.date) < new Date('2026-03-20');
-  return hour < 13;
+  // Today is always the first day (index 0), so no past days exist
+  if (!day.isToday) return false;
+  return hour < new Date().getHours();
 };
 
 const dayBookingCount = (day: DemoTimelineDay) =>
@@ -238,8 +271,11 @@ const scrollRight = () => {
   scrollContainer.value?.scrollBy({ left: 200, behavior: 'smooth' });
 };
 const scrollToToday = () => {
-  const todayHeader = scrollContainer.value?.querySelector('.is-today');
-  todayHeader?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  const container = scrollContainer.value;
+  const todayHeader = container?.querySelector('.is-today') as HTMLElement | null;
+  if (container && todayHeader) {
+    container.scrollTop = todayHeader.offsetTop - container.offsetTop;
+  }
 };
 </script>
 
