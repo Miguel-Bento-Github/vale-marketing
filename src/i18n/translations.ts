@@ -41,7 +41,7 @@ export const translations = {
       features: [
         {
           title: 'Manage Locations',
-          description: 'Add unlimited parking locations with slots, schedules, and custom pricing rules',
+          description: 'Add unlimited parking locations with spots, schedules, and custom pricing rules',
         },
         {
           title: 'Automate Access',
@@ -63,7 +63,7 @@ export const translations = {
           icon: 'calendar',
           title: 'Booking Management',
           description:
-            'Visual calendar and timeline views. Manage reservations, assign slots to customers, staff, or VIPs.',
+            'Visual calendar and timeline views. Manage reservations, assign spots to customers, staff, or VIPs.',
         },
         {
           icon: 'users',
@@ -101,7 +101,7 @@ export const translations = {
       title: 'See Vale in Action',
       subtitle: 'A powerful dashboard designed for parking operations',
       screens: [
-        { title: 'Timeline View', description: 'Real-time slot utilization' },
+        { title: 'Timeline View', description: 'Real-time spot utilization' },
         { title: 'Booking Calendar', description: 'Manage all reservations in one view' },
         { title: 'Analytics', description: 'Insights and performance metrics' },
         { title: 'API Documentation', description: 'Integrate with our REST API' },

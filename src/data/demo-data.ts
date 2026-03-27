@@ -6,14 +6,14 @@ export interface DemoBooking {
   startHour: number;
   endHour: number;
   status: 'CONFIRMED' | 'IN_PROGRESS' | 'COMPLETED' | 'PENDING' | 'CANCELLED';
-  slotLabel: string;
+  spotLabel: string;
 }
 
 export interface DemoTimelineDay {
   date: string;
   dayLabel: string;
   isToday: boolean;
-  slots: {
+  spots: {
     label: string;
     location: string;
     bookings: DemoBooking[];
@@ -43,33 +43,33 @@ export const timelineData: DemoTimelineDay[] = [
     date: '2026-03-20',
     dayLabel: 'Fri 20',
     isToday: true,
-    slots: [
+    spots: [
       {
         label: 'Spot A1',
         location: 'Restaurante Belém',
         bookings: [
-          { id: 'b1', clientName: 'James Wilson', startHour: 8, endHour: 10, status: 'COMPLETED', slotLabel: 'A1' },
-          { id: 'b2', clientName: 'Hans Weber', startHour: 11, endHour: 14, status: 'IN_PROGRESS', slotLabel: 'A1' },
-          { id: 'b3', clientName: 'Chloe Dubois', startHour: 16, endHour: 19, status: 'CONFIRMED', slotLabel: 'A1' },
-          { id: 'b4', clientName: 'Liam O\'Brien', startHour: 20, endHour: 22, status: 'PENDING', slotLabel: 'A1' },
+          { id: 'b1', clientName: 'James Wilson', startHour: 8, endHour: 10, status: 'COMPLETED', spotLabel: 'A1' },
+          { id: 'b2', clientName: 'Hans Weber', startHour: 11, endHour: 14, status: 'IN_PROGRESS', spotLabel: 'A1' },
+          { id: 'b3', clientName: 'Chloe Dubois', startHour: 16, endHour: 19, status: 'CONFIRMED', spotLabel: 'A1' },
+          { id: 'b4', clientName: 'Liam O\'Brien', startHour: 20, endHour: 22, status: 'PENDING', spotLabel: 'A1' },
         ],
       },
       {
         label: 'Spot A2',
         location: 'Restaurante Belém',
         bookings: [
-          { id: 'b5', clientName: 'Sara Nielsen', startHour: 9, endHour: 12, status: 'COMPLETED', slotLabel: 'A2' },
-          { id: 'b6', clientName: 'Raj Patel', startHour: 13, endHour: 17, status: 'IN_PROGRESS', slotLabel: 'A2' },
-          { id: 'b7', clientName: 'Lisa Chang', startHour: 18, endHour: 21, status: 'CONFIRMED', slotLabel: 'A2' },
+          { id: 'b5', clientName: 'Sara Nielsen', startHour: 9, endHour: 12, status: 'COMPLETED', spotLabel: 'A2' },
+          { id: 'b6', clientName: 'Raj Patel', startHour: 13, endHour: 17, status: 'IN_PROGRESS', spotLabel: 'A2' },
+          { id: 'b7', clientName: 'Lisa Chang', startHour: 18, endHour: 21, status: 'CONFIRMED', spotLabel: 'A2' },
         ],
       },
       {
         label: 'Spot B1',
         location: 'Hotel Chiado',
         bookings: [
-          { id: 'b8', clientName: 'Priya Sharma', startHour: 8, endHour: 13, status: 'COMPLETED', slotLabel: 'B1' },
-          { id: 'b9', clientName: 'Mike Johnson', startHour: 14, endHour: 18, status: 'IN_PROGRESS', slotLabel: 'B1' },
-          { id: 'b10', clientName: 'Julia Santos', startHour: 19, endHour: 22, status: 'PENDING', slotLabel: 'B1' },
+          { id: 'b8', clientName: 'Priya Sharma', startHour: 8, endHour: 13, status: 'COMPLETED', spotLabel: 'B1' },
+          { id: 'b9', clientName: 'Mike Johnson', startHour: 14, endHour: 18, status: 'IN_PROGRESS', spotLabel: 'B1' },
+          { id: 'b10', clientName: 'Julia Santos', startHour: 19, endHour: 22, status: 'PENDING', spotLabel: 'B1' },
         ],
       },
     ],
@@ -78,29 +78,29 @@ export const timelineData: DemoTimelineDay[] = [
     date: '2026-03-21',
     dayLabel: 'Sat 21',
     isToday: false,
-    slots: [
+    spots: [
       {
         label: 'Spot A1',
         location: 'Restaurante Belém',
         bookings: [
-          { id: 'b11', clientName: 'Emma Chen', startHour: 10, endHour: 13, status: 'CONFIRMED', slotLabel: 'A1' },
-          { id: 'b12', clientName: 'David Kim', startHour: 15, endHour: 19, status: 'CONFIRMED', slotLabel: 'A1' },
+          { id: 'b11', clientName: 'Emma Chen', startHour: 10, endHour: 13, status: 'CONFIRMED', spotLabel: 'A1' },
+          { id: 'b12', clientName: 'David Kim', startHour: 15, endHour: 19, status: 'CONFIRMED', spotLabel: 'A1' },
         ],
       },
       {
         label: 'Spot A2',
         location: 'Restaurante Belém',
         bookings: [
-          { id: 'b13', clientName: 'Anna Müller', startHour: 9, endHour: 12, status: 'CONFIRMED', slotLabel: 'A2' },
-          { id: 'b14', clientName: 'Carlos Herrera', startHour: 14, endHour: 18, status: 'PENDING', slotLabel: 'A2' },
+          { id: 'b13', clientName: 'Anna Müller', startHour: 9, endHour: 12, status: 'CONFIRMED', spotLabel: 'A2' },
+          { id: 'b14', clientName: 'Carlos Herrera', startHour: 14, endHour: 18, status: 'PENDING', spotLabel: 'A2' },
         ],
       },
       {
         label: 'Spot B1',
         location: 'Hotel Chiado',
         bookings: [
-          { id: 'b15', clientName: 'Fatima Al-Rashid', startHour: 9, endHour: 14, status: 'CONFIRMED', slotLabel: 'B1' },
-          { id: 'b16', clientName: 'Lucas Martin', startHour: 16, endHour: 21, status: 'PENDING', slotLabel: 'B1' },
+          { id: 'b15', clientName: 'Fatima Al-Rashid', startHour: 9, endHour: 14, status: 'CONFIRMED', spotLabel: 'B1' },
+          { id: 'b16', clientName: 'Lucas Martin', startHour: 16, endHour: 21, status: 'PENDING', spotLabel: 'B1' },
         ],
       },
     ],
@@ -109,28 +109,28 @@ export const timelineData: DemoTimelineDay[] = [
     date: '2026-03-22',
     dayLabel: 'Sun 22',
     isToday: false,
-    slots: [
+    spots: [
       {
         label: 'Spot A1',
         location: 'Restaurante Belém',
         bookings: [
-          { id: 'b17', clientName: 'Sophie Laurent', startHour: 11, endHour: 14, status: 'CONFIRMED', slotLabel: 'A1' },
-          { id: 'b18', clientName: 'Alex Thompson', startHour: 16, endHour: 20, status: 'PENDING', slotLabel: 'A1' },
+          { id: 'b17', clientName: 'Sophie Laurent', startHour: 11, endHour: 14, status: 'CONFIRMED', spotLabel: 'A1' },
+          { id: 'b18', clientName: 'Alex Thompson', startHour: 16, endHour: 20, status: 'PENDING', spotLabel: 'A1' },
         ],
       },
       {
         label: 'Spot A2',
         location: 'Restaurante Belém',
         bookings: [
-          { id: 'b19', clientName: 'Nina Petrov', startHour: 9, endHour: 13, status: 'CONFIRMED', slotLabel: 'A2' },
-          { id: 'b20', clientName: 'Omar Hassan', startHour: 17, endHour: 21, status: 'CONFIRMED', slotLabel: 'A2' },
+          { id: 'b19', clientName: 'Nina Petrov', startHour: 9, endHour: 13, status: 'CONFIRMED', spotLabel: 'A2' },
+          { id: 'b20', clientName: 'Omar Hassan', startHour: 17, endHour: 21, status: 'CONFIRMED', spotLabel: 'A2' },
         ],
       },
       {
         label: 'Spot B1',
         location: 'Hotel Chiado',
         bookings: [
-          { id: 'b21', clientName: 'Rachel Green', startHour: 10, endHour: 18, status: 'CONFIRMED', slotLabel: 'B1' },
+          { id: 'b21', clientName: 'Rachel Green', startHour: 10, endHour: 18, status: 'CONFIRMED', spotLabel: 'B1' },
         ],
       },
     ],
@@ -139,29 +139,29 @@ export const timelineData: DemoTimelineDay[] = [
     date: '2026-03-23',
     dayLabel: 'Mon 23',
     isToday: false,
-    slots: [
+    spots: [
       {
         label: 'Spot A1',
         location: 'Restaurante Belém',
         bookings: [
-          { id: 'b22', clientName: 'Kenji Nakamura', startHour: 9, endHour: 12, status: 'CONFIRMED', slotLabel: 'A1' },
-          { id: 'b23', clientName: 'Elena Volkov', startHour: 14, endHour: 18, status: 'PENDING', slotLabel: 'A1' },
+          { id: 'b22', clientName: 'Kenji Nakamura', startHour: 9, endHour: 12, status: 'CONFIRMED', spotLabel: 'A1' },
+          { id: 'b23', clientName: 'Elena Volkov', startHour: 14, endHour: 18, status: 'PENDING', spotLabel: 'A1' },
         ],
       },
       {
         label: 'Spot A2',
         location: 'Restaurante Belém',
         bookings: [
-          { id: 'b24', clientName: 'Aisha Okafor', startHour: 11, endHour: 15, status: 'CONFIRMED', slotLabel: 'A2' },
-          { id: 'b25', clientName: 'Ben Taylor', startHour: 17, endHour: 21, status: 'PENDING', slotLabel: 'A2' },
+          { id: 'b24', clientName: 'Aisha Okafor', startHour: 11, endHour: 15, status: 'CONFIRMED', spotLabel: 'A2' },
+          { id: 'b25', clientName: 'Ben Taylor', startHour: 17, endHour: 21, status: 'PENDING', spotLabel: 'A2' },
         ],
       },
       {
         label: 'Spot B1',
         location: 'Hotel Chiado',
         bookings: [
-          { id: 'b26', clientName: 'Tom Anderson', startHour: 8, endHour: 14, status: 'CONFIRMED', slotLabel: 'B1' },
-          { id: 'b27', clientName: 'Mei Lin', startHour: 15, endHour: 20, status: 'CONFIRMED', slotLabel: 'B1' },
+          { id: 'b26', clientName: 'Tom Anderson', startHour: 8, endHour: 14, status: 'CONFIRMED', spotLabel: 'B1' },
+          { id: 'b27', clientName: 'Mei Lin', startHour: 15, endHour: 20, status: 'CONFIRMED', spotLabel: 'B1' },
         ],
       },
     ],
@@ -170,28 +170,28 @@ export const timelineData: DemoTimelineDay[] = [
     date: '2026-03-24',
     dayLabel: 'Tue 24',
     isToday: false,
-    slots: [
+    spots: [
       {
         label: 'Spot A1',
         location: 'Restaurante Belém',
         bookings: [
-          { id: 'b28', clientName: 'Sarah Mitchell', startHour: 10, endHour: 13, status: 'CONFIRMED', slotLabel: 'A1' },
-          { id: 'b29', clientName: 'Marco Rossi', startHour: 15, endHour: 19, status: 'PENDING', slotLabel: 'A1' },
+          { id: 'b28', clientName: 'Sarah Mitchell', startHour: 10, endHour: 13, status: 'CONFIRMED', spotLabel: 'A1' },
+          { id: 'b29', clientName: 'Marco Rossi', startHour: 15, endHour: 19, status: 'PENDING', spotLabel: 'A1' },
         ],
       },
       {
         label: 'Spot A2',
         location: 'Restaurante Belém',
         bookings: [
-          { id: 'b30', clientName: 'Yuki Tanaka', startHour: 9, endHour: 14, status: 'CONFIRMED', slotLabel: 'A2' },
+          { id: 'b30', clientName: 'Yuki Tanaka', startHour: 9, endHour: 14, status: 'CONFIRMED', spotLabel: 'A2' },
         ],
       },
       {
         label: 'Spot B1',
         location: 'Hotel Chiado',
         bookings: [
-          { id: 'b31', clientName: 'Chloe Dubois', startHour: 8, endHour: 16, status: 'CONFIRMED', slotLabel: 'B1' },
-          { id: 'b32', clientName: 'Raj Patel', startHour: 18, endHour: 22, status: 'PENDING', slotLabel: 'B1' },
+          { id: 'b31', clientName: 'Chloe Dubois', startHour: 8, endHour: 16, status: 'CONFIRMED', spotLabel: 'B1' },
+          { id: 'b32', clientName: 'Raj Patel', startHour: 18, endHour: 22, status: 'PENDING', spotLabel: 'B1' },
         ],
       },
     ],

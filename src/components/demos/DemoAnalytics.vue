@@ -30,7 +30,7 @@
     <!-- Charts Row -->
     <div class="charts-row">
       <div class="chart-card chart-wide">
-        <div class="chart-title">Slot Utilization (%)</div>
+        <div class="chart-title">Spot Utilization (%)</div>
         <DemoLineChart :data="utilizationTrend" :height="220" color="#6d28d9" :show-area="true" :show-dots="false" />
       </div>
       <div class="chart-card chart-narrow">

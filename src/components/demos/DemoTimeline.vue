@@ -46,23 +46,23 @@
             <span class="booking-count">{{ dayBookingCount(day) }} bookings</span>
           </div>
 
-          <!-- Slot lanes -->
+          <!-- Spot lanes -->
           <template v-if="!collapsedDays.has(day.date)">
-            <div v-for="slot in day.slots" :key="day.date + slot.label" class="lane">
+            <div v-for="spot in day.spots" :key="day.date + spot.label" class="lane">
               <div class="lane-label">
-                <span class="slot-name">{{ slot.label }}</span>
-                <span class="location-name">{{ slot.location }}</span>
+                <span class="spot-name">{{ spot.label }}</span>
+                <span class="location-name">{{ spot.location }}</span>
               </div>
-              <div class="lane-grid" @click="(e) => onLaneClick(e, day, slot)">
+              <div class="lane-grid" @click="(e) => onLaneClick(e, day, spot)">
                 <div v-for="h in hours" :key="h" class="hour-bg" :class="{ 'past-hour': isPast(day, h) }"></div>
                 <!-- Existing bookings -->
                 <div
-                  v-for="booking in slot.bookings"
+                  v-for="booking in spot.bookings"
                   :key="booking.id"
                   class="booking-block"
                   :class="booking.status.toLowerCase().replace('_', '-')"
                   :style="bookingStyle(booking)"
-                  @click.stop="showBookingDetail(booking, slot)"
+                  @click.stop="showBookingDetail(booking, spot)"
                 >
                   <span class="booking-name">{{ booking.clientName }}</span>
                   <span class="booking-time">{{ formatHour(booking.startHour) }}-{{ formatHour(booking.endHour) }}</span>
@@ -92,7 +92,7 @@
           </div>
           <div class="popup-row">
             <span class="popup-label">Spot</span>
-            <span class="popup-value">{{ selectedSlotLabel }}</span>
+            <span class="popup-value">{{ selectedSpotLabel }}</span>
           </div>
           <div class="popup-row">
             <span class="popup-label">Status</span>
@@ -114,7 +114,7 @@
         <div class="popup-body">
           <div class="popup-row">
             <span class="popup-label">Spot</span>
-            <span class="popup-value">{{ newBooking.slotLabel }} — {{ newBooking.location }}</span>
+            <span class="popup-value">{{ newBooking.spotLabel }} — {{ newBooking.location }}</span>
           </div>
           <div class="popup-row">
             <span class="popup-label">Date</span>
@@ -143,7 +143,7 @@ const hours = Array.from({ length: 16 }, (_, i) => i + 7);
 const collapsedDays = ref(new Set<string>());
 const scrollContainer = ref<HTMLElement>();
 const selectedBooking = ref<DemoBooking | null>(null);
-const selectedSlotLabel = ref('');
+const selectedSpotLabel = ref('');
 
 // Build days relative to today so the demo always feels current
 const buildDays = (): DemoTimelineDay[] => {
@@ -182,8 +182,8 @@ const periodLabel = computed(() => {
 
 interface NewBookingState {
   dayIndex: number;
-  slotIndex: number;
-  slotLabel: string;
+  spotIndex: number;
+  spotLabel: string;
   location: string;
   dayLabel: string;
   startHour: number;
@@ -202,7 +202,7 @@ const isPast = (day: DemoTimelineDay, hour: number) => {
 };
 
 const dayBookingCount = (day: DemoTimelineDay) =>
-  day.slots.reduce((sum, s) => sum + s.bookings.length, 0);
+  day.spots.reduce((sum, s) => sum + s.bookings.length, 0);
 
 const toggleDay = (date: string) => {
   const s = new Set(collapsedDays.value);
@@ -217,12 +217,12 @@ const bookingStyle = (booking: DemoBooking) => {
   return { left: `${start}%`, width: `${width}%` };
 };
 
-const showBookingDetail = (booking: DemoBooking, slot: { label: string; location: string }) => {
+const showBookingDetail = (booking: DemoBooking, spot: { label: string; location: string }) => {
   selectedBooking.value = booking;
-  selectedSlotLabel.value = `${slot.label} — ${slot.location}`;
+  selectedSpotLabel.value = `${spot.label} — ${spot.location}`;
 };
 
-const onLaneClick = (e: MouseEvent, day: DemoTimelineDay, slot: { label: string; location: string; bookings: DemoBooking[] }) => {
+const onLaneClick = (e: MouseEvent, day: DemoTimelineDay, spot: { label: string; location: string; bookings: DemoBooking[] }) => {
   const target = e.currentTarget as HTMLElement;
   const rect = target.getBoundingClientRect();
   const x = e.clientX - rect.left;
@@ -230,17 +230,17 @@ const onLaneClick = (e: MouseEvent, day: DemoTimelineDay, slot: { label: string;
   const clickedHour = Math.floor(7 + pct * 16);
 
   // Check if clicking on an occupied hour
-  const occupied = slot.bookings.some(b => clickedHour >= b.startHour && clickedHour < b.endHour);
+  const occupied = spot.bookings.some(b => clickedHour >= b.startHour && clickedHour < b.endHour);
   if (occupied) return;
 
   const dayIndex = days.indexOf(day);
-  const slotIndex = day.slots.indexOf(slot);
+  const spotIndex = day.spots.indexOf(spot);
 
   newBooking.value = {
     dayIndex,
-    slotIndex,
-    slotLabel: slot.label,
-    location: slot.location,
+    spotIndex,
+    spotLabel: spot.label,
+    location: spot.location,
     dayLabel: day.dayLabel,
     startHour: clickedHour,
     name: '',
@@ -249,16 +249,16 @@ const onLaneClick = (e: MouseEvent, day: DemoTimelineDay, slot: { label: string;
 
 const confirmBooking = () => {
   if (!newBooking.value) return;
-  const { dayIndex, slotIndex, startHour, name } = newBooking.value;
+  const { dayIndex, spotIndex, startHour, name } = newBooking.value;
   const customerName = name.trim() || 'New Customer';
 
-  days[dayIndex].slots[slotIndex].bookings.push({
+  days[dayIndex].spots[spotIndex].bookings.push({
     id: `new-${bookingCounter++}`,
     clientName: customerName,
     startHour,
     endHour: startHour + 2,
     status: 'CONFIRMED',
-    slotLabel: days[dayIndex].slots[slotIndex].label,
+    spotLabel: days[dayIndex].spots[spotIndex].label,
   });
 
   newBooking.value = null;
@@ -378,7 +378,7 @@ const scrollToToday = () => {
   border-right: 1px solid var(--demo-border, #e5e7eb);
 }
 
-.slot-name { font-weight: 600; font-size: 12px; }
+.spot-name { font-weight: 600; font-size: 12px; }
 .location-name { font-size: 10px; color: var(--demo-text-muted, #6b7280); }
 
 .lane-grid { flex: 1; display: flex; position: relative; cursor: crosshair; }
