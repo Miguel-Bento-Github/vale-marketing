@@ -100,6 +100,11 @@ export const translations = {
     product: {
       title: 'See Vale in Action',
       subtitle: 'A powerful dashboard designed for parking operations',
+      badges: {
+        realtime: 'Real-time updates',
+        iot: 'IoT Connected',
+        multilang: 'Multi-language',
+      },
       screens: [
         { title: 'Timeline View', description: 'Real-time spot utilization' },
         { title: 'Booking Calendar', description: 'Manage all reservations in one view' },
@@ -110,6 +115,8 @@ export const translations = {
     pricing: {
       title: 'Simple, Scalable Pricing',
       subtitle: 'Plans that grow with your business',
+      currency: 'Currency:',
+      mostPopular: 'Most Popular',
       tiers: [
         {
           name: 'Starter',
@@ -265,6 +272,11 @@ export const translations = {
     product: {
       title: 'Veja a Vale em Ação',
       subtitle: 'Um dashboard poderoso desenhado para operações de estacionamento',
+      badges: {
+        realtime: 'Atualizações em tempo real',
+        iot: 'Ligação IoT',
+        multilang: 'Multi-idioma',
+      },
       screens: [
         { title: 'Vista Timeline', description: 'Utilização de lugares em tempo real' },
         { title: 'Calendário de Reservas', description: 'Gira todas as reservas numa só vista' },
@@ -275,6 +287,8 @@ export const translations = {
     pricing: {
       title: 'Preços Simples e Escaláveis',
       subtitle: 'Planos que crescem com o seu negócio',
+      currency: 'Moeda:',
+      mostPopular: 'Mais Popular',
       tiers: [
         {
           name: 'Starter',
@@ -430,6 +444,11 @@ export const translations = {
     product: {
       title: 'Vea Vale en Acción',
       subtitle: 'Un dashboard potente diseñado para operaciones de estacionamiento',
+      badges: {
+        realtime: 'Actualizaciones en tiempo real',
+        iot: 'Conectado IoT',
+        multilang: 'Multi-idioma',
+      },
       screens: [
         { title: 'Vista Timeline', description: 'Utilización de lugares en tiempo real' },
         { title: 'Calendario de Reservas', description: 'Gestione todas las reservas en una vista' },
@@ -440,6 +459,8 @@ export const translations = {
     pricing: {
       title: 'Precios Simples y Escalables',
       subtitle: 'Planes que crecen con su negocio',
+      currency: 'Moneda:',
+      mostPopular: 'Más Popular',
       tiers: [
         {
           name: 'Starter',
@@ -595,6 +616,11 @@ export const translations = {
     product: {
       title: '查看Vale实际运行',
       subtitle: '专为停车运营设计的强大仪表板',
+      badges: {
+        realtime: '实时更新',
+        iot: '物联网连接',
+        multilang: '多语言',
+      },
       screens: [
         { title: '时间线视图', description: '实时车位利用率' },
         { title: '预订日历', description: '在一个视图中管理所有预订' },
@@ -605,6 +631,8 @@ export const translations = {
     pricing: {
       title: '简单、可扩展的定价',
       subtitle: '随您业务增长的计划',
+      currency: '货币:',
+      mostPopular: '最受欢迎',
       tiers: [
         {
           name: '入门版',
@@ -760,6 +788,11 @@ export const translations = {
     product: {
       title: 'Vale in Aktion erleben',
       subtitle: 'Ein leistungsstarkes Dashboard für den Parkraum-Betrieb',
+      badges: {
+        realtime: 'Echtzeit-Updates',
+        iot: 'IoT-verbunden',
+        multilang: 'Mehrsprachig',
+      },
       screens: [
         { title: 'Timeline-Ansicht', description: 'Stellplatz-Auslastung in Echtzeit' },
         { title: 'Buchungskalender', description: 'Alle Reservierungen in einer Ansicht verwalten' },
@@ -770,6 +803,8 @@ export const translations = {
     pricing: {
       title: 'Einfache, skalierbare Preise',
       subtitle: 'Pläne, die mit Ihrem Unternehmen wachsen',
+      currency: 'Währung:',
+      mostPopular: 'Beliebteste',
       tiers: [
         {
           name: 'Starter',
@@ -925,6 +960,11 @@ export const translations = {
     product: {
       title: 'Découvrez Vale en Action',
       subtitle: 'Un tableau de bord puissant conçu pour les opérations de stationnement',
+      badges: {
+        realtime: 'Mises à jour en temps réel',
+        iot: 'Connecté IoT',
+        multilang: 'Multilingue',
+      },
       screens: [
         { title: 'Vue Timeline', description: 'Utilisation des places en temps réel' },
         { title: 'Calendrier des Réservations', description: 'Gérez toutes les réservations en une vue' },
@@ -935,6 +975,8 @@ export const translations = {
     pricing: {
       title: 'Tarifs Simples et Évolutifs',
       subtitle: 'Des forfaits qui grandissent avec votre entreprise',
+      currency: 'Devise :',
+      mostPopular: 'Le Plus Populaire',
       tiers: [
         {
           name: 'Starter',
@@ -1090,6 +1132,11 @@ export const translations = {
     product: {
       title: 'شاهد Vale قيد العمل',
       subtitle: 'لوحة تحكم قوية مصممة لعمليات المواقف',
+      badges: {
+        realtime: 'تحديثات فورية',
+        iot: 'متصل بـ IoT',
+        multilang: 'متعدد اللغات',
+      },
       screens: [
         { title: 'عرض الجدول الزمني', description: 'استخدام الأماكن في الوقت الفعلي' },
         { title: 'تقويم الحجوزات', description: 'إدارة جميع الحجوزات في عرض واحد' },
@@ -1100,6 +1147,8 @@ export const translations = {
     pricing: {
       title: 'أسعار بسيطة وقابلة للتوسع',
       subtitle: 'خطط تنمو مع عملك',
+      currency: 'العملة:',
+      mostPopular: 'الأكثر شعبية',
       tiers: [
         {
           name: 'المبتدئ',

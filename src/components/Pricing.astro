@@ -20,7 +20,7 @@ const defaultCurrency = getDefaultCurrency(locale);
 
       <!-- Currency Selector -->
       <div class="mt-6 inline-flex items-center gap-2">
-        <span class="text-sm text-themed-tertiary">{locale === 'pt' ? 'Moeda:' : locale === 'es' ? 'Moneda:' : locale === 'zh' ? '货币:' : locale === 'ar' ? 'العملة:' : 'Currency:'}</span>
+        <span class="text-sm text-themed-tertiary">{t.pricing.currency}</span>
         <div class="relative">
           <select
             id="currency-select"
@@ -71,7 +71,7 @@ const defaultCurrency = getDefaultCurrency(locale);
       <!-- Business (Popular) -->
       <div class="relative p-8 rounded-2xl transition-all duration-300 hover:-translate-y-1 bg-gradient-to-b from-vale-primary/20 to-vale-primary/5 border-2 border-vale-primary">
         <div class="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 bg-vale-primary text-white text-sm font-semibold rounded-full">
-          {locale === 'pt' ? 'Mais Popular' : locale === 'es' ? 'Más Popular' : locale === 'zh' ? '最受欢迎' : locale === 'ar' ? 'الأكثر شعبية' : 'Most Popular'}
+          {t.pricing.mostPopular}
         </div>
 
         <div class="text-center mb-8">
