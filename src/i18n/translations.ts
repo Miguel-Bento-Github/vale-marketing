@@ -659,6 +659,336 @@ export const translations = {
       copyright: '© 2025 Vale. 保留所有权利。',
     },
   },
+  de: {
+    nav: {
+      features: 'Funktionen',
+      product: 'Produkt',
+      pricing: 'Preise',
+      contact: 'Kontakt',
+      login: 'Anmelden',
+      getStarted: 'Loslegen',
+    },
+    hero: {
+      badge: 'Intelligente Parkraum-Management-Plattform',
+      title: 'Parkraum-Betrieb',
+      titleHighlight: 'für Unternehmen',
+      subtitle: '',
+      description:
+        'Vale ist eine B2B-Parkraum-Management-Plattform, die Unternehmen hilft, ihren Kunden garantierte Parkplätze anzubieten. Alles in einem Dashboard.',
+      cta: 'Demo anfordern',
+      ctaSecondary: 'So funktioniert es',
+      stats: {
+        timeSaved: '100%',
+        timeSavedLabel: 'automatisierter Zugang',
+        revenue: '24/7',
+        revenueLabel: 'Echtzeit-Kontrolle',
+        locations: '∞',
+        locationsLabel: 'skalierbare Standorte',
+      },
+    },
+    problem: {
+      title: 'Das Problem',
+      subtitle: 'Traditionelles Parkraum-Management ist veraltet',
+      stats: [
+        { value: '40%', unit: '', label: 'der Kunden brechen Besuche wegen Parkproblemen ab' },
+        { value: '25', unit: 'Min.', label: 'durchschnittliche Parkplatzsuche' },
+        { value: '0', unit: '', label: 'Transparenz bei der Parkplatzauslastung' },
+      ],
+    },
+    solution: {
+      title: 'Die Vale-Lösung',
+      subtitle: 'Eine komplette Plattform zur Verwaltung, Automatisierung und Optimierung Ihres Parkbetriebs',
+      features: [
+        {
+          title: 'Standorte verwalten',
+          description: 'Unbegrenzte Parkstandorte mit Stellplätzen, Zeitplänen und individuellen Preisregeln hinzufügen',
+        },
+        {
+          title: 'Zugang automatisieren',
+          description: 'IoT-gesteuerte Schranken öffnen automatisch über sichere Tokens — keine Schlüssel oder Codes nötig',
+        },
+        {
+          title: 'Umsatz optimieren',
+          description: 'Dynamische Preisgestaltung, Echtzeit-Analysen und Auslastungs-Insights für maximale Rendite',
+        },
+      ],
+    },
+    features: {
+      title: 'Alles was Sie brauchen für',
+      titleHighlight: 'den Parkraum-Betrieb',
+      subtitle:
+        'Eine komplette Plattform für Unternehmen zur Verwaltung von Parkstandorten, Buchungen und automatisiertem Zugang',
+      list: [
+        {
+          icon: 'calendar',
+          title: 'Buchungsverwaltung',
+          description:
+            'Kalender- und Timeline-Ansichten. Reservierungen verwalten, Stellplätze an Kunden, Mitarbeiter oder VIPs zuweisen.',
+        },
+        {
+          icon: 'users',
+          title: 'Multi-Mandanten-Plattform',
+          description:
+            'Mehrere Unternehmen und Standorte verwalten. Rollenbasierter Zugriff für Supervisoren und Admins.',
+        },
+        {
+          icon: 'pricing',
+          title: 'Dynamische Preisgestaltung',
+          description:
+            'Spitzen-, Standard- und Nebenzeitentarife festlegen. Zeitbasierte Preise zur Umsatzmaximierung.',
+        },
+        {
+          icon: 'timeline',
+          title: 'Echtzeit-Updates',
+          description:
+            'Live-Buchungsstatus, Zugangs-Protokolle und sofortige Benachrichtigungen über WebSocket.',
+        },
+        {
+          icon: 'chart',
+          title: 'Analyse-Dashboard',
+          description:
+            'Echtzeit-Einblicke in Auslastung, Spitzenzeiten und Umsatz. Datenbasierte Entscheidungen treffen.',
+        },
+        {
+          icon: 'gate',
+          title: 'IoT-Schrankensteuerung',
+          description:
+            'Integration mit Shelly-Geräten für automatisierten Zugang. Sichere Tokens, keine physischen Schlüssel nötig.',
+        },
+      ],
+    },
+    product: {
+      title: 'Vale in Aktion erleben',
+      subtitle: 'Ein leistungsstarkes Dashboard für den Parkraum-Betrieb',
+      screens: [
+        { title: 'Timeline-Ansicht', description: 'Stellplatz-Auslastung in Echtzeit' },
+        { title: 'Buchungskalender', description: 'Alle Reservierungen in einer Ansicht verwalten' },
+        { title: 'Analysen', description: 'Einblicke und Leistungskennzahlen' },
+        { title: 'API-Dokumentation', description: 'Integration mit unserer REST API' },
+      ],
+    },
+    pricing: {
+      title: 'Einfache, skalierbare Preise',
+      subtitle: 'Pläne, die mit Ihrem Unternehmen wachsen',
+      tiers: [
+        {
+          name: 'Starter',
+          price: '€99',
+          unit: '/Monat',
+          description: 'Für kleine Betriebe',
+          features: ['Bis zu 3 Standorte', 'Basis-Analysen', 'E-Mail-Support'],
+        },
+        {
+          name: 'Business',
+          price: '€299',
+          unit: '/Monat',
+          description: 'Für wachsende Unternehmen',
+          features: ['Unbegrenzte Standorte', 'Erweiterte Analysen', 'Prioritäts-Support', 'API-Zugang', 'Eigenes Branding'],
+          popular: true,
+        },
+        {
+          name: 'Enterprise',
+          price: 'Individuell',
+          unit: '',
+          description: 'Für große Betriebe',
+          features: ['Alles aus Business', 'Dedizierter Support', 'SLA-Garantien', 'Individuelle Integrationen', 'On-Premise-Option'],
+        },
+      ],
+      cta: 'Loslegen',
+    },
+    cta: {
+      title: 'Bereit, Ihren Parkbetrieb zu modernisieren?',
+      subtitle:
+        'Schließen Sie sich Unternehmen weltweit an, die Vale nutzen, um Parkbetrieb zu automatisieren und ein besseres Kundenerlebnis zu bieten.',
+      button: 'Demo anfordern',
+      contact: 'Oder kontaktieren Sie uns unter',
+      form: {
+        name: 'Name',
+        company: 'Unternehmen',
+        phone: 'Telefon',
+        message: 'Nachricht',
+        sending: 'Wird gesendet...',
+        success: 'Nachricht erfolgreich gesendet! Wir melden uns in Kürze.',
+        error: 'Fehler beim Senden. Bitte versuchen Sie es erneut.',
+      },
+    },
+    footer: {
+      tagline: 'Intelligente Parkraum-Management-Plattform',
+      links: {
+        product: 'Produkt',
+        pricing: 'Preise',
+        contact: 'Kontakt',
+        privacy: 'Datenschutz',
+        terms: 'Nutzungsbedingungen',
+      },
+      copyright: '© 2025 Vale. Alle Rechte vorbehalten.',
+    },
+  },
+  fr: {
+    nav: {
+      features: 'Fonctionnalités',
+      product: 'Produit',
+      pricing: 'Tarifs',
+      contact: 'Contact',
+      login: 'Connexion',
+      getStarted: 'Commencer',
+    },
+    hero: {
+      badge: 'Plateforme de Gestion de Stationnement',
+      title: 'Gestion du Stationnement',
+      titleHighlight: 'pour les Entreprises',
+      subtitle: '',
+      description:
+        'Vale est une plateforme B2B de gestion de stationnement qui aide les entreprises à offrir des places garanties à leurs clients. Tout dans un seul tableau de bord.',
+      cta: 'Demander une Démo',
+      ctaSecondary: 'Voir Comment Ça Marche',
+      stats: {
+        timeSaved: '100%',
+        timeSavedLabel: 'accès automatisé',
+        revenue: '24/7',
+        revenueLabel: 'contrôle en temps réel',
+        locations: '∞',
+        locationsLabel: 'emplacements évolutifs',
+      },
+    },
+    problem: {
+      title: 'Le Problème',
+      subtitle: 'La gestion traditionnelle du stationnement est dépassée',
+      stats: [
+        { value: '40%', unit: '', label: 'des clients abandonnent leurs visites à cause du stationnement' },
+        { value: '25', unit: 'min', label: 'temps moyen perdu à chercher une place' },
+        { value: '0', unit: '', label: 'visibilité sur l\'utilisation du stationnement' },
+      ],
+    },
+    solution: {
+      title: 'La Solution Vale',
+      subtitle: 'Une plateforme complète pour gérer, automatiser et optimiser vos opérations de stationnement',
+      features: [
+        {
+          title: 'Gérer les Emplacements',
+          description: 'Ajoutez des emplacements illimités avec des places, des horaires et des règles de tarification personnalisées',
+        },
+        {
+          title: 'Automatiser l\'Accès',
+          description: 'Les barrières IoT s\'ouvrent automatiquement via des jetons sécurisés — pas de clés ni de codes',
+        },
+        {
+          title: 'Optimiser les Revenus',
+          description: 'Tarification dynamique, analyses en temps réel et indicateurs d\'utilisation pour maximiser les retours',
+        },
+      ],
+    },
+    features: {
+      title: 'Tout ce dont Vous Avez Besoin pour',
+      titleHighlight: 'Gérer le Stationnement',
+      subtitle:
+        'Une plateforme complète pour gérer les emplacements de stationnement, les réservations et l\'accès automatisé',
+      list: [
+        {
+          icon: 'calendar',
+          title: 'Gestion des Réservations',
+          description:
+            'Vues calendrier et timeline. Gérez les réservations, attribuez des places aux clients, employés ou VIP.',
+        },
+        {
+          icon: 'users',
+          title: 'Plateforme Multi-Locataires',
+          description:
+            'Gérez plusieurs entreprises et emplacements. Accès basé sur les rôles pour les superviseurs et administrateurs.',
+        },
+        {
+          icon: 'pricing',
+          title: 'Tarification Dynamique',
+          description:
+            'Définissez des tarifs heures de pointe, standard et heures creuses. Tarification horaire pour maximiser les revenus.',
+        },
+        {
+          icon: 'timeline',
+          title: 'Mises à Jour en Temps Réel',
+          description:
+            'Statut des réservations en direct, journaux d\'accès aux barrières et notifications instantanées via WebSocket.',
+        },
+        {
+          icon: 'chart',
+          title: 'Tableau de Bord Analytique',
+          description:
+            'Indicateurs en temps réel sur l\'utilisation, les heures de pointe et les revenus. Décisions basées sur les données.',
+        },
+        {
+          icon: 'gate',
+          title: 'Contrôle IoT des Barrières',
+          description:
+            'Intégration avec les appareils Shelly pour un accès automatisé. Jetons sécurisés, pas de clés physiques.',
+        },
+      ],
+    },
+    product: {
+      title: 'Découvrez Vale en Action',
+      subtitle: 'Un tableau de bord puissant conçu pour les opérations de stationnement',
+      screens: [
+        { title: 'Vue Timeline', description: 'Utilisation des places en temps réel' },
+        { title: 'Calendrier des Réservations', description: 'Gérez toutes les réservations en une vue' },
+        { title: 'Analyses', description: 'Indicateurs et métriques de performance' },
+        { title: 'Documentation API', description: 'Intégrez avec notre API REST' },
+      ],
+    },
+    pricing: {
+      title: 'Tarifs Simples et Évolutifs',
+      subtitle: 'Des forfaits qui grandissent avec votre entreprise',
+      tiers: [
+        {
+          name: 'Starter',
+          price: '€99',
+          unit: '/mois',
+          description: 'Pour les petites opérations',
+          features: ['Jusqu\'à 3 emplacements', 'Analyses de base', 'Support par e-mail'],
+        },
+        {
+          name: 'Business',
+          price: '€299',
+          unit: '/mois',
+          description: 'Pour les entreprises en croissance',
+          features: ['Emplacements illimités', 'Analyses avancées', 'Support prioritaire', 'Accès API', 'Branding personnalisé'],
+          popular: true,
+        },
+        {
+          name: 'Enterprise',
+          price: 'Sur mesure',
+          unit: '',
+          description: 'Pour les grandes opérations',
+          features: ['Tout de Business', 'Support dédié', 'Garanties SLA', 'Intégrations personnalisées', 'Option on-premise'],
+        },
+      ],
+      cta: 'Commencer',
+    },
+    cta: {
+      title: 'Prêt à Moderniser Votre Stationnement ?',
+      subtitle:
+        'Rejoignez les entreprises du monde entier qui utilisent Vale pour automatiser leurs opérations de stationnement et offrir une meilleure expérience client.',
+      button: 'Demander une Démo',
+      contact: 'Ou contactez-nous à',
+      form: {
+        name: 'Nom',
+        company: 'Entreprise',
+        phone: 'Téléphone',
+        message: 'Message',
+        sending: 'Envoi en cours...',
+        success: 'Message envoyé avec succès ! Nous vous recontacterons bientôt.',
+        error: 'Erreur lors de l\'envoi. Veuillez réessayer.',
+      },
+    },
+    footer: {
+      tagline: 'Plateforme de Gestion de Stationnement',
+      links: {
+        product: 'Produit',
+        pricing: 'Tarifs',
+        contact: 'Contact',
+        privacy: 'Politique de Confidentialité',
+        terms: 'Conditions d\'Utilisation',
+      },
+      copyright: '© 2025 Vale. Tous droits réservés.',
+    },
+  },
   ar: {
     nav: {
       features: 'المميزات',

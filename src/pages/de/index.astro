@@ -1,0 +1,28 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Navigation from '../../components/Navigation.astro';
+import Hero from '../../components/Hero.astro';
+import Features from '../../components/Features.astro';
+import ProductShowcase from '../../components/ProductShowcase.astro';
+import Pricing from '../../components/Pricing.astro';
+import CTA from '../../components/CTA.astro';
+import Footer from '../../components/Footer.astro';
+
+const locale = 'de';
+---
+
+<Layout
+  title="Vale - Intelligentes Parkraum-Management für Restaurants & Hotels"
+  description="Vale hilft Restaurants, Hotels und Veranstaltungsorten in Lissabon, dedizierte Parkplätze für ihre Kunden zu sichern. Sparen Sie 25 Min./Tag bei der Parkplatzsuche."
+  locale={locale}
+>
+  <Navigation locale={locale} />
+  <main>
+    <Hero locale={locale} />
+    <Features locale={locale} />
+    <ProductShowcase locale={locale} />
+    <Pricing locale={locale} />
+    <CTA locale={locale} />
+  </main>
+  <Footer locale={locale} />
+</Layout>

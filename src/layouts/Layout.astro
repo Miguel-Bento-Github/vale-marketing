@@ -20,9 +20,11 @@ const localeMap: Record<string, { og: string; hreflang: string }> = {
   es: { og: 'es_ES', hreflang: 'es' },
   zh: { og: 'zh_CN', hreflang: 'zh' },
   ar: { og: 'ar_SA', hreflang: 'ar' },
+  de: { og: 'de_DE', hreflang: 'de' },
+  fr: { og: 'fr_FR', hreflang: 'fr' },
 };
 
-const supportedLocales = ['en', 'pt', 'es', 'zh', 'ar'];
+const supportedLocales = ['en', 'pt', 'es', 'zh', 'ar', 'de', 'fr'];
 const ogLocale = localeMap[currentLocale]?.og || 'en_GB';
 ---
 
