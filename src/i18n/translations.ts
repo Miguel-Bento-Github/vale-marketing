@@ -120,7 +120,7 @@ export const translations = {
       billingMonthly: 'Monthly',
       billingYearly: 'Yearly',
       billingSave: 'Save 2 months',
-      yearlyUnit: '/year',
+      billedYearly: 'Billed annually',
       tiers: [
         {
           name: 'Starter',
@@ -296,7 +296,7 @@ export const translations = {
       billingMonthly: 'Mensal',
       billingYearly: 'Anual',
       billingSave: 'Poupe 2 meses',
-      yearlyUnit: '/ano',
+      billedYearly: 'Faturado anualmente',
       tiers: [
         {
           name: 'Starter',
@@ -472,7 +472,7 @@ export const translations = {
       billingMonthly: 'Mensual',
       billingYearly: 'Anual',
       billingSave: 'Ahorra 2 meses',
-      yearlyUnit: '/año',
+      billedYearly: 'Facturado anualmente',
       tiers: [
         {
           name: 'Starter',
@@ -648,7 +648,7 @@ export const translations = {
       billingMonthly: '月付',
       billingYearly: '年付',
       billingSave: '省2个月',
-      yearlyUnit: '/年',
+      billedYearly: '按年计费',
       tiers: [
         {
           name: '入门版',
@@ -824,7 +824,7 @@ export const translations = {
       billingMonthly: 'Monatlich',
       billingYearly: 'Jährlich',
       billingSave: '2 Monate sparen',
-      yearlyUnit: '/Jahr',
+      billedYearly: 'Jährlich abgerechnet',
       tiers: [
         {
           name: 'Starter',
@@ -1000,7 +1000,7 @@ export const translations = {
       billingMonthly: 'Mensuel',
       billingYearly: 'Annuel',
       billingSave: 'Économisez 2 mois',
-      yearlyUnit: '/an',
+      billedYearly: 'Facturé annuellement',
       tiers: [
         {
           name: 'Starter',
@@ -1176,7 +1176,7 @@ export const translations = {
       billingMonthly: 'شهري',
       billingYearly: 'سنوي',
       billingSave: 'وفّر شهرين',
-      yearlyUnit: '/سنة',
+      billedYearly: 'يُحاسب سنويًا',
       tiers: [
         {
           name: 'المبتدئ',

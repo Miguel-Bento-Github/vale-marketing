@@ -1,6 +1,6 @@
 ---
 import { getTranslations } from '../i18n/translations';
-import { currencies, prices, yearlyPrices, getDefaultCurrency } from '../utils/currency';
+import { currencies, prices, yearlyMonthlyPrices, getDefaultCurrency } from '../utils/currency';
 
 interface Props {
   locale: string;
@@ -70,10 +70,11 @@ const defaultCurrency = getDefaultCurrency(locale);
         <div class="text-center mb-8">
           <h3 class="text-xl font-semibold text-themed mb-2">{t.pricing.tiers[0].name}</h3>
           <div class="flex items-baseline justify-center gap-1">
-            <span id="price-starter" class="text-4xl font-bold text-themed" data-prices={JSON.stringify(prices)} data-yearly-prices={JSON.stringify(yearlyPrices)}></span>
-            <span id="unit-starter" class="text-themed-secondary" data-monthly-unit={t.pricing.tiers[0].unit} data-yearly-unit={t.pricing.yearlyUnit}>{t.pricing.tiers[0].unit}</span>
+            <span id="price-starter" class="text-4xl font-bold text-themed"></span>
+            <span class="text-themed-secondary">{t.pricing.tiers[0].unit}</span>
           </div>
           <p class="text-themed-tertiary mt-2 text-sm">{t.pricing.tiers[0].description}</p>
+          <p id="billed-yearly-starter" class="text-vale-accent mt-1 text-xs font-medium hidden">{t.pricing.billedYearly}</p>
         </div>
 
         <ul class="space-y-4 mb-8">
@@ -102,9 +103,10 @@ const defaultCurrency = getDefaultCurrency(locale);
           <h3 class="text-xl font-semibold text-themed mb-2">{t.pricing.tiers[1].name}</h3>
           <div class="flex items-baseline justify-center gap-1">
             <span id="price-business" class="text-4xl font-bold text-themed"></span>
-            <span id="unit-business" class="text-themed-secondary" data-monthly-unit={t.pricing.tiers[1].unit} data-yearly-unit={t.pricing.yearlyUnit}>{t.pricing.tiers[1].unit}</span>
+            <span class="text-themed-secondary">{t.pricing.tiers[1].unit}</span>
           </div>
           <p class="text-themed-tertiary mt-2 text-sm">{t.pricing.tiers[1].description}</p>
+          <p id="billed-yearly-business" class="text-vale-accent mt-1 text-xs font-medium hidden">{t.pricing.billedYearly}</p>
         </div>
 
         <ul class="space-y-4 mb-8">
@@ -162,12 +164,13 @@ const defaultCurrency = getDefaultCurrency(locale);
     CNY: { starter: 779, business: 2349 },
   };
 
-  const yearlyPrices: Record<string, { starter: number; business: number }> = {
-    EUR: { starter: 990, business: 2990 },
-    USD: { starter: 1090, business: 3290 },
-    GBP: { starter: 850, business: 2590 },
-    BRL: { starter: 5490, business: 16490 },
-    CNY: { starter: 7790, business: 23490 },
+  // Monthly rate when billed yearly (~20% discount)
+  const yearlyMonthlyPrices: Record<string, { starter: number; business: number }> = {
+    EUR: { starter: 79, business: 249 },
+    USD: { starter: 89, business: 269 },
+    GBP: { starter: 69, business: 209 },
+    BRL: { starter: 449, business: 1349 },
+    CNY: { starter: 639, business: 1949 },
   };
 
   const currencyLocales: Record<string, string> = {
@@ -190,26 +193,18 @@ const defaultCurrency = getDefaultCurrency(locale);
   }
 
   function updatePrices(currency: string) {
-    const priceSource = isYearly ? yearlyPrices : monthlyPrices;
+    const priceSource = isYearly ? yearlyMonthlyPrices : monthlyPrices;
     const priceData = priceSource[currency] || priceSource.EUR;
     const starterEl = document.getElementById('price-starter');
     const businessEl = document.getElementById('price-business');
-    const unitStarterEl = document.getElementById('unit-starter');
-    const unitBusinessEl = document.getElementById('unit-business');
+    const billedYearlyStarter = document.getElementById('billed-yearly-starter');
+    const billedYearlyBusiness = document.getElementById('billed-yearly-business');
 
     if (starterEl) starterEl.textContent = formatPrice(priceData.starter, currency);
     if (businessEl) businessEl.textContent = formatPrice(priceData.business, currency);
 
-    if (unitStarterEl) {
-      unitStarterEl.textContent = isYearly
-        ? unitStarterEl.dataset.yearlyUnit || '/year'
-        : unitStarterEl.dataset.monthlyUnit || '/month';
-    }
-    if (unitBusinessEl) {
-      unitBusinessEl.textContent = isYearly
-        ? unitBusinessEl.dataset.yearlyUnit || '/year'
-        : unitBusinessEl.dataset.monthlyUnit || '/month';
-    }
+    if (billedYearlyStarter) billedYearlyStarter.classList.toggle('hidden', !isYearly);
+    if (billedYearlyBusiness) billedYearlyBusiness.classList.toggle('hidden', !isYearly);
 
     localStorage.setItem('vale-currency', currency);
   }
