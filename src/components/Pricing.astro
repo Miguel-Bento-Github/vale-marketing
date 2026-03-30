@@ -66,7 +66,7 @@ const defaultCurrency = getDefaultCurrency(locale);
     <!-- Pricing cards -->
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
       <!-- Starter -->
-      <div class="relative p-8 rounded-2xl transition-all duration-300 hover:-translate-y-1 bg-themed-secondary border border-themed hover:border-vale-primary/30">
+      <div class="relative p-8 rounded-2xl transition-all duration-300 hover:-translate-y-1 bg-themed-secondary border border-themed hover:border-vale-primary/30 flex flex-col">
         <div class="text-center mb-8">
           <h3 class="text-xl font-semibold text-themed mb-2">{t.pricing.tiers[0].name}</h3>
           <div class="flex items-baseline justify-center gap-1">
@@ -77,7 +77,7 @@ const defaultCurrency = getDefaultCurrency(locale);
           <p id="billed-yearly-starter" class="text-vale-accent mt-1 text-xs font-medium hidden">{t.pricing.billedYearly}</p>
         </div>
 
-        <ul class="space-y-4 mb-8">
+        <ul class="space-y-4 mb-8 flex-1">
           {t.pricing.tiers[0].features.map((feature) => (
             <li class="flex items-center gap-3 text-themed-secondary">
               <svg class="w-5 h-5 text-vale-accent flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -88,13 +88,13 @@ const defaultCurrency = getDefaultCurrency(locale);
           ))}
         </ul>
 
-        <a href={`/${locale}#contact`} class="block w-full py-3 px-6 rounded-xl font-semibold text-center transition-all glass hover:bg-vale-primary/10 text-themed">
+        <a href={`/${locale}#contact`} class="block w-full py-3 px-6 rounded-xl font-semibold text-center transition-all glass hover:bg-vale-primary/10 text-themed mt-auto">
           {t.pricing.cta}
         </a>
       </div>
 
       <!-- Business (Popular) -->
-      <div class="relative p-8 rounded-2xl transition-all duration-300 hover:-translate-y-1 bg-gradient-to-b from-vale-primary/20 to-vale-primary/5 border-2 border-vale-primary">
+      <div class="relative p-8 rounded-2xl transition-all duration-300 hover:-translate-y-1 bg-gradient-to-b from-vale-primary/20 to-vale-primary/5 border-2 border-vale-primary flex flex-col">
         <div class="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 bg-vale-primary text-white text-sm font-semibold rounded-full">
           {t.pricing.mostPopular}
         </div>
@@ -109,7 +109,7 @@ const defaultCurrency = getDefaultCurrency(locale);
           <p id="billed-yearly-business" class="text-vale-accent mt-1 text-xs font-medium hidden">{t.pricing.billedYearly}</p>
         </div>
 
-        <ul class="space-y-4 mb-8">
+        <ul class="space-y-4 mb-8 flex-1">
           {t.pricing.tiers[1].features.map((feature) => (
             <li class="flex items-center gap-3 text-themed-secondary">
               <svg class="w-5 h-5 text-vale-accent flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -120,13 +120,13 @@ const defaultCurrency = getDefaultCurrency(locale);
           ))}
         </ul>
 
-        <a href={`/${locale}#contact`} class="block w-full py-3 px-6 rounded-xl font-semibold text-center transition-all bg-vale-primary hover:bg-vale-primary/90 text-white hover:shadow-lg hover:shadow-vale-primary/25">
+        <a href={`/${locale}#contact`} class="block w-full py-3 px-6 rounded-xl font-semibold text-center transition-all bg-vale-primary hover:bg-vale-primary/90 text-white hover:shadow-lg hover:shadow-vale-primary/25 mt-auto">
           {t.pricing.cta}
         </a>
       </div>
 
       <!-- Enterprise -->
-      <div class="relative p-8 rounded-2xl transition-all duration-300 hover:-translate-y-1 bg-themed-secondary border border-themed hover:border-vale-primary/30">
+      <div class="relative p-8 rounded-2xl transition-all duration-300 hover:-translate-y-1 bg-themed-secondary border border-themed hover:border-vale-primary/30 flex flex-col">
         <div class="text-center mb-8">
           <h3 class="text-xl font-semibold text-themed mb-2">{t.pricing.tiers[2].name}</h3>
           <div class="flex items-baseline justify-center gap-1">
@@ -136,7 +136,7 @@ const defaultCurrency = getDefaultCurrency(locale);
           <p class="text-themed-tertiary mt-2 text-sm">{t.pricing.tiers[2].description}</p>
         </div>
 
-        <ul class="space-y-4 mb-8">
+        <ul class="space-y-4 mb-8 flex-1">
           {t.pricing.tiers[2].features.map((feature) => (
             <li class="flex items-center gap-3 text-themed-secondary">
               <svg class="w-5 h-5 text-vale-accent flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -147,7 +147,7 @@ const defaultCurrency = getDefaultCurrency(locale);
           ))}
         </ul>
 
-        <a href={`/${locale}#contact`} class="block w-full py-3 px-6 rounded-xl font-semibold text-center transition-all glass hover:bg-vale-primary/10 text-themed">
+        <a href={`/${locale}#contact`} class="block w-full py-3 px-6 rounded-xl font-semibold text-center transition-all glass hover:bg-vale-primary/10 text-themed mt-auto">
           {t.pricing.cta}
         </a>
       </div>
