@@ -113,6 +113,30 @@ const ogLocale = localeMap[currentLocale]?.og || 'en_GB';
   </head>
   <body class="antialiased">
     <slot />
+
+    <!-- Update URL hash based on visible section -->
+    <script is:inline>
+      (function() {
+        var sections = document.querySelectorAll('section[id]');
+        if (!sections.length || !('IntersectionObserver' in window)) return;
+
+        var current = '';
+
+        var observer = new IntersectionObserver(function(entries) {
+          entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+              current = entry.target.id;
+              var hash = current === 'hero' ? '' : '#' + current;
+              if (location.hash !== hash && ('#' + current) !== location.hash || (current === 'hero' && location.hash)) {
+                history.replaceState(null, '', location.pathname + hash);
+              }
+            }
+          });
+        }, { rootMargin: '-40% 0px -40% 0px' });
+
+        sections.forEach(function(s) { observer.observe(s); });
+      })();
+    </script>
   </body>
 </html>
 
