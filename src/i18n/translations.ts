@@ -117,6 +117,10 @@ export const translations = {
       subtitle: 'Plans that grow with your business',
       currency: 'Currency:',
       mostPopular: 'Most Popular',
+      billingMonthly: 'Monthly',
+      billingYearly: 'Yearly',
+      billingSave: 'Save 2 months',
+      yearlyUnit: '/year',
       tiers: [
         {
           name: 'Starter',
@@ -289,6 +293,10 @@ export const translations = {
       subtitle: 'Planos que crescem com o seu negócio',
       currency: 'Moeda:',
       mostPopular: 'Mais Popular',
+      billingMonthly: 'Mensal',
+      billingYearly: 'Anual',
+      billingSave: 'Poupe 2 meses',
+      yearlyUnit: '/ano',
       tiers: [
         {
           name: 'Starter',
@@ -461,6 +469,10 @@ export const translations = {
       subtitle: 'Planes que crecen con su negocio',
       currency: 'Moneda:',
       mostPopular: 'Más Popular',
+      billingMonthly: 'Mensual',
+      billingYearly: 'Anual',
+      billingSave: 'Ahorra 2 meses',
+      yearlyUnit: '/año',
       tiers: [
         {
           name: 'Starter',
@@ -633,6 +645,10 @@ export const translations = {
       subtitle: '随您业务增长的计划',
       currency: '货币:',
       mostPopular: '最受欢迎',
+      billingMonthly: '月付',
+      billingYearly: '年付',
+      billingSave: '省2个月',
+      yearlyUnit: '/年',
       tiers: [
         {
           name: '入门版',
@@ -805,6 +821,10 @@ export const translations = {
       subtitle: 'Pläne, die mit Ihrem Unternehmen wachsen',
       currency: 'Währung:',
       mostPopular: 'Beliebteste',
+      billingMonthly: 'Monatlich',
+      billingYearly: 'Jährlich',
+      billingSave: '2 Monate sparen',
+      yearlyUnit: '/Jahr',
       tiers: [
         {
           name: 'Starter',
@@ -977,6 +997,10 @@ export const translations = {
       subtitle: 'Des forfaits qui grandissent avec votre entreprise',
       currency: 'Devise :',
       mostPopular: 'Le Plus Populaire',
+      billingMonthly: 'Mensuel',
+      billingYearly: 'Annuel',
+      billingSave: 'Économisez 2 mois',
+      yearlyUnit: '/an',
       tiers: [
         {
           name: 'Starter',
@@ -1149,6 +1173,10 @@ export const translations = {
       subtitle: 'خطط تنمو مع عملك',
       currency: 'العملة:',
       mostPopular: 'الأكثر شعبية',
+      billingMonthly: 'شهري',
+      billingYearly: 'سنوي',
+      billingSave: 'وفّر شهرين',
+      yearlyUnit: '/سنة',
       tiers: [
         {
           name: 'المبتدئ',

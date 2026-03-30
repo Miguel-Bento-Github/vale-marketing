@@ -1,6 +1,6 @@
 ---
 import { getTranslations } from '../i18n/translations';
-import { currencies, prices, getDefaultCurrency } from '../utils/currency';
+import { currencies, prices, yearlyPrices, getDefaultCurrency } from '../utils/currency';
 
 interface Props {
   locale: string;
@@ -18,23 +18,47 @@ const defaultCurrency = getDefaultCurrency(locale);
       <h2 class="text-headline mb-4 text-themed">{t.pricing.title}</h2>
       <p class="text-xl text-themed-secondary max-w-2xl mx-auto">{t.pricing.subtitle}</p>
 
-      <!-- Currency Selector -->
-      <div class="mt-6 inline-flex items-center gap-2">
-        <span class="text-sm text-themed-tertiary">{t.pricing.currency}</span>
-        <div class="relative">
-          <select
-            id="currency-select"
-            class="appearance-none bg-themed-secondary border border-themed rounded-lg px-4 py-2 pr-8 text-sm text-themed focus:border-vale-primary focus:outline-none focus:ring-1 focus:ring-vale-primary cursor-pointer"
+      <!-- Billing Toggle -->
+      <div class="mt-6 flex flex-col items-center gap-4">
+        <div class="inline-flex items-center gap-3 bg-themed-secondary rounded-full p-1 border border-themed">
+          <button
+            id="billing-monthly"
+            type="button"
+            class="px-5 py-2 rounded-full text-sm font-semibold transition-all bg-vale-primary text-white"
+            data-monthly-label={t.pricing.billingMonthly}
           >
-            {currencies.map((currency) => (
-              <option value={currency.code} selected={currency.code === defaultCurrency}>
-                {currency.code} ({currency.symbol})
-              </option>
-            ))}
-          </select>
-          <svg class="absolute right-2 top-1/2 -translate-y-1/2 w-4 h-4 text-themed-secondary pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-          </svg>
+            {t.pricing.billingMonthly}
+          </button>
+          <button
+            id="billing-yearly"
+            type="button"
+            class="px-5 py-2 rounded-full text-sm font-semibold transition-all text-themed-secondary hover:text-themed"
+            data-yearly-label={t.pricing.billingYearly}
+            data-save-label={t.pricing.billingSave}
+          >
+            {t.pricing.billingYearly}
+            <span class="ml-1 text-xs text-vale-accent font-medium">({t.pricing.billingSave})</span>
+          </button>
+        </div>
+
+        <!-- Currency Selector -->
+        <div class="inline-flex items-center gap-2">
+          <span class="text-sm text-themed-tertiary">{t.pricing.currency}</span>
+          <div class="relative">
+            <select
+              id="currency-select"
+              class="appearance-none bg-themed-secondary border border-themed rounded-lg px-4 py-2 pr-8 text-sm text-themed focus:border-vale-primary focus:outline-none focus:ring-1 focus:ring-vale-primary cursor-pointer"
+            >
+              {currencies.map((currency) => (
+                <option value={currency.code} selected={currency.code === defaultCurrency}>
+                  {currency.code} ({currency.symbol})
+                </option>
+              ))}
+            </select>
+            <svg class="absolute right-2 top-1/2 -translate-y-1/2 w-4 h-4 text-themed-secondary pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </div>
         </div>
       </div>
     </div>
@@ -46,8 +70,8 @@ const defaultCurrency = getDefaultCurrency(locale);
         <div class="text-center mb-8">
           <h3 class="text-xl font-semibold text-themed mb-2">{t.pricing.tiers[0].name}</h3>
           <div class="flex items-baseline justify-center gap-1">
-            <span id="price-starter" class="text-4xl font-bold text-themed" data-prices={JSON.stringify(prices)}></span>
-            <span class="text-themed-secondary">{t.pricing.tiers[0].unit}</span>
+            <span id="price-starter" class="text-4xl font-bold text-themed" data-prices={JSON.stringify(prices)} data-yearly-prices={JSON.stringify(yearlyPrices)}></span>
+            <span id="unit-starter" class="text-themed-secondary" data-monthly-unit={t.pricing.tiers[0].unit} data-yearly-unit={t.pricing.yearlyUnit}>{t.pricing.tiers[0].unit}</span>
           </div>
           <p class="text-themed-tertiary mt-2 text-sm">{t.pricing.tiers[0].description}</p>
         </div>
@@ -78,7 +102,7 @@ const defaultCurrency = getDefaultCurrency(locale);
           <h3 class="text-xl font-semibold text-themed mb-2">{t.pricing.tiers[1].name}</h3>
           <div class="flex items-baseline justify-center gap-1">
             <span id="price-business" class="text-4xl font-bold text-themed"></span>
-            <span class="text-themed-secondary">{t.pricing.tiers[1].unit}</span>
+            <span id="unit-business" class="text-themed-secondary" data-monthly-unit={t.pricing.tiers[1].unit} data-yearly-unit={t.pricing.yearlyUnit}>{t.pricing.tiers[1].unit}</span>
           </div>
           <p class="text-themed-tertiary mt-2 text-sm">{t.pricing.tiers[1].description}</p>
         </div>
@@ -130,12 +154,20 @@ const defaultCurrency = getDefaultCurrency(locale);
 </section>
 
 <script>
-  const prices: Record<string, { starter: number; business: number }> = {
+  const monthlyPrices: Record<string, { starter: number; business: number }> = {
     EUR: { starter: 99, business: 299 },
     USD: { starter: 109, business: 329 },
     GBP: { starter: 85, business: 259 },
     BRL: { starter: 549, business: 1649 },
     CNY: { starter: 779, business: 2349 },
+  };
+
+  const yearlyPrices: Record<string, { starter: number; business: number }> = {
+    EUR: { starter: 990, business: 2990 },
+    USD: { starter: 1090, business: 3290 },
+    GBP: { starter: 850, business: 2590 },
+    BRL: { starter: 5490, business: 16490 },
+    CNY: { starter: 7790, business: 23490 },
   };
 
   const currencyLocales: Record<string, string> = {
@@ -145,6 +177,8 @@ const defaultCurrency = getDefaultCurrency(locale);
     BRL: 'pt-BR',
     CNY: 'zh-CN',
   };
+
+  let isYearly = false;
 
   function formatPrice(amount: number, currency: string): string {
     return new Intl.NumberFormat(currencyLocales[currency] || 'en-US', {
@@ -156,28 +190,77 @@ const defaultCurrency = getDefaultCurrency(locale);
   }
 
   function updatePrices(currency: string) {
-    const priceData = prices[currency] || prices.EUR;
+    const priceSource = isYearly ? yearlyPrices : monthlyPrices;
+    const priceData = priceSource[currency] || priceSource.EUR;
     const starterEl = document.getElementById('price-starter');
     const businessEl = document.getElementById('price-business');
+    const unitStarterEl = document.getElementById('unit-starter');
+    const unitBusinessEl = document.getElementById('unit-business');
 
     if (starterEl) starterEl.textContent = formatPrice(priceData.starter, currency);
     if (businessEl) businessEl.textContent = formatPrice(priceData.business, currency);
 
-    // Save preference
+    if (unitStarterEl) {
+      unitStarterEl.textContent = isYearly
+        ? unitStarterEl.dataset.yearlyUnit || '/year'
+        : unitStarterEl.dataset.monthlyUnit || '/month';
+    }
+    if (unitBusinessEl) {
+      unitBusinessEl.textContent = isYearly
+        ? unitBusinessEl.dataset.yearlyUnit || '/year'
+        : unitBusinessEl.dataset.monthlyUnit || '/month';
+    }
+
     localStorage.setItem('vale-currency', currency);
+  }
+
+  function updateToggleStyles() {
+    const monthlyBtn = document.getElementById('billing-monthly');
+    const yearlyBtn = document.getElementById('billing-yearly');
+    if (!monthlyBtn || !yearlyBtn) return;
+
+    if (isYearly) {
+      monthlyBtn.className = 'px-5 py-2 rounded-full text-sm font-semibold transition-all text-themed-secondary hover:text-themed';
+      yearlyBtn.className = 'px-5 py-2 rounded-full text-sm font-semibold transition-all bg-vale-primary text-white';
+    } else {
+      monthlyBtn.className = 'px-5 py-2 rounded-full text-sm font-semibold transition-all bg-vale-primary text-white';
+      yearlyBtn.className = 'px-5 py-2 rounded-full text-sm font-semibold transition-all text-themed-secondary hover:text-themed';
+    }
   }
 
   // Initialize
   const select = document.getElementById('currency-select') as HTMLSelectElement;
+  const monthlyBtn = document.getElementById('billing-monthly');
+  const yearlyBtn = document.getElementById('billing-yearly');
   const savedCurrency = localStorage.getItem('vale-currency');
+  const savedBilling = localStorage.getItem('vale-billing');
 
   if (savedCurrency && select) {
     select.value = savedCurrency;
+  }
+
+  if (savedBilling === 'yearly') {
+    isYearly = true;
+    updateToggleStyles();
   }
 
   updatePrices(select?.value || 'EUR');
 
   select?.addEventListener('change', (e) => {
     updatePrices((e.target as HTMLSelectElement).value);
+  });
+
+  monthlyBtn?.addEventListener('click', () => {
+    isYearly = false;
+    localStorage.setItem('vale-billing', 'monthly');
+    updateToggleStyles();
+    updatePrices(select?.value || 'EUR');
+  });
+
+  yearlyBtn?.addEventListener('click', () => {
+    isYearly = true;
+    localStorage.setItem('vale-billing', 'yearly');
+    updateToggleStyles();
+    updatePrices(select?.value || 'EUR');
   });
 </script>

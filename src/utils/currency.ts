@@ -23,6 +23,15 @@ export const prices: Record<string, { starter: number; business: number }> = {
   CNY: { starter: 779, business: 2349 },
 };
 
+// Yearly prices (2 months free — 10 months worth)
+export const yearlyPrices: Record<string, { starter: number; business: number }> = {
+  EUR: { starter: 990, business: 2990 },
+  USD: { starter: 1090, business: 3290 },
+  GBP: { starter: 850, business: 2590 },
+  BRL: { starter: 5490, business: 16490 },
+  CNY: { starter: 7790, business: 23490 },
+};
+
 // Map locales to default currencies
 export const localeCurrencyMap: Record<string, string> = {
   en: 'EUR', // Default to EUR for English (UK/international)
