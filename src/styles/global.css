@@ -352,3 +352,4 @@ html[dir="rtl"] #lang-dropdown {
 html[dir="rtl"] .screenshot-frame::before {
   background-position: calc(100% - 12px) center;
 }
+

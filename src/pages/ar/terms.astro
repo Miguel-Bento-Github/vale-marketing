@@ -1,0 +1,94 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Navigation from '../../components/Navigation.astro';
+import Footer from '../../components/Footer.astro';
+import { getLegalTranslations } from '../../i18n/legal';
+
+const locale = 'ar';
+const t = getLegalTranslations(locale).terms;
+---
+
+<Layout
+  title={`${t.title} - Vale Park`}
+  description="Terms and conditions for using the Vale Park parking management platform."
+  locale={locale}
+>
+  <Navigation locale={locale} />
+  <main class="py-24 bg-themed">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h1 class="text-4xl font-bold text-themed mb-2">{t.title}</h1>
+      <p class="text-themed-secondary mb-12"><strong>{t.lastUpdated}</strong>: {t.date} &middot; <strong>{t.version}</strong> {t.versionNumber}</p>
+
+      <section class="mb-12">
+        <h2 class="text-2xl font-semibold text-themed mb-4">{t.intro.title}</h2>
+        <p class="text-themed-secondary leading-relaxed">{t.intro.desc} <a href={`/${locale}/privacy`} class="text-vale-primary underline">{t.intro.privacyLink}</a>.</p>
+      </section>
+
+      <section class="mb-12">
+        <h2 class="text-2xl font-semibold text-themed mb-4">{t.service.title}</h2>
+        <p class="text-themed-secondary leading-relaxed mb-4">{t.service.desc}</p>
+        <ul class="list-disc pl-6 text-themed-secondary space-y-1">
+          {t.service.items.map((item) => <li>{item}</li>)}
+        </ul>
+      </section>
+
+      <section class="mb-12">
+        <h2 class="text-2xl font-semibold text-themed mb-4">{t.accounts.title}</h2>
+        <p class="text-themed-secondary leading-relaxed">{t.accounts.desc}</p>
+      </section>
+
+      <section class="mb-12">
+        <h2 class="text-2xl font-semibold text-themed mb-4">{t.payments.title}</h2>
+        <p class="text-themed-secondary leading-relaxed">{t.payments.desc}</p>
+      </section>
+
+      <section class="mb-12">
+        <h2 class="text-2xl font-semibold text-themed mb-4">{t.acceptableUse.title}</h2>
+        <p class="text-themed-secondary leading-relaxed mb-4">{t.acceptableUse.desc}</p>
+        <ul class="list-disc pl-6 text-themed-secondary space-y-1">
+          {t.acceptableUse.items.map((item) => <li>{item}</li>)}
+        </ul>
+      </section>
+
+      <section class="mb-12">
+        <h2 class="text-2xl font-semibold text-themed mb-4">{t.ip.title}</h2>
+        <p class="text-themed-secondary leading-relaxed">{t.ip.desc}</p>
+      </section>
+
+      <section class="mb-12">
+        <h2 class="text-2xl font-semibold text-themed mb-4">{t.liability.title}</h2>
+        <p class="text-themed-secondary leading-relaxed">{t.liability.desc}</p>
+      </section>
+
+      <section class="mb-12">
+        <h2 class="text-2xl font-semibold text-themed mb-4">{t.dataProtection.title}</h2>
+        <p class="text-themed-secondary leading-relaxed">{t.dataProtection.desc} <a href="mailto:privacy@valepark.org" class="text-vale-primary underline">privacy@valepark.org</a> {t.dataProtection.contactEnd}</p>
+      </section>
+
+      <section class="mb-12">
+        <h2 class="text-2xl font-semibold text-themed mb-4">{t.termination.title}</h2>
+        <p class="text-themed-secondary leading-relaxed">{t.termination.desc}</p>
+      </section>
+
+      <section class="mb-12">
+        <h2 class="text-2xl font-semibold text-themed mb-4">{t.law.title}</h2>
+        <p class="text-themed-secondary leading-relaxed">{t.law.desc}</p>
+      </section>
+
+      <section class="mb-12">
+        <h2 class="text-2xl font-semibold text-themed mb-4">{t.changes.title}</h2>
+        <p class="text-themed-secondary leading-relaxed">{t.changes.desc}</p>
+      </section>
+
+      <section>
+        <h2 class="text-2xl font-semibold text-themed mb-4">{t.contact.title}</h2>
+        <div class="rounded-xl border border-themed p-6 bg-themed-secondary space-y-2">
+          <p class="text-themed"><strong>Email:</strong> <a href="mailto:info@valepark.org" class="text-vale-primary underline">info@valepark.org</a></p>
+          <p class="text-themed"><strong>Address:</strong> Pepermuntstraat 12, 3544CC Utrecht, NL</p>
+          <p class="text-themed"><strong>KVK:</strong> 85182427</p>
+        </div>
+      </section>
+    </div>
+  </main>
+  <Footer locale={locale} />
+</Layout>

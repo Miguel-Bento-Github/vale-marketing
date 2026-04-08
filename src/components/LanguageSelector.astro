@@ -16,6 +16,14 @@ const languages = [
 ];
 
 const currentLang = languages.find(l => l.code === locale) || languages[0];
+
+// Get the current page path (e.g., "/en/privacy" -> "/privacy")
+const currentPath = Astro.url.pathname;
+const pathWithoutLocale = currentPath.replace(new RegExp(`^/${locale}(/|$)`), '/');
+// Build locale-aware href that preserves the current page
+function langHref(code: string): string {
+  return pathWithoutLocale === '/' ? `/${code}` : `/${code}${pathWithoutLocale}`;
+}
 ---
 
 <div class="relative" id="lang-selector">
@@ -39,7 +47,7 @@ const currentLang = languages.find(l => l.code === locale) || languages[0];
     <div class="py-2">
       {languages.map((lang) => (
         <a
-          href={`/${lang.code}`}
+          href={langHref(lang.code)}
           data-lang-link
           class={`flex items-center justify-between px-4 py-2 text-sm transition-colors ${
             lang.code === locale

@@ -1,0 +1,155 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Navigation from '../../components/Navigation.astro';
+import Footer from '../../components/Footer.astro';
+import { getLegalTranslations } from '../../i18n/legal';
+
+const locale = 'fr';
+const t = getLegalTranslations(locale).privacy;
+---
+
+<Layout
+  title={`${t.title} - Vale Park`}
+  description="How Vale Park collects, uses, and protects your personal data."
+  locale={locale}
+>
+  <Navigation locale={locale} />
+  <main class="py-24 bg-themed">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h1 class="text-4xl font-bold text-themed mb-2">{t.title}</h1>
+      <p class="text-themed-secondary mb-12"><strong>{t.lastUpdated}</strong>: {t.date} &middot; <strong>{t.version}</strong> {t.versionNumber}</p>
+
+      <section class="mb-12">
+        <h2 class="text-2xl font-semibold text-themed mb-4">{t.whoWeAre.title}</h2>
+        <p class="text-themed-secondary leading-relaxed mb-4">{t.whoWeAre.intro} <a href={`/${locale}/terms`} class="text-vale-primary underline">{t.whoWeAre.termsLink}</a>.</p>
+
+        <div class="rounded-xl border border-themed p-6 bg-themed-secondary mb-6 space-y-2">
+          <p class="text-themed"><strong>{t.whoWeAre.operator}:</strong> {t.whoWeAre.operatorValue}</p>
+          <p class="text-themed"><strong>{t.whoWeAre.kvk}:</strong> 85182427</p>
+          <p class="text-themed"><strong>{t.whoWeAre.address}:</strong> {t.whoWeAre.addressValue}</p>
+          <p class="text-themed"><strong>{t.whoWeAre.email}:</strong> <a href="mailto:privacy@valepark.org" class="text-vale-primary underline">privacy@valepark.org</a></p>
+        </div>
+
+        <p class="text-themed-secondary leading-relaxed mb-4">{t.whoWeAre.dpo} <a href="mailto:privacy@valepark.org" class="text-vale-primary underline">privacy@valepark.org</a>.</p>
+
+        <p class="text-themed-secondary leading-relaxed">{t.whoWeAre.rolesProcessor} <strong class="text-themed">{t.whoWeAre.processor}</strong> {t.whoWeAre.rolesProcessorEnd} {t.whoWeAre.rolesController} <strong class="text-themed">{t.whoWeAre.controller}</strong>.</p>
+      </section>
+
+      <section class="mb-12">
+        <h2 class="text-2xl font-semibold text-themed mb-4">{t.dataCollected.title}</h2>
+
+        <h3 class="text-lg font-semibold text-themed mt-6 mb-3">{t.dataCollected.accounts}</h3>
+        <p class="text-themed-secondary leading-relaxed mb-2">{t.dataCollected.accountsDesc}</p>
+        <ul class="list-disc pl-6 text-themed-secondary space-y-1 mb-6">
+          {t.dataCollected.accountItems.map((item) => <li>{item}</li>)}
+        </ul>
+
+        <h3 class="text-lg font-semibold text-themed mt-6 mb-3">{t.dataCollected.bookings}</h3>
+        <ul class="list-disc pl-6 text-themed-secondary space-y-1 mb-6">
+          {t.dataCollected.bookingItems.map((item) => <li>{item}</li>)}
+        </ul>
+
+        <h3 class="text-lg font-semibold text-themed mt-6 mb-3">{t.dataCollected.guest}</h3>
+        <p class="text-themed-secondary leading-relaxed mb-6">{t.dataCollected.guestDesc}</p>
+
+        <h3 class="text-lg font-semibold text-themed mt-6 mb-3">{t.dataCollected.payment}</h3>
+        <p class="text-themed-secondary leading-relaxed mb-6">{t.dataCollected.paymentDesc}</p>
+
+        <h3 class="text-lg font-semibold text-themed mt-6 mb-3">{t.dataCollected.cookies}</h3>
+        <p class="text-themed-secondary leading-relaxed">{t.dataCollected.cookiesDesc}</p>
+      </section>
+
+      <section class="mb-12">
+        <h2 class="text-2xl font-semibold text-themed mb-4">{t.usage.title}</h2>
+        <p class="text-themed-secondary leading-relaxed mb-4">{t.usage.desc}</p>
+        <p class="text-themed-secondary leading-relaxed">{t.usage.notDo}</p>
+      </section>
+
+      <section class="mb-12">
+        <h2 class="text-2xl font-semibold text-themed mb-4">{t.sharing.title}</h2>
+        <div class="overflow-x-auto rounded-xl border border-themed mb-4">
+          <table class="w-full text-sm">
+            <thead class="bg-themed-secondary">
+              <tr>
+                <th class="text-left p-3 text-themed font-semibold">{t.sharing.service}</th>
+                <th class="text-left p-3 text-themed font-semibold">{t.sharing.purpose}</th>
+                <th class="text-left p-3 text-themed font-semibold">{t.sharing.location}</th>
+              </tr>
+            </thead>
+            <tbody class="text-themed-secondary">
+              {t.sharing.services.map((s) => (
+                <tr class="border-t border-themed">
+                  <td class="p-3">{s.name}</td>
+                  <td class="p-3">{s.purpose}</td>
+                  <td class="p-3">{s.location}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p class="text-themed-secondary leading-relaxed">{t.sharing.transfers}</p>
+      </section>
+
+      <section class="mb-12">
+        <h2 class="text-2xl font-semibold text-themed mb-4">{t.retention.title}</h2>
+        <div class="overflow-x-auto rounded-xl border border-themed">
+          <table class="w-full text-sm">
+            <thead class="bg-themed-secondary">
+              <tr>
+                <th class="text-left p-3 text-themed font-semibold">{t.retention.data}</th>
+                <th class="text-left p-3 text-themed font-semibold">{t.retention.period}</th>
+              </tr>
+            </thead>
+            <tbody class="text-themed-secondary">
+              {t.retention.items.map((item) => (
+                <tr class="border-t border-themed">
+                  <td class="p-3">{item.data}</td>
+                  <td class="p-3">{item.period}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="mb-12">
+        <h2 class="text-2xl font-semibold text-themed mb-4">{t.rights.title}</h2>
+
+        <h3 class="text-lg font-semibold text-themed mt-6 mb-3">{t.rights.registered}</h3>
+        <p class="text-themed-secondary leading-relaxed mb-3">{t.rights.registeredDesc}</p>
+        <ul class="list-disc pl-6 text-themed-secondary space-y-2 mb-6">
+          {t.rights.items.map((item) => (
+            <li><strong class="text-themed">{item.right}</strong> &mdash; {item.desc}</li>
+          ))}
+        </ul>
+
+        <h3 class="text-lg font-semibold text-themed mt-6 mb-3">{t.rights.guest}</h3>
+        <p class="text-themed-secondary leading-relaxed mb-6">{t.rights.guestDesc}</p>
+
+        <h3 class="text-lg font-semibold text-themed mt-6 mb-3">{t.rights.complaints}</h3>
+        <p class="text-themed-secondary leading-relaxed">{t.rights.complaintsDesc} <a href="https://autoriteitpersoonsgegevens.nl" target="_blank" rel="noopener" class="text-vale-primary underline">{t.rights.dpaName}</a> {t.rights.dpaDesc}</p>
+      </section>
+
+      <section class="mb-12">
+        <h2 class="text-2xl font-semibold text-themed mb-4">{t.security.title}</h2>
+        <p class="text-themed-secondary leading-relaxed">{t.security.desc}</p>
+      </section>
+
+      <section class="mb-12">
+        <h2 class="text-2xl font-semibold text-themed mb-4">{t.changes.title}</h2>
+        <p class="text-themed-secondary leading-relaxed">{t.changes.desc}</p>
+      </section>
+
+      <section>
+        <h2 class="text-2xl font-semibold text-themed mb-4">{t.contact.title}</h2>
+        <div class="rounded-xl border border-themed p-6 bg-themed-secondary space-y-2">
+          <p class="text-themed"><strong>{t.whoWeAre.email}:</strong> <a href="mailto:privacy@valepark.org" class="text-vale-primary underline">privacy@valepark.org</a></p>
+          <p class="text-themed"><strong>{t.whoWeAre.address}:</strong> {t.whoWeAre.addressValue}</p>
+          <p class="text-themed"><strong>{t.whoWeAre.kvk}:</strong> 85182427</p>
+        </div>
+        <p class="text-themed-secondary leading-relaxed mt-4">{t.contact.responseTime}</p>
+      </section>
+    </div>
+  </main>
+  <Footer locale={locale} />
+</Layout>
