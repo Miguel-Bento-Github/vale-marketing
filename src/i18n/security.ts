@@ -7,7 +7,7 @@ const security = {
     description: 'How we protect your data, infrastructure, and business.',
 
     dataPrivacy: {
-      title: '1. Data & Privacy',
+      title: '2. Data & Privacy',
       intro: 'We collect only what is necessary to deliver our service. We act as a data processor on behalf of our Clients and as a data controller for platform operations.',
       piiTitle: 'Personal Data We Collect',
       piiItems: [
@@ -31,7 +31,7 @@ const security = {
     },
 
     infrastructure: {
-      title: '2. Infrastructure',
+      title: '3. Infrastructure',
       desc: 'Our infrastructure is hosted on reputable, SOC 2-compliant providers:',
       services: [
         { name: 'Backend API', provider: 'Railway', detail: 'Node.js/Express application server' },
@@ -51,7 +51,7 @@ const security = {
     },
 
     practices: {
-      title: '3. Security Practices',
+      title: '4. Security Practices',
       encryptionTitle: 'Encryption',
       encryptionItems: [
         'Data in transit: TLS 1.2+ on all connections',
@@ -99,7 +99,7 @@ const security = {
     },
 
     owasp: {
-      title: '4. OWASP Top 10 Compliance',
+      title: '5. OWASP Top 10 Compliance',
       desc: 'We actively test against the OWASP Top 10 (2025). All categories pass:',
       categories: [
         { id: 'A01', name: 'Broken Access Control', status: 'Pass' },
@@ -130,7 +130,7 @@ const security = {
     },
 
     certifications: {
-      title: '5. Certifications & Compliance',
+      title: '1. Certifications & Compliance',
       items: [
         { name: 'Stripe Partner', desc: 'Payment processing through Stripe, which maintains PCI DSS Level 1 certification. Vale never handles, stores, or transmits card data directly.', earned: true, icon: 'stripe' },
         { name: 'GDPR Compliant', desc: 'We process personal data in accordance with the EU General Data Protection Regulation. A DPA is available on request.', earned: true, icon: 'gdpr' },
@@ -157,7 +157,7 @@ const security = {
     description: 'Como protegemos os seus dados, infraestrutura e neg\u00f3cio.',
 
     dataPrivacy: {
-      title: '1. Dados e Privacidade',
+      title: '2. Dados e Privacidade',
       intro: 'Recolhemos apenas o necess\u00e1rio para prestar o nosso servi\u00e7o. Atuamos como processador de dados em nome dos nossos Clientes e como controlador de dados para opera\u00e7\u00f5es da plataforma.',
       piiTitle: 'Dados Pessoais que Recolhemos',
       piiItems: [
@@ -181,7 +181,7 @@ const security = {
     },
 
     infrastructure: {
-      title: '2. Infraestrutura',
+      title: '3. Infraestrutura',
       desc: 'A nossa infraestrutura est\u00e1 alojada em fornecedores reputados e compat\u00edveis com SOC 2:',
       services: [
         { name: 'API Backend', provider: 'Railway', detail: 'Servidor de aplica\u00e7\u00e3o Node.js/Express' },
@@ -201,7 +201,7 @@ const security = {
     },
 
     practices: {
-      title: '3. Pr\u00e1ticas de Seguran\u00e7a',
+      title: '4. Pr\u00e1ticas de Seguran\u00e7a',
       encryptionTitle: 'Encripta\u00e7\u00e3o',
       encryptionItems: ['TLS 1.2+ em tr\u00e2nsito', 'AES-256-GCM em repouso', 'bcrypt com fator 12 para palavras-passe', 'PBKDF2-SHA256 com 100.000 itera\u00e7\u00f5es', 'Chaves API com hash SHA-256'],
       authTitle: 'Autentica\u00e7\u00e3o e Controlo de Acesso',
@@ -215,7 +215,7 @@ const security = {
     },
 
     owasp: {
-      title: '4. Conformidade OWASP Top 10',
+      title: '5. Conformidade OWASP Top 10',
       desc: 'Testamos ativamente contra o OWASP Top 10 (2025). Todas as categorias passam:',
       categories: [
         { id: 'A01', name: 'Controlo de Acesso', status: 'Passa' },
@@ -236,7 +236,7 @@ const security = {
     },
 
     certifications: {
-      title: '5. Certifica\u00e7\u00f5es e Conformidade',
+      title: '1. Certifica\u00e7\u00f5es e Conformidade',
       items: [
         { name: 'Parceiro Stripe', desc: 'Processamento de pagamentos via Stripe, certificado PCI DSS N\u00edvel 1. A Vale nunca lida com dados de cart\u00e3o diretamente.', earned: true , icon: 'stripe' },
         { name: 'Conforme ao RGPD', desc: 'Processamos dados pessoais de acordo com o RGPD. DPA dispon\u00edvel a pedido.', earned: true , icon: 'gdpr' },
@@ -262,7 +262,7 @@ const security = {
     date: 'Abril 2026',
     description: 'C\u00f3mo protegemos sus datos, infraestructura y negocio.',
     dataPrivacy: {
-      title: '1. Datos y Privacidad',
+      title: '2. Datos y Privacidad',
       intro: 'Solo recopilamos lo necesario para prestar nuestro servicio.',
       piiTitle: 'Datos Personales que Recopilamos',
       piiItems: ['Nombre y correo electr\u00f3nico', 'Tel\u00e9fono (opcional)', 'Historial de reservas', 'Metadatos de pago (Stripe gestiona los datos de tarjeta)', 'Direcciones IP (retenci\u00f3n de 90 d\u00edas)'],
@@ -273,7 +273,7 @@ const security = {
       dpaDesc: 'Un Acuerdo de Procesamiento de Datos (DPA) est\u00e1 disponible bajo solicitud.',
     },
     infrastructure: {
-      title: '2. Infraestructura',
+      title: '3. Infraestructura',
       desc: 'Nuestra infraestructura est\u00e1 alojada en proveedores confiables y compatibles con SOC 2:',
       services: [
         { name: 'API Backend', provider: 'Railway', detail: 'Servidor Node.js/Express' },
@@ -287,7 +287,7 @@ const security = {
       networkItems: ['TLS en todas las conexiones', 'CORS restringido', 'CSP configurado', 'Limitaci\u00f3n de tasa en todos los endpoints'],
     },
     practices: {
-      title: '3. Pr\u00e1cticas de Seguridad',
+      title: '4. Pr\u00e1cticas de Seguridad',
       encryptionTitle: 'Cifrado', encryptionItems: ['TLS 1.2+ en tr\u00e1nsito', 'AES-256-GCM en reposo', 'bcrypt factor 12', 'PBKDF2-SHA256 100k iteraciones', 'Claves API con hash SHA-256'],
       authTitle: 'Autenticaci\u00f3n', authItems: ['JWT con tokens de 45 minutos', 'Rotaci\u00f3n de refresh tokens', 'Revocaci\u00f3n al cerrar sesi\u00f3n', 'MFA basado en TOTP', 'Bloqueo tras 5 intentos fallidos', 'Control de acceso basado en roles', 'Tokens MFA pendientes bloqueados'],
       inputTitle: 'Protecci\u00f3n de Entrada', inputItems: ['Prevenci\u00f3n de inyecci\u00f3n NoSQL', 'Consultas parametrizadas', 'Payload limitado a 10KB', 'Complejidad de contrase\u00f1a obligatoria', 'Validaci\u00f3n de Content-Type', 'L\u00edmites de longitud'],
@@ -295,7 +295,7 @@ const security = {
       auditTitle: 'Auditor\u00eda', auditItems: ['Registro de auditor\u00eda completo', 'Rastreo de intentos de login', 'Correlaci\u00f3n X-Request-Id', 'Sin stack traces en respuestas'],
     },
     owasp: {
-      title: '4. Cumplimiento OWASP Top 10',
+      title: '5. Cumplimiento OWASP Top 10',
       desc: 'Todas las categor\u00edas pasan:',
       categories: [
         { id: 'A01', name: 'Control de Acceso', status: 'Pasa' }, { id: 'A02', name: 'Fallos Criptogr\u00e1ficos', status: 'Pasa' }, { id: 'A03', name: 'Inyecci\u00f3n', status: 'Pasa' }, { id: 'A04', name: 'Dise\u00f1o Inseguro', status: 'Pasa' }, { id: 'A05', name: 'Configuraci\u00f3n Incorrecta', status: 'Pasa' },
@@ -305,7 +305,7 @@ const security = {
       ciTitle: 'Seguridad Continua', ciItems: ['Dependabot', 'Auditor\u00eda npm semanal', 'Hooks pre-commit', '0 vulnerabilidades conocidas'],
     },
     certifications: {
-      title: '5. Certificaciones',
+      title: '1. Certificaciones',
       items: [
         { name: 'Partner Stripe', desc: 'Pagos via Stripe, PCI DSS Nivel 1.', earned: true , icon: 'stripe' },
         { name: 'RGPD', desc: 'Procesamiento conforme al RGPD. DPA disponible.', earned: true , icon: 'gdpr' },
@@ -323,7 +323,7 @@ const security = {
     date: 'April 2026',
     description: 'Wie wir Ihre Daten, Infrastruktur und Ihr Unternehmen sch\u00fctzen.',
     dataPrivacy: {
-      title: '1. Daten & Datenschutz',
+      title: '2. Daten & Datenschutz',
       intro: 'Wir erheben nur das Notwendige f\u00fcr unseren Service.',
       piiTitle: 'Personenbezogene Daten',
       piiItems: ['Name und E-Mail', 'Telefonnummer (optional)', 'Buchungsverlauf', 'Zahlungsmetadaten (Stripe verarbeitet Kartendaten)', 'IP-Adressen (90 Tage Aufbewahrung)'],
@@ -334,7 +334,7 @@ const security = {
       dpaDesc: 'Ein Auftragsverarbeitungsvertrag (AVV) ist auf Anfrage verf\u00fcgbar.',
     },
     infrastructure: {
-      title: '2. Infrastruktur', desc: 'Gehostet bei SOC 2-konformen Anbietern:',
+      title: '3. Infrastruktur', desc: 'Gehostet bei SOC 2-konformen Anbietern:',
       services: [
         { name: 'Backend API', provider: 'Railway', detail: 'Node.js/Express' },
         { name: 'Datenbank', provider: 'MongoDB Atlas', detail: 'Verwaltet mit TLS' },
@@ -347,7 +347,7 @@ const security = {
       networkItems: ['TLS auf allen Verbindungen', 'CORS eingeschr\u00e4nkt', 'CSP konfiguriert', 'Rate-Limiting auf allen Endpoints'],
     },
     practices: {
-      title: '3. Sicherheitspraktiken',
+      title: '4. Sicherheitspraktiken',
       encryptionTitle: 'Verschl\u00fcsselung', encryptionItems: ['TLS 1.2+ im Transit', 'AES-256-GCM im Ruhezustand', 'bcrypt Faktor 12', 'PBKDF2-SHA256 100k Iterationen', 'API-Schl\u00fcssel SHA-256 gehasht'],
       authTitle: 'Authentifizierung', authItems: ['JWT mit 45-Minuten-Token', 'Refresh-Token-Rotation', 'Token-Widerruf bei Abmeldung', 'TOTP-basierte MFA', 'Kontosperre nach 5 Fehlversuchen', 'Rollenbasierte Zugriffskontrolle', 'MFA-ausstehende Token blockiert'],
       inputTitle: 'Eingabeschutz', inputItems: ['NoSQL-Injection-Pr\u00e4vention', 'Parametrisierte Abfragen', 'Payload auf 10KB begrenzt', 'Passwortkomplexint\u00e4t', 'Content-Type-Validierung', 'L\u00e4ngenbegrenzungen'],
@@ -355,7 +355,7 @@ const security = {
       auditTitle: '\u00dcberwachung', auditItems: ['Vollst\u00e4ndiges Audit-Protokoll', 'Login-Versuch-Tracking', 'X-Request-Id-Korrelation', 'Keine Stack-Traces in Antworten'],
     },
     owasp: {
-      title: '4. OWASP Top 10 Konformit\u00e4t', desc: 'Alle Kategorien bestanden:',
+      title: '5. OWASP Top 10 Konformit\u00e4t', desc: 'Alle Kategorien bestanden:',
       categories: [
         { id: 'A01', name: 'Zugriffskontrolle', status: 'Bestanden' }, { id: 'A02', name: 'Kryptografie', status: 'Bestanden' }, { id: 'A03', name: 'Injection', status: 'Bestanden' }, { id: 'A04', name: 'Unsicheres Design', status: 'Bestanden' }, { id: 'A05', name: 'Fehlkonfiguration', status: 'Bestanden' },
         { id: 'A06', name: 'Verwundbare Komponenten', status: 'Bestanden' }, { id: 'A07', name: 'Authentifizierung', status: 'Bestanden' }, { id: 'A08', name: 'Datenintegrit\u00e4t', status: 'Bestanden' }, { id: 'A09', name: 'Protokollierung', status: 'Bestanden' }, { id: 'A10', name: 'SSRF', status: 'Bestanden' },
@@ -364,7 +364,7 @@ const security = {
       ciTitle: 'Kontinuierliche Sicherheit', ciItems: ['Dependabot', 'W\u00f6chentliches npm-Audit', 'Pre-Commit-Hooks', '0 bekannte Schwachstellen'],
     },
     certifications: {
-      title: '5. Zertifizierungen',
+      title: '1. Zertifizierungen',
       items: [
         { name: 'Stripe Partner', desc: 'Zahlungen \u00fcber Stripe, PCI DSS Level 1.', earned: true , icon: 'stripe' },
         { name: 'DSGVO', desc: 'Datenverarbeitung gem\u00e4\u00df DSGVO. AVV verf\u00fcgbar.', earned: true , icon: 'gdpr' },
@@ -382,7 +382,7 @@ const security = {
     date: 'Avril 2026',
     description: 'Comment nous prot\u00e9geons vos donn\u00e9es, votre infrastructure et votre entreprise.',
     dataPrivacy: {
-      title: '1. Donn\u00e9es et Confidentialit\u00e9',
+      title: '2. Donn\u00e9es et Confidentialit\u00e9',
       intro: 'Nous ne collectons que le n\u00e9cessaire pour fournir notre service.',
       piiTitle: 'Donn\u00e9es Personnelles Collect\u00e9es',
       piiItems: ['Nom et email', 'T\u00e9l\u00e9phone (optionnel)', 'Historique des r\u00e9servations', 'M\u00e9tadonn\u00e9es de paiement (Stripe g\u00e8re les donn\u00e9es carte)', 'Adresses IP (r\u00e9tention 90 jours)'],
@@ -393,7 +393,7 @@ const security = {
       dpaDesc: 'Un Accord de Traitement des Donn\u00e9es (DPA) est disponible sur demande.',
     },
     infrastructure: {
-      title: '2. Infrastructure', desc: 'H\u00e9berg\u00e9e chez des fournisseurs conformes SOC 2 :',
+      title: '3. Infrastructure', desc: 'H\u00e9berg\u00e9e chez des fournisseurs conformes SOC 2 :',
       services: [
         { name: 'API Backend', provider: 'Railway', detail: 'Node.js/Express' },
         { name: 'Base de donn\u00e9es', provider: 'MongoDB Atlas', detail: 'MongoDB g\u00e9r\u00e9 avec TLS' },
@@ -405,7 +405,7 @@ const security = {
       networkTitle: 'S\u00e9curit\u00e9 R\u00e9seau', networkItems: ['TLS sur toutes les connexions', 'CORS restreint', 'CSP configur\u00e9', 'Limitation de d\u00e9bit sur tous les endpoints'],
     },
     practices: {
-      title: '3. Pratiques de S\u00e9curit\u00e9',
+      title: '4. Pratiques de S\u00e9curit\u00e9',
       encryptionTitle: 'Chiffrement', encryptionItems: ['TLS 1.2+ en transit', 'AES-256-GCM au repos', 'bcrypt facteur 12', 'PBKDF2-SHA256 100k it\u00e9rations', 'Cl\u00e9s API hach\u00e9es SHA-256'],
       authTitle: 'Authentification', authItems: ['JWT avec tokens de 45 minutes', 'Rotation des refresh tokens', 'R\u00e9vocation \u00e0 la d\u00e9connexion', 'MFA bas\u00e9 sur TOTP', 'Verrouillage apr\u00e8s 5 \u00e9checs', 'Contr\u00f4le d\'acc\u00e8s par r\u00f4les', 'Tokens MFA en attente bloqu\u00e9s'],
       inputTitle: 'Protection des Entr\u00e9es', inputItems: ['Pr\u00e9vention injection NoSQL', 'Requ\u00eates param\u00e9tr\u00e9es', 'Payload limit\u00e9 \u00e0 10KB', 'Complexit\u00e9 de mot de passe', 'Validation Content-Type', 'Limites de longueur'],
@@ -413,7 +413,7 @@ const security = {
       auditTitle: 'Audit', auditItems: ['Journal d\'audit complet', 'Suivi des tentatives de connexion', 'Corr\u00e9lation X-Request-Id', 'Pas de stack traces dans les r\u00e9ponses'],
     },
     owasp: {
-      title: '4. Conformit\u00e9 OWASP Top 10', desc: 'Toutes les cat\u00e9gories passent :',
+      title: '5. Conformit\u00e9 OWASP Top 10', desc: 'Toutes les cat\u00e9gories passent :',
       categories: [
         { id: 'A01', name: 'Contr\u00f4le d\'Acc\u00e8s', status: 'Pass\u00e9' }, { id: 'A02', name: 'Cryptographie', status: 'Pass\u00e9' }, { id: 'A03', name: 'Injection', status: 'Pass\u00e9' }, { id: 'A04', name: 'Conception', status: 'Pass\u00e9' }, { id: 'A05', name: 'Configuration', status: 'Pass\u00e9' },
         { id: 'A06', name: 'Composants', status: 'Pass\u00e9' }, { id: 'A07', name: 'Authentification', status: 'Pass\u00e9' }, { id: 'A08', name: 'Int\u00e9grit\u00e9', status: 'Pass\u00e9' }, { id: 'A09', name: 'Journalisation', status: 'Pass\u00e9' }, { id: 'A10', name: 'SSRF', status: 'Pass\u00e9' },
@@ -422,7 +422,7 @@ const security = {
       ciTitle: 'S\u00e9curit\u00e9 Continue', ciItems: ['Dependabot', 'Audit npm hebdomadaire', 'Hooks pre-commit', '0 vuln\u00e9rabilit\u00e9s connues'],
     },
     certifications: {
-      title: '5. Certifications',
+      title: '1. Certifications',
       items: [
         { name: 'Partenaire Stripe', desc: 'Paiements via Stripe, PCI DSS Niveau 1.', earned: true , icon: 'stripe' },
         { name: 'RGPD', desc: 'Traitement conforme au RGPD. DPA disponible.', earned: true , icon: 'gdpr' },
@@ -440,7 +440,7 @@ const security = {
     date: '2026\u5e744\u6708',
     description: '\u6211\u4eec\u5982\u4f55\u4fdd\u62a4\u60a8\u7684\u6570\u636e\u3001\u57fa\u7840\u8bbe\u65bd\u548c\u4e1a\u52a1\u3002',
     dataPrivacy: {
-      title: '1. \u6570\u636e\u4e0e\u9690\u79c1',
+      title: '2. \u6570\u636e\u4e0e\u9690\u79c1',
       intro: '\u6211\u4eec\u53ea\u6536\u96c6\u63d0\u4f9b\u670d\u52a1\u6240\u5fc5\u9700\u7684\u6570\u636e\u3002',
       piiTitle: '\u6536\u96c6\u7684\u4e2a\u4eba\u6570\u636e',
       piiItems: ['\u59d3\u540d\u548c\u7535\u5b50\u90ae\u4ef6', '\u7535\u8bdd\u53f7\u7801\uff08\u53ef\u9009\uff09', '\u9884\u8ba2\u8bb0\u5f55', '\u652f\u4ed8\u5143\u6570\u636e\uff08Stripe\u5904\u7406\u5361\u7247\u6570\u636e\uff09', 'IP\u5730\u5740\uff0890\u5929\u4fdd\u7559\uff09'],
@@ -451,7 +451,7 @@ const security = {
       dpaDesc: '\u6570\u636e\u5904\u7406\u534f\u8bae\uff08DPA\uff09\u53ef\u5e94\u8981\u6c42\u63d0\u4f9b\u3002',
     },
     infrastructure: {
-      title: '2. \u57fa\u7840\u8bbe\u65bd', desc: '\u6258\u7ba1\u4e8e\u7b26\u5408SOC 2\u7684\u63d0\u4f9b\u5546\uff1a',
+      title: '3. \u57fa\u7840\u8bbe\u65bd', desc: '\u6258\u7ba1\u4e8e\u7b26\u5408SOC 2\u7684\u63d0\u4f9b\u5546\uff1a',
       services: [
         { name: '\u540e\u7aefAPI', provider: 'Railway', detail: 'Node.js/Express' },
         { name: '\u6570\u636e\u5e93', provider: 'MongoDB Atlas', detail: '\u6258\u7ba1MongoDB + TLS' },
@@ -463,7 +463,7 @@ const security = {
       networkTitle: '\u7f51\u7edc\u5b89\u5168', networkItems: ['\u6240\u6709\u8fde\u63a5TLS\u52a0\u5bc6', 'CORS\u9650\u5236', 'CSP\u914d\u7f6e', '\u6240\u6709\u7aef\u70b9\u901f\u7387\u9650\u5236'],
     },
     practices: {
-      title: '3. \u5b89\u5168\u5b9e\u8df5',
+      title: '4. \u5b89\u5168\u5b9e\u8df5',
       encryptionTitle: '\u52a0\u5bc6', encryptionItems: ['\u4f20\u8f93\u4e2dTLS 1.2+', '\u9759\u6001AES-256-GCM', 'bcrypt\u56e0\u5b5012', 'PBKDF2-SHA256 10\u4e07\u6b21\u8fed\u4ee3', 'API\u5bc6\u94a5SHA-256\u54c8\u5e0c'],
       authTitle: '\u8eab\u4efd\u9a8c\u8bc1', authItems: ['JWT 45\u5206\u949f\u4ee4\u724c', '\u5237\u65b0\u4ee4\u724c\u8f6e\u6362', '\u6ce8\u9500\u65f6\u64a4\u9500\u4ee4\u724c', 'TOTP MFA', '5\u6b21\u5931\u8d25\u540e\u9501\u5b9a', '\u57fa\u4e8e\u89d2\u8272\u7684\u8bbf\u95ee\u63a7\u5236', 'MFA\u5f85\u5b9a\u4ee4\u724c\u88ab\u963b\u6b62'],
       inputTitle: '\u8f93\u5165\u4fdd\u62a4', inputItems: ['NoSQL\u6ce8\u5165\u9632\u62a4', '\u53c2\u6570\u5316\u67e5\u8be2', '\u8d1f\u8f7d\u9650\u523610KB', '\u5bc6\u7801\u590d\u6742\u5ea6\u8981\u6c42', 'Content-Type\u9a8c\u8bc1', '\u957f\u5ea6\u9650\u5236'],
@@ -471,7 +471,7 @@ const security = {
       auditTitle: '\u5ba1\u8ba1', auditItems: ['\u5b8c\u6574\u5ba1\u8ba1\u65e5\u5fd7', '\u767b\u5f55\u5c1d\u8bd5\u8ddf\u8e2a', 'X-Request-Id\u5173\u8054', '\u54cd\u5e94\u4e2d\u65e0\u5806\u6808\u8ddf\u8e2a'],
     },
     owasp: {
-      title: '4. OWASP Top 10\u5408\u89c4', desc: '\u6240\u6709\u7c7b\u522b\u901a\u8fc7\uff1a',
+      title: '5. OWASP Top 10\u5408\u89c4', desc: '\u6240\u6709\u7c7b\u522b\u901a\u8fc7\uff1a',
       categories: [
         { id: 'A01', name: '\u8bbf\u95ee\u63a7\u5236', status: '\u901a\u8fc7' }, { id: 'A02', name: '\u52a0\u5bc6\u5931\u8d25', status: '\u901a\u8fc7' }, { id: 'A03', name: '\u6ce8\u5165', status: '\u901a\u8fc7' }, { id: 'A04', name: '\u4e0d\u5b89\u5168\u8bbe\u8ba1', status: '\u901a\u8fc7' }, { id: 'A05', name: '\u914d\u7f6e\u9519\u8bef', status: '\u901a\u8fc7' },
         { id: 'A06', name: '\u6f0f\u6d1e\u7ec4\u4ef6', status: '\u901a\u8fc7' }, { id: 'A07', name: '\u8eab\u4efd\u9a8c\u8bc1', status: '\u901a\u8fc7' }, { id: 'A08', name: '\u6570\u636e\u5b8c\u6574\u6027', status: '\u901a\u8fc7' }, { id: 'A09', name: '\u65e5\u5fd7\u76d1\u63a7', status: '\u901a\u8fc7' }, { id: 'A10', name: 'SSRF', status: '\u901a\u8fc7' },
@@ -480,7 +480,7 @@ const security = {
       ciTitle: '\u6301\u7eed\u5b89\u5168', ciItems: ['Dependabot', '\u6bcf\u5468npm\u5ba1\u8ba1', '\u9884\u63d0\u4ea4\u94a9\u5b50', '0\u4e2a\u5df2\u77e5\u6f0f\u6d1e'],
     },
     certifications: {
-      title: '5. \u8ba4\u8bc1',
+      title: '1. \u8ba4\u8bc1',
       items: [
         { name: 'Stripe\u5408\u4f5c\u4f19\u4f34', desc: '\u901a\u8fc7Stripe\u5904\u7406\u652f\u4ed8\uff0cPCI DSS 1\u7ea7\u3002', earned: true , icon: 'stripe' },
         { name: 'GDPR', desc: '\u7b26\u5408GDPR\u6570\u636e\u5904\u7406\u3002DPA\u53ef\u63d0\u4f9b\u3002', earned: true , icon: 'gdpr' },
@@ -498,7 +498,7 @@ const security = {
     date: '\u0623\u0628\u0631\u064a\u0644 2026',
     description: '\u0643\u064a\u0641 \u0646\u062d\u0645\u064a \u0628\u064a\u0627\u0646\u0627\u062a\u0643 \u0648\u0628\u0646\u064a\u062a\u0643 \u0627\u0644\u062a\u062d\u062a\u064a\u0629 \u0648\u0623\u0639\u0645\u0627\u0644\u0643.',
     dataPrivacy: {
-      title: '1. \u0627\u0644\u0628\u064a\u0627\u0646\u0627\u062a \u0648\u0627\u0644\u062e\u0635\u0648\u0635\u064a\u0629',
+      title: '2. \u0627\u0644\u0628\u064a\u0627\u0646\u0627\u062a \u0648\u0627\u0644\u062e\u0635\u0648\u0635\u064a\u0629',
       intro: '\u0646\u062c\u0645\u0639 \u0641\u0642\u0637 \u0645\u0627 \u0647\u0648 \u0636\u0631\u0648\u0631\u064a \u0644\u062a\u0642\u062f\u064a\u0645 \u062e\u062f\u0645\u062a\u0646\u0627.',
       piiTitle: '\u0627\u0644\u0628\u064a\u0627\u0646\u0627\u062a \u0627\u0644\u0634\u062e\u0635\u064a\u0629',
       piiItems: ['\u0627\u0644\u0627\u0633\u0645 \u0648\u0627\u0644\u0628\u0631\u064a\u062f \u0627\u0644\u0625\u0644\u0643\u062a\u0631\u0648\u0646\u064a', '\u0631\u0642\u0645 \u0627\u0644\u0647\u0627\u062a\u0641 (\u0627\u062e\u062a\u064a\u0627\u0631\u064a)', '\u0633\u062c\u0644 \u0627\u0644\u062d\u062c\u0648\u0632\u0627\u062a', '\u0628\u064a\u0627\u0646\u0627\u062a \u0627\u0644\u062f\u0641\u0639 (Stripe \u064a\u062a\u0639\u0627\u0645\u0644 \u0645\u0639 \u0628\u064a\u0627\u0646\u0627\u062a \u0627\u0644\u0628\u0637\u0627\u0642\u0629)', '\u0639\u0646\u0627\u0648\u064a\u0646 IP (90 \u064a\u0648\u0645)'],
@@ -509,7 +509,7 @@ const security = {
       dpaDesc: '\u0627\u062a\u0641\u0627\u0642\u064a\u0629 \u0645\u0639\u0627\u0644\u062c\u0629 \u0627\u0644\u0628\u064a\u0627\u0646\u0627\u062a (DPA) \u0645\u062a\u0627\u062d\u0629 \u0639\u0646\u062f \u0627\u0644\u0637\u0644\u0628.',
     },
     infrastructure: {
-      title: '2. \u0627\u0644\u0628\u0646\u064a\u0629 \u0627\u0644\u062a\u062d\u062a\u064a\u0629', desc: '\u0645\u0633\u062a\u0636\u0627\u0641\u0629 \u0644\u062f\u0649 \u0645\u0632\u0648\u062f\u064a\u0646 \u0645\u062a\u0648\u0627\u0641\u0642\u064a\u0646 \u0645\u0639 SOC 2:',
+      title: '3. \u0627\u0644\u0628\u0646\u064a\u0629 \u0627\u0644\u062a\u062d\u062a\u064a\u0629', desc: '\u0645\u0633\u062a\u0636\u0627\u0641\u0629 \u0644\u062f\u0649 \u0645\u0632\u0648\u062f\u064a\u0646 \u0645\u062a\u0648\u0627\u0641\u0642\u064a\u0646 \u0645\u0639 SOC 2:',
       services: [
         { name: '\u0648\u0627\u062c\u0647\u0629 \u0628\u0631\u0645\u062c\u0629 \u062e\u0644\u0641\u064a\u0629', provider: 'Railway', detail: 'Node.js/Express' },
         { name: '\u0642\u0627\u0639\u062f\u0629 \u0628\u064a\u0627\u0646\u0627\u062a', provider: 'MongoDB Atlas', detail: 'MongoDB \u0645\u062f\u0627\u0631 \u0645\u0639 TLS' },
@@ -521,7 +521,7 @@ const security = {
       networkTitle: '\u0623\u0645\u0627\u0646 \u0627\u0644\u0634\u0628\u0643\u0629', networkItems: ['TLS \u0639\u0644\u0649 \u062c\u0645\u064a\u0639 \u0627\u0644\u0627\u062a\u0635\u0627\u0644\u0627\u062a', 'CORS \u0645\u0642\u064a\u062f', 'CSP \u0645\u0643\u0648\u0646', '\u062a\u062d\u062f\u064a\u062f \u0645\u0639\u062f\u0644 \u0639\u0644\u0649 \u062c\u0645\u064a\u0639 \u0627\u0644\u0646\u0642\u0627\u0637'],
     },
     practices: {
-      title: '3. \u0645\u0645\u0627\u0631\u0633\u0627\u062a \u0627\u0644\u0623\u0645\u0627\u0646',
+      title: '4. \u0645\u0645\u0627\u0631\u0633\u0627\u062a \u0627\u0644\u0623\u0645\u0627\u0646',
       encryptionTitle: '\u0627\u0644\u062a\u0634\u0641\u064a\u0631', encryptionItems: ['TLS 1.2+ \u0623\u062b\u0646\u0627\u0621 \u0627\u0644\u0646\u0642\u0644', 'AES-256-GCM \u0641\u064a \u0627\u0644\u0633\u0643\u0648\u0646', 'bcrypt \u0645\u0639\u0627\u0645\u0644 12', 'PBKDF2-SHA256 100\u0623\u0644\u0641 \u062a\u0643\u0631\u0627\u0631', '\u0645\u0641\u0627\u062a\u064a\u062d API \u0645\u062c\u0632\u0623\u0629 SHA-256'],
       authTitle: '\u0627\u0644\u0645\u0635\u0627\u062f\u0642\u0629', authItems: ['JWT 45 \u062f\u0642\u064a\u0642\u0629', '\u062a\u062f\u0648\u064a\u0631 \u0631\u0645\u0648\u0632 \u0627\u0644\u062a\u062d\u062f\u064a\u062b', '\u0625\u0644\u063a\u0627\u0621 \u0639\u0646\u062f \u062a\u0633\u062c\u064a\u0644 \u0627\u0644\u062e\u0631\u0648\u062c', 'MFA \u0628\u0627\u0633\u062a\u062e\u062f\u0627\u0645 TOTP', '\u0642\u0641\u0644 \u0628\u0639\u062f 5 \u0645\u062d\u0627\u0648\u0644\u0627\u062a', '\u062a\u062d\u0643\u0645 \u0628\u0627\u0644\u0623\u062f\u0648\u0627\u0631', '\u062d\u0638\u0631 \u0631\u0645\u0648\u0632 MFA \u0627\u0644\u0645\u0639\u0644\u0642\u0629'],
       inputTitle: '\u062d\u0645\u0627\u064a\u0629 \u0627\u0644\u0625\u062f\u062e\u0627\u0644', inputItems: ['\u0645\u0646\u0639 \u062d\u0642\u0646 NoSQL', '\u0627\u0633\u062a\u0639\u0644\u0627\u0645\u0627\u062a \u0645\u0639\u0644\u0645\u064a\u0629', '\u062d\u0645\u0648\u0644\u0629 10KB', '\u062a\u0639\u0642\u064a\u062f \u0643\u0644\u0645\u0629 \u0627\u0644\u0645\u0631\u0648\u0631', '\u062a\u062d\u0642\u0642 Content-Type', '\u062d\u062f\u0648\u062f \u0627\u0644\u0637\u0648\u0644'],
@@ -529,7 +529,7 @@ const security = {
       auditTitle: '\u0627\u0644\u062a\u062f\u0642\u064a\u0642', auditItems: ['\u0633\u062c\u0644 \u062a\u062f\u0642\u064a\u0642 \u0643\u0627\u0645\u0644', '\u062a\u062a\u0628\u0639 \u0645\u062d\u0627\u0648\u0644\u0627\u062a \u0627\u0644\u062f\u062e\u0648\u0644', '\u0627\u0631\u062a\u0628\u0627\u0637 X-Request-Id', '\u0644\u0627 \u062a\u062a\u0628\u0639 \u0645\u0643\u062f\u0633 \u0641\u064a \u0627\u0644\u0631\u062f\u0648\u062f'],
     },
     owasp: {
-      title: '4. \u0627\u0645\u062a\u062b\u0627\u0644 OWASP Top 10', desc: '\u062c\u0645\u064a\u0639 \u0627\u0644\u0641\u0626\u0627\u062a \u0646\u0627\u062c\u062d\u0629:',
+      title: '5. \u0627\u0645\u062a\u062b\u0627\u0644 OWASP Top 10', desc: '\u062c\u0645\u064a\u0639 \u0627\u0644\u0641\u0626\u0627\u062a \u0646\u0627\u062c\u062d\u0629:',
       categories: [
         { id: 'A01', name: '\u0627\u0644\u062a\u062d\u0643\u0645 \u0628\u0627\u0644\u0648\u0635\u0648\u0644', status: '\u0646\u0627\u062c\u062d' }, { id: 'A02', name: '\u0627\u0644\u062a\u0634\u0641\u064a\u0631', status: '\u0646\u0627\u062c\u062d' }, { id: 'A03', name: '\u0627\u0644\u062d\u0642\u0646', status: '\u0646\u0627\u062c\u062d' }, { id: 'A04', name: '\u0627\u0644\u062a\u0635\u0645\u064a\u0645', status: '\u0646\u0627\u062c\u062d' }, { id: 'A05', name: '\u0627\u0644\u062a\u0643\u0648\u064a\u0646', status: '\u0646\u0627\u062c\u062d' },
         { id: 'A06', name: '\u0627\u0644\u0645\u0643\u0648\u0646\u0627\u062a', status: '\u0646\u0627\u062c\u062d' }, { id: 'A07', name: '\u0627\u0644\u0645\u0635\u0627\u062f\u0642\u0629', status: '\u0646\u0627\u062c\u062d' }, { id: 'A08', name: '\u0627\u0644\u0633\u0644\u0627\u0645\u0629', status: '\u0646\u0627\u062c\u062d' }, { id: 'A09', name: '\u0627\u0644\u062a\u0633\u062c\u064a\u0644', status: '\u0646\u0627\u062c\u062d' }, { id: 'A10', name: 'SSRF', status: '\u0646\u0627\u062c\u062d' },
@@ -538,7 +538,7 @@ const security = {
       ciTitle: '\u0623\u0645\u0627\u0646 \u0645\u0633\u062a\u0645\u0631', ciItems: ['Dependabot', '\u062a\u062f\u0642\u064a\u0642 npm \u0623\u0633\u0628\u0648\u0639\u064a', 'hooks \u0642\u0628\u0644 \u0627\u0644\u062a\u0632\u0627\u0645', '0 \u062b\u063a\u0631\u0627\u062a \u0645\u0639\u0631\u0648\u0641\u0629'],
     },
     certifications: {
-      title: '5. \u0627\u0644\u0634\u0647\u0627\u062f\u0627\u062a',
+      title: '1. \u0627\u0644\u0634\u0647\u0627\u062f\u0627\u062a',
       items: [
         { name: '\u0634\u0631\u064a\u0643 Stripe', desc: '\u0645\u062f\u0641\u0648\u0639\u0627\u062a \u0639\u0628\u0631 Stripe\u060c PCI DSS \u0627\u0644\u0645\u0633\u062a\u0648\u0649 1.', earned: true , icon: 'stripe' },
         { name: 'GDPR', desc: '\u0645\u0639\u0627\u0644\u062c\u0629 \u0645\u062a\u0648\u0627\u0641\u0642\u0629 \u0645\u0639 GDPR. DPA \u0645\u062a\u0627\u062d.', earned: true , icon: 'gdpr' },
