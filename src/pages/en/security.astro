@@ -1,0 +1,177 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Navigation from '../../components/Navigation.astro';
+import Footer from '../../components/Footer.astro';
+import { getSecurityTranslations } from '../../i18n/security';
+
+const locale = 'en';
+const t = getSecurityTranslations(locale);
+---
+
+<Layout
+  title={`${t.title} - Vale Park`}
+  description={t.description}
+  locale={locale}
+>
+  <Navigation locale={locale} />
+  <main class="py-24 bg-themed">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- Header -->
+      <p class="text-vale-primary font-semibold text-sm uppercase tracking-wider mb-2">{t.subtitle}</p>
+      <h1 class="text-4xl font-bold text-themed mb-2">{t.title}</h1>
+      <p class="text-themed-secondary mb-2">{t.description}</p>
+      <p class="text-themed-tertiary text-sm mb-12"><strong>{t.lastUpdated}</strong>: {t.date}</p>
+
+      <!-- 1. Data & Privacy -->
+      <section class="mb-12">
+        <h2 class="text-2xl font-semibold text-themed mb-4">{t.dataPrivacy.title}</h2>
+        <p class="text-themed-secondary leading-relaxed mb-6">{t.dataPrivacy.intro}</p>
+
+        <h3 class="text-lg font-semibold text-themed mt-6 mb-3">{t.dataPrivacy.piiTitle}</h3>
+        <ul class="list-disc pl-6 text-themed-secondary space-y-1 mb-6">
+          {t.dataPrivacy.piiItems.map((item) => <li>{item}</li>)}
+        </ul>
+
+        <h3 class="text-lg font-semibold text-themed mt-6 mb-3">{t.dataPrivacy.retentionTitle}</h3>
+        <ul class="list-disc pl-6 text-themed-secondary space-y-1 mb-6">
+          {t.dataPrivacy.retentionItems.map((item) => <li>{item}</li>)}
+        </ul>
+
+        <h3 class="text-lg font-semibold text-themed mt-6 mb-3">{t.dataPrivacy.gdprTitle}</h3>
+        <p class="text-themed-secondary leading-relaxed mb-4">{t.dataPrivacy.gdprDesc}</p>
+        <p class="text-themed-secondary leading-relaxed">{t.dataPrivacy.dpaDesc}</p>
+      </section>
+
+      <!-- 2. Infrastructure -->
+      <section class="mb-12">
+        <h2 class="text-2xl font-semibold text-themed mb-4">{t.infrastructure.title}</h2>
+        <p class="text-themed-secondary leading-relaxed mb-6">{t.infrastructure.desc}</p>
+
+        <div class="overflow-x-auto rounded-xl border border-themed mb-6">
+          <table class="w-full text-sm">
+            <thead class="bg-themed-secondary">
+              <tr>
+                <th class="text-left p-3 text-themed font-semibold">Service</th>
+                <th class="text-left p-3 text-themed font-semibold">Provider</th>
+                <th class="text-left p-3 text-themed font-semibold">Detail</th>
+              </tr>
+            </thead>
+            <tbody class="text-themed-secondary">
+              {t.infrastructure.services.map((s) => (
+                <tr class="border-t border-themed">
+                  <td class="p-3 font-medium text-themed">{s.name}</td>
+                  <td class="p-3">{s.provider}</td>
+                  <td class="p-3">{s.detail}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        <h3 class="text-lg font-semibold text-themed mt-6 mb-3">{t.infrastructure.networkTitle}</h3>
+        <ul class="list-disc pl-6 text-themed-secondary space-y-1">
+          {t.infrastructure.networkItems.map((item) => <li>{item}</li>)}
+        </ul>
+      </section>
+
+      <!-- 3. Security Practices -->
+      <section class="mb-12">
+        <h2 class="text-2xl font-semibold text-themed mb-6">{t.practices.title}</h2>
+
+        {[
+          { title: t.practices.encryptionTitle, items: t.practices.encryptionItems },
+          { title: t.practices.authTitle, items: t.practices.authItems },
+          { title: t.practices.inputTitle, items: t.practices.inputItems },
+          { title: t.practices.headersTitle, items: t.practices.headersItems },
+          { title: t.practices.auditTitle, items: t.practices.auditItems },
+        ].map((group) => (
+          <div class="mb-6">
+            <h3 class="text-lg font-semibold text-themed mb-3">{group.title}</h3>
+            <ul class="list-disc pl-6 text-themed-secondary space-y-1">
+              {group.items.map((item) => <li>{item}</li>)}
+            </ul>
+          </div>
+        ))}
+      </section>
+
+      <!-- 4. OWASP Top 10 -->
+      <section class="mb-12">
+        <h2 class="text-2xl font-semibold text-themed mb-4">{t.owasp.title}</h2>
+        <p class="text-themed-secondary leading-relaxed mb-6">{t.owasp.desc}</p>
+
+        <div class="overflow-x-auto rounded-xl border border-themed mb-6">
+          <table class="w-full text-sm">
+            <thead class="bg-themed-secondary">
+              <tr>
+                <th class="text-left p-3 text-themed font-semibold">ID</th>
+                <th class="text-left p-3 text-themed font-semibold">Category</th>
+                <th class="text-left p-3 text-themed font-semibold">Status</th>
+              </tr>
+            </thead>
+            <tbody class="text-themed-secondary">
+              {t.owasp.categories.map((c) => (
+                <tr class="border-t border-themed">
+                  <td class="p-3 font-mono text-themed">{c.id}</td>
+                  <td class="p-3">{c.name}</td>
+                  <td class="p-3">
+                    <span class="inline-flex items-center gap-1.5 text-green-600 dark:text-green-400 font-medium">
+                      <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                      {c.status}
+                    </span>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        <h3 class="text-lg font-semibold text-themed mt-6 mb-3">{t.owasp.testingTitle}</h3>
+        <ul class="list-disc pl-6 text-themed-secondary space-y-1 mb-6">
+          {t.owasp.testingItems.map((item) => <li>{item}</li>)}
+        </ul>
+
+        <h3 class="text-lg font-semibold text-themed mt-6 mb-3">{t.owasp.ciTitle}</h3>
+        <ul class="list-disc pl-6 text-themed-secondary space-y-1">
+          {t.owasp.ciItems.map((item) => <li>{item}</li>)}
+        </ul>
+      </section>
+
+      <!-- 5. Certifications -->
+      <section class="mb-12">
+        <h2 class="text-2xl font-semibold text-themed mb-6">{t.certifications.title}</h2>
+        <div class="space-y-4">
+          {t.certifications.items.map((cert) => (
+            <div class="rounded-xl border border-themed p-5 bg-themed-secondary">
+              <div class="flex items-center gap-3 mb-2">
+                {cert.earned ? (
+                  <span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-green-100 dark:bg-green-900/30">
+                    <svg class="w-4 h-4 text-green-600 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                  </span>
+                ) : (
+                  <span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-yellow-100 dark:bg-yellow-900/30">
+                    <svg class="w-4 h-4 text-yellow-600 dark:text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"/></svg>
+                  </span>
+                )}
+                <h3 class="font-semibold text-themed">{cert.name}</h3>
+              </div>
+              <p class="text-themed-secondary text-sm">{cert.desc}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- 6. Contact -->
+      <section class="mb-12">
+        <h2 class="text-2xl font-semibold text-themed mb-4">{t.contact.title}</h2>
+        <p class="text-themed-secondary leading-relaxed mb-6">{t.contact.desc}</p>
+
+        <div class="rounded-xl border border-themed p-6 bg-themed-secondary space-y-2">
+          <p class="text-themed"><strong>{t.contact.emailLabel}:</strong> <a href={`mailto:${t.contact.email}`} class="text-vale-primary underline">{t.contact.email}</a></p>
+          <p class="text-themed-secondary text-sm">{t.contact.pgpNote}</p>
+          <p class="text-themed-secondary text-sm">{t.contact.responseTime}</p>
+        </div>
+      </section>
+    </div>
+  </main>
+  <Footer locale={locale} />
+</Layout>
