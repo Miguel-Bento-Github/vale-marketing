@@ -173,7 +173,7 @@ export const translations = {
         terms: 'Terms of Service',
         security: 'Security',
       },
-      copyright: '© 2025 Vale. All rights reserved.',
+      copyright: '© 2026 Vale. All rights reserved.',
     },
   },
   pt: {
@@ -350,7 +350,7 @@ export const translations = {
         terms: 'Termos de Serviço',
         security: 'Segurança',
       },
-      copyright: '© 2025 Vale. Todos os direitos reservados.',
+      copyright: '© 2026 Vale. Todos os direitos reservados.',
     },
   },
   es: {
@@ -527,7 +527,7 @@ export const translations = {
         terms: 'Términos de Servicio',
         security: 'Seguridad',
       },
-      copyright: '© 2025 Vale. Todos los derechos reservados.',
+      copyright: '© 2026 Vale. Todos los derechos reservados.',
     },
   },
   zh: {
@@ -704,7 +704,7 @@ export const translations = {
         terms: '服务条款',
         security: '安全',
       },
-      copyright: '© 2025 Vale. 保留所有权利。',
+      copyright: '© 2026 Vale. 保留所有权利。',
     },
   },
   de: {
@@ -881,7 +881,7 @@ export const translations = {
         terms: 'Nutzungsbedingungen',
         security: 'Sicherheit',
       },
-      copyright: '© 2025 Vale. Alle Rechte vorbehalten.',
+      copyright: '© 2026 Vale. Alle Rechte vorbehalten.',
     },
   },
   fr: {
@@ -1058,7 +1058,7 @@ export const translations = {
         terms: 'Conditions d\'Utilisation',
         security: 'Sécurité',
       },
-      copyright: '© 2025 Vale. Tous droits réservés.',
+      copyright: '© 2026 Vale. Tous droits réservés.',
     },
   },
   ar: {
@@ -1235,7 +1235,7 @@ export const translations = {
         terms: 'شروط الخدمة',
         security: 'الأمان',
       },
-      copyright: '© 2025 Vale. جميع الحقوق محفوظة.',
+      copyright: '© 2026 Vale. جميع الحقوق محفوظة.',
     },
   },
 } as const;
