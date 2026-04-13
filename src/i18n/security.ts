@@ -132,17 +132,17 @@ const security = {
     certifications: {
       title: '5. Certifications & Compliance',
       items: [
-        { name: 'Stripe Partner', desc: 'Payment processing through Stripe, which maintains PCI DSS Level 1 certification. Vale never handles, stores, or transmits card data directly.', earned: true },
-        { name: 'GDPR Compliant', desc: 'We process personal data in accordance with the EU General Data Protection Regulation. A DPA is available on request.', earned: true },
-        { name: 'OWASP Aligned', desc: 'Self-attested compliance with the OWASP Top 10 (2025), verified by automated and manual penetration testing.', earned: true },
-        { name: 'ISO 27001', desc: 'Information security management system certification. Currently in preparation.', earned: false },
+        { name: 'Stripe Partner', desc: 'Payment processing through Stripe, which maintains PCI DSS Level 1 certification. Vale never handles, stores, or transmits card data directly.', earned: true, icon: 'stripe' },
+        { name: 'GDPR Compliant', desc: 'We process personal data in accordance with the EU General Data Protection Regulation. A DPA is available on request.', earned: true, icon: 'gdpr' },
+        { name: 'OWASP Aligned', desc: 'Self-attested compliance with the OWASP Top 10 (2025), verified by automated and manual penetration testing.', earned: true, icon: 'owasp' },
+        { name: 'ISO 27001', desc: 'Information security management system certification. Currently in preparation.', earned: false, icon: 'iso' },
       ],
     },
 
     contact: {
       title: '6. Security Disclosure',
       desc: 'If you discover a security vulnerability, please report it responsibly:',
-      email: 'security@valepark.org',
+      email: 'privacy@valepark.org',
       emailLabel: 'Email',
       pgpNote: 'Do not open public GitHub issues for security vulnerabilities.',
       responseTime: 'We acknowledge reports within 24 hours and provide a resolution timeline within 72 hours.',
@@ -238,17 +238,17 @@ const security = {
     certifications: {
       title: '5. Certifica\u00e7\u00f5es e Conformidade',
       items: [
-        { name: 'Parceiro Stripe', desc: 'Processamento de pagamentos via Stripe, certificado PCI DSS N\u00edvel 1. A Vale nunca lida com dados de cart\u00e3o diretamente.', earned: true },
-        { name: 'Conforme ao RGPD', desc: 'Processamos dados pessoais de acordo com o RGPD. DPA dispon\u00edvel a pedido.', earned: true },
-        { name: 'Alinhado com OWASP', desc: 'Conformidade auto-atestada com o OWASP Top 10 (2025), verificada por testes automatizados e manuais.', earned: true },
-        { name: 'ISO 27001', desc: 'Certifica\u00e7\u00e3o de sistema de gest\u00e3o de seguran\u00e7a da informa\u00e7\u00e3o. Em prepara\u00e7\u00e3o.', earned: false },
+        { name: 'Parceiro Stripe', desc: 'Processamento de pagamentos via Stripe, certificado PCI DSS N\u00edvel 1. A Vale nunca lida com dados de cart\u00e3o diretamente.', earned: true , icon: 'stripe' },
+        { name: 'Conforme ao RGPD', desc: 'Processamos dados pessoais de acordo com o RGPD. DPA dispon\u00edvel a pedido.', earned: true , icon: 'gdpr' },
+        { name: 'Alinhado com OWASP', desc: 'Conformidade auto-atestada com o OWASP Top 10 (2025), verificada por testes automatizados e manuais.', earned: true , icon: 'owasp' },
+        { name: 'ISO 27001', desc: 'Certifica\u00e7\u00e3o de sistema de gest\u00e3o de seguran\u00e7a da informa\u00e7\u00e3o. Em prepara\u00e7\u00e3o.', earned: false , icon: 'iso' },
       ],
     },
 
     contact: {
       title: '6. Divulga\u00e7\u00e3o de Seguran\u00e7a',
       desc: 'Se descobrir uma vulnerabilidade de seguran\u00e7a, reporte-a de forma respons\u00e1vel:',
-      email: 'security@valepark.org',
+      email: 'privacy@valepark.org',
       emailLabel: 'Email',
       pgpNote: 'N\u00e3o abra issues p\u00fablicas no GitHub para vulnerabilidades de seguran\u00e7a.',
       responseTime: 'Acusamos rece\u00e7\u00e3o em 24 horas e fornecemos um prazo de resolu\u00e7\u00e3o em 72 horas.',
@@ -307,13 +307,13 @@ const security = {
     certifications: {
       title: '5. Certificaciones',
       items: [
-        { name: 'Partner Stripe', desc: 'Pagos via Stripe, PCI DSS Nivel 1.', earned: true },
-        { name: 'RGPD', desc: 'Procesamiento conforme al RGPD. DPA disponible.', earned: true },
-        { name: 'OWASP', desc: 'Conformidad auto-atestada OWASP Top 10 (2025).', earned: true },
-        { name: 'ISO 27001', desc: 'En preparaci\u00f3n.', earned: false },
+        { name: 'Partner Stripe', desc: 'Pagos via Stripe, PCI DSS Nivel 1.', earned: true , icon: 'stripe' },
+        { name: 'RGPD', desc: 'Procesamiento conforme al RGPD. DPA disponible.', earned: true , icon: 'gdpr' },
+        { name: 'OWASP', desc: 'Conformidad auto-atestada OWASP Top 10 (2025).', earned: true , icon: 'owasp' },
+        { name: 'ISO 27001', desc: 'En preparaci\u00f3n.', earned: false , icon: 'iso' },
       ],
     },
-    contact: { title: '6. Divulgaci\u00f3n de Seguridad', desc: 'Reporte vulnerabilidades de forma responsable:', email: 'security@valepark.org', emailLabel: 'Email', pgpNote: 'No abra issues p\u00fablicos en GitHub.', responseTime: 'Acusamos recibo en 24 horas.' },
+    contact: { title: '6. Divulgaci\u00f3n de Seguridad', desc: 'Reporte vulnerabilidades de forma responsable:', email: 'privacy@valepark.org', emailLabel: 'Email', pgpNote: 'No abra issues p\u00fablicos en GitHub.', responseTime: 'Acusamos recibo en 24 horas.' },
   },
 
   de: {
@@ -366,13 +366,13 @@ const security = {
     certifications: {
       title: '5. Zertifizierungen',
       items: [
-        { name: 'Stripe Partner', desc: 'Zahlungen \u00fcber Stripe, PCI DSS Level 1.', earned: true },
-        { name: 'DSGVO', desc: 'Datenverarbeitung gem\u00e4\u00df DSGVO. AVV verf\u00fcgbar.', earned: true },
-        { name: 'OWASP', desc: 'Selbst-attestierte OWASP Top 10 (2025) Konformit\u00e4t.', earned: true },
-        { name: 'ISO 27001', desc: 'In Vorbereitung.', earned: false },
+        { name: 'Stripe Partner', desc: 'Zahlungen \u00fcber Stripe, PCI DSS Level 1.', earned: true , icon: 'stripe' },
+        { name: 'DSGVO', desc: 'Datenverarbeitung gem\u00e4\u00df DSGVO. AVV verf\u00fcgbar.', earned: true , icon: 'gdpr' },
+        { name: 'OWASP', desc: 'Selbst-attestierte OWASP Top 10 (2025) Konformit\u00e4t.', earned: true , icon: 'owasp' },
+        { name: 'ISO 27001', desc: 'In Vorbereitung.', earned: false , icon: 'iso' },
       ],
     },
-    contact: { title: '6. Sicherheitsmeldung', desc: 'Melden Sie Schwachstellen verantwortungsvoll:', email: 'security@valepark.org', emailLabel: 'E-Mail', pgpNote: 'Keine \u00f6ffentlichen GitHub-Issues.', responseTime: 'Best\u00e4tigung innerhalb von 24 Stunden.' },
+    contact: { title: '6. Sicherheitsmeldung', desc: 'Melden Sie Schwachstellen verantwortungsvoll:', email: 'privacy@valepark.org', emailLabel: 'E-Mail', pgpNote: 'Keine \u00f6ffentlichen GitHub-Issues.', responseTime: 'Best\u00e4tigung innerhalb von 24 Stunden.' },
   },
 
   fr: {
@@ -424,13 +424,13 @@ const security = {
     certifications: {
       title: '5. Certifications',
       items: [
-        { name: 'Partenaire Stripe', desc: 'Paiements via Stripe, PCI DSS Niveau 1.', earned: true },
-        { name: 'RGPD', desc: 'Traitement conforme au RGPD. DPA disponible.', earned: true },
-        { name: 'OWASP', desc: 'Conformit\u00e9 auto-attest\u00e9e OWASP Top 10 (2025).', earned: true },
-        { name: 'ISO 27001', desc: 'En pr\u00e9paration.', earned: false },
+        { name: 'Partenaire Stripe', desc: 'Paiements via Stripe, PCI DSS Niveau 1.', earned: true , icon: 'stripe' },
+        { name: 'RGPD', desc: 'Traitement conforme au RGPD. DPA disponible.', earned: true , icon: 'gdpr' },
+        { name: 'OWASP', desc: 'Conformit\u00e9 auto-attest\u00e9e OWASP Top 10 (2025).', earned: true , icon: 'owasp' },
+        { name: 'ISO 27001', desc: 'En pr\u00e9paration.', earned: false , icon: 'iso' },
       ],
     },
-    contact: { title: '6. Divulgation de S\u00e9curit\u00e9', desc: 'Signalez les vuln\u00e9rabilit\u00e9s de mani\u00e8re responsable :', email: 'security@valepark.org', emailLabel: 'Email', pgpNote: 'Pas d\'issues GitHub publiques.', responseTime: 'Accus\u00e9 de r\u00e9ception sous 24 heures.' },
+    contact: { title: '6. Divulgation de S\u00e9curit\u00e9', desc: 'Signalez les vuln\u00e9rabilit\u00e9s de mani\u00e8re responsable :', email: 'privacy@valepark.org', emailLabel: 'Email', pgpNote: 'Pas d\'issues GitHub publiques.', responseTime: 'Accus\u00e9 de r\u00e9ception sous 24 heures.' },
   },
 
   zh: {
@@ -482,13 +482,13 @@ const security = {
     certifications: {
       title: '5. \u8ba4\u8bc1',
       items: [
-        { name: 'Stripe\u5408\u4f5c\u4f19\u4f34', desc: '\u901a\u8fc7Stripe\u5904\u7406\u652f\u4ed8\uff0cPCI DSS 1\u7ea7\u3002', earned: true },
-        { name: 'GDPR', desc: '\u7b26\u5408GDPR\u6570\u636e\u5904\u7406\u3002DPA\u53ef\u63d0\u4f9b\u3002', earned: true },
-        { name: 'OWASP', desc: '\u81ea\u8bc1OWASP Top 10 (2025)\u5408\u89c4\u3002', earned: true },
-        { name: 'ISO 27001', desc: '\u51c6\u5907\u4e2d\u3002', earned: false },
+        { name: 'Stripe\u5408\u4f5c\u4f19\u4f34', desc: '\u901a\u8fc7Stripe\u5904\u7406\u652f\u4ed8\uff0cPCI DSS 1\u7ea7\u3002', earned: true , icon: 'stripe' },
+        { name: 'GDPR', desc: '\u7b26\u5408GDPR\u6570\u636e\u5904\u7406\u3002DPA\u53ef\u63d0\u4f9b\u3002', earned: true , icon: 'gdpr' },
+        { name: 'OWASP', desc: '\u81ea\u8bc1OWASP Top 10 (2025)\u5408\u89c4\u3002', earned: true , icon: 'owasp' },
+        { name: 'ISO 27001', desc: '\u51c6\u5907\u4e2d\u3002', earned: false , icon: 'iso' },
       ],
     },
-    contact: { title: '6. \u5b89\u5168\u62ab\u9732', desc: '\u8bf7\u8d1f\u8d23\u4efb\u5730\u62a5\u544a\u6f0f\u6d1e\uff1a', email: 'security@valepark.org', emailLabel: '\u90ae\u7bb1', pgpNote: '\u8bf7\u52ff\u5728GitHub\u521b\u5efa\u516c\u5f00issue\u3002', responseTime: '24\u5c0f\u65f6\u5185\u786e\u8ba4\u6536\u5230\u3002' },
+    contact: { title: '6. \u5b89\u5168\u62ab\u9732', desc: '\u8bf7\u8d1f\u8d23\u4efb\u5730\u62a5\u544a\u6f0f\u6d1e\uff1a', email: 'privacy@valepark.org', emailLabel: '\u90ae\u7bb1', pgpNote: '\u8bf7\u52ff\u5728GitHub\u521b\u5efa\u516c\u5f00issue\u3002', responseTime: '24\u5c0f\u65f6\u5185\u786e\u8ba4\u6536\u5230\u3002' },
   },
 
   ar: {
@@ -540,13 +540,13 @@ const security = {
     certifications: {
       title: '5. \u0627\u0644\u0634\u0647\u0627\u062f\u0627\u062a',
       items: [
-        { name: '\u0634\u0631\u064a\u0643 Stripe', desc: '\u0645\u062f\u0641\u0648\u0639\u0627\u062a \u0639\u0628\u0631 Stripe\u060c PCI DSS \u0627\u0644\u0645\u0633\u062a\u0648\u0649 1.', earned: true },
-        { name: 'GDPR', desc: '\u0645\u0639\u0627\u0644\u062c\u0629 \u0645\u062a\u0648\u0627\u0641\u0642\u0629 \u0645\u0639 GDPR. DPA \u0645\u062a\u0627\u062d.', earned: true },
-        { name: 'OWASP', desc: '\u0627\u0645\u062a\u062b\u0627\u0644 \u0630\u0627\u062a\u064a OWASP Top 10 (2025).', earned: true },
-        { name: 'ISO 27001', desc: '\u0642\u064a\u062f \u0627\u0644\u062a\u062d\u0636\u064a\u0631.', earned: false },
+        { name: '\u0634\u0631\u064a\u0643 Stripe', desc: '\u0645\u062f\u0641\u0648\u0639\u0627\u062a \u0639\u0628\u0631 Stripe\u060c PCI DSS \u0627\u0644\u0645\u0633\u062a\u0648\u0649 1.', earned: true , icon: 'stripe' },
+        { name: 'GDPR', desc: '\u0645\u0639\u0627\u0644\u062c\u0629 \u0645\u062a\u0648\u0627\u0641\u0642\u0629 \u0645\u0639 GDPR. DPA \u0645\u062a\u0627\u062d.', earned: true , icon: 'gdpr' },
+        { name: 'OWASP', desc: '\u0627\u0645\u062a\u062b\u0627\u0644 \u0630\u0627\u062a\u064a OWASP Top 10 (2025).', earned: true , icon: 'owasp' },
+        { name: 'ISO 27001', desc: '\u0642\u064a\u062f \u0627\u0644\u062a\u062d\u0636\u064a\u0631.', earned: false , icon: 'iso' },
       ],
     },
-    contact: { title: '6. \u0627\u0644\u0625\u0641\u0635\u0627\u062d \u0627\u0644\u0623\u0645\u0646\u064a', desc: '\u0623\u0628\u0644\u063a \u0639\u0646 \u0627\u0644\u062b\u063a\u0631\u0627\u062a \u0628\u0645\u0633\u0624\u0648\u0644\u064a\u0629:', email: 'security@valepark.org', emailLabel: '\u0627\u0644\u0628\u0631\u064a\u062f', pgpNote: '\u0644\u0627 \u062a\u0641\u062a\u062d issues \u0639\u0627\u0645\u0629 \u0641\u064a GitHub.', responseTime: '\u0646\u0624\u0643\u062f \u0627\u0644\u0627\u0633\u062a\u0644\u0627\u0645 \u062e\u0644\u0627\u0644 24 \u0633\u0627\u0639\u0629.' },
+    contact: { title: '6. \u0627\u0644\u0625\u0641\u0635\u0627\u062d \u0627\u0644\u0623\u0645\u0646\u064a', desc: '\u0623\u0628\u0644\u063a \u0639\u0646 \u0627\u0644\u062b\u063a\u0631\u0627\u062a \u0628\u0645\u0633\u0624\u0648\u0644\u064a\u0629:', email: 'privacy@valepark.org', emailLabel: '\u0627\u0644\u0628\u0631\u064a\u062f', pgpNote: '\u0644\u0627 \u062a\u0641\u062a\u062d issues \u0639\u0627\u0645\u0629 \u0641\u064a GitHub.', responseTime: '\u0646\u0624\u0643\u062f \u0627\u0644\u0627\u0633\u062a\u0644\u0627\u0645 \u062e\u0644\u0627\u0644 24 \u0633\u0627\u0639\u0629.' },
   },
 };
 
