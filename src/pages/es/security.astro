@@ -68,23 +68,15 @@ const t = getSecurityTranslations(locale);
         </div>
       </section>
 
-      <!-- 1. Data & Privacy -->
+      <!-- 2. Data & Privacy -->
       <section class="mb-12">
         <h2 class="text-2xl font-semibold text-themed mb-4">{t.dataPrivacy.title}</h2>
-        <p class="text-themed-secondary leading-relaxed mb-6">{t.dataPrivacy.intro}</p>
+        <p class="text-themed-secondary leading-relaxed mb-6">{t.dataPrivacy.intro} <a href={`/${locale}/privacy`} class="text-vale-primary underline">{t.dataPrivacy.privacyLink}</a>.</p>
 
-        <h3 class="text-lg font-semibold text-themed mt-6 mb-3">{t.dataPrivacy.piiTitle}</h3>
         <ul class="list-disc pl-6 text-themed-secondary space-y-1 mb-6">
-          {t.dataPrivacy.piiItems.map((item) => <li>{item}</li>)}
+          {t.dataPrivacy.highlights.map((item) => <li>{item}</li>)}
         </ul>
 
-        <h3 class="text-lg font-semibold text-themed mt-6 mb-3">{t.dataPrivacy.retentionTitle}</h3>
-        <ul class="list-disc pl-6 text-themed-secondary space-y-1 mb-6">
-          {t.dataPrivacy.retentionItems.map((item) => <li>{item}</li>)}
-        </ul>
-
-        <h3 class="text-lg font-semibold text-themed mt-6 mb-3">{t.dataPrivacy.gdprTitle}</h3>
-        <p class="text-themed-secondary leading-relaxed mb-4">{t.dataPrivacy.gdprDesc}</p>
         <p class="text-themed-secondary leading-relaxed">{t.dataPrivacy.dpaDesc}</p>
       </section>
 
