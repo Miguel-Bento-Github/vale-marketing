@@ -33,6 +33,22 @@ const t = getLegalTranslations(locale).terms;
       </section>
 
       <section class="mb-12">
+        <h2 class="text-2xl font-semibold text-themed mb-4">{t.platformRole.title}</h2>
+        <p class="text-themed-secondary leading-relaxed mb-4">{t.platformRole.desc}</p>
+        <ul class="list-disc pl-6 text-themed-secondary space-y-1">
+          {t.platformRole.items.map((item) => <li>{item}</li>)}
+        </ul>
+      </section>
+
+      <section class="mb-12">
+        <h2 class="text-2xl font-semibold text-themed mb-4">{t.venueOperator.title}</h2>
+        <p class="text-themed-secondary leading-relaxed mb-4">{t.venueOperator.desc}</p>
+        <ul class="list-disc pl-6 text-themed-secondary space-y-1">
+          {t.venueOperator.items.map((item) => <li>{item}</li>)}
+        </ul>
+      </section>
+
+      <section class="mb-12">
         <h2 class="text-2xl font-semibold text-themed mb-4">{t.accounts.title}</h2>
         <p class="text-themed-secondary leading-relaxed">{t.accounts.desc}</p>
       </section>
@@ -53,6 +69,11 @@ const t = getLegalTranslations(locale).terms;
       <section class="mb-12">
         <h2 class="text-2xl font-semibold text-themed mb-4">{t.ip.title}</h2>
         <p class="text-themed-secondary leading-relaxed">{t.ip.desc}</p>
+      </section>
+
+      <section class="mb-12">
+        <h2 class="text-2xl font-semibold text-themed mb-4">{t.gateAccess.title}</h2>
+        <p class="text-themed-secondary leading-relaxed">{t.gateAccess.desc}</p>
       </section>
 
       <section class="mb-12">
