@@ -93,7 +93,7 @@ export const translations = {
           icon: 'gate',
           title: 'IoT Gate Control',
           description:
-            'Integrate with Shelly devices for automated gate access. Secure tokens, no physical keys required.',
+            'Integrate with smart IoT devices for automated gate access. Secure tokens, no physical keys required.',
         },
       ],
     },
@@ -270,7 +270,7 @@ export const translations = {
           icon: 'gate',
           title: 'Controlo IoT de Portões',
           description:
-            'Integração com dispositivos Shelly para acesso automatizado. Tokens seguros, sem chaves físicas.',
+            'Integração com dispositivos IoT inteligentes para acesso automatizado. Tokens seguros, sem chaves físicas.',
         },
       ],
     },
@@ -447,7 +447,7 @@ export const translations = {
           icon: 'gate',
           title: 'Control IoT de Puertas',
           description:
-            'Integración con dispositivos Shelly para acceso automatizado. Tokens seguros, sin llaves físicas.',
+            'Integración con dispositivos IoT inteligentes para acceso automatizado. Tokens seguros, sin llaves físicas.',
         },
       ],
     },
@@ -624,7 +624,7 @@ export const translations = {
           icon: 'gate',
           title: '物联网门禁控制',
           description:
-            '与Shelly设备集成，实现自动门禁。安全令牌，无需实体钥匙。',
+            '与智能IoT设备集成，实现自动门禁。安全令牌，无需实体钥匙。',
         },
       ],
     },
@@ -801,7 +801,7 @@ export const translations = {
           icon: 'gate',
           title: 'IoT-Schrankensteuerung',
           description:
-            'Integration mit Shelly-Geräten für automatisierten Zugang. Sichere Tokens, keine physischen Schlüssel nötig.',
+            'Integration mit intelligenten IoT-Geräten für automatisierten Zugang. Sichere Tokens, keine physischen Schlüssel nötig.',
         },
       ],
     },
@@ -978,7 +978,7 @@ export const translations = {
           icon: 'gate',
           title: 'Contrôle IoT des Barrières',
           description:
-            'Intégration avec les appareils Shelly pour un accès automatisé. Jetons sécurisés, pas de clés physiques.',
+            'Intégration avec des appareils IoT intelligents pour un accès automatisé. Jetons sécurisés, pas de clés physiques.',
         },
       ],
     },
@@ -1155,7 +1155,7 @@ export const translations = {
           icon: 'gate',
           title: 'التحكم في البوابات عبر IoT',
           description:
-            'التكامل مع أجهزة Shelly للوصول الآلي. رموز آمنة، لا حاجة لمفاتيح فعلية.',
+            'التكامل مع أجهزة IoT الذكية للوصول الآلي. رموز آمنة، لا حاجة لمفاتيح فعلية.',
         },
       ],
     },
