@@ -128,7 +128,7 @@ const ogLocale = localeMap[currentLocale]?.og || 'en_GB';
               current = entry.target.id;
               var hash = current === 'hero' ? '' : '#' + current;
               if (location.hash !== hash && ('#' + current) !== location.hash || (current === 'hero' && location.hash)) {
-                history.replaceState(null, '', location.pathname + hash);
+                history.replaceState(null, '', location.pathname + location.search + hash);
               }
             }
           });
