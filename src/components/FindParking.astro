@@ -104,7 +104,7 @@ const WIDGET_SCRIPT_URL = 'https://widget.valepark.org/vale-widget-cdn.js';
   const retryButton = document.getElementById('retry-button');
 
   let locations = [];
-  let widgetScriptLoaded = false;
+  let widgetReadyPromise = null;
 
   function escapeHtml(value) {
     const div = document.createElement('div');
@@ -112,32 +112,43 @@ const WIDGET_SCRIPT_URL = 'https://widget.valepark.org/vale-widget-cdn.js';
     return div.innerHTML;
   }
 
-  function loadWidgetScript() {
-    if (widgetScriptLoaded) return;
-    widgetScriptLoaded = true;
-    const script = document.createElement('script');
-    script.src = widgetScriptUrl;
-    script.async = true;
-    document.head.appendChild(script);
+  function ensureWidgetReady() {
+    widgetReadyPromise ??= (async () => {
+      let stripePublishableKey;
+      try {
+        const response = await fetch(`${apiBaseUrl}/api/config/stripe-key`);
+        const payload = await response.json();
+        stripePublishableKey = payload?.data?.publishableKey || undefined;
+      } catch {
+        stripePublishableKey = undefined;
+      }
+
+      window.ValeWidgetConfig = {
+        apiKey,
+        baseUrl: apiBaseUrl,
+        stripePublishableKey,
+        language: locale,
+      };
+
+      await new Promise((resolve, reject) => {
+        const script = document.createElement('script');
+        script.src = widgetScriptUrl;
+        script.async = true;
+        script.onload = resolve;
+        script.onerror = () => reject(new Error('widget script failed to load'));
+        document.head.appendChild(script);
+      });
+    })();
+    return widgetReadyPromise;
   }
 
-  async function setupWidgetConfig() {
-    let stripePublishableKey;
+  async function openWidget() {
     try {
-      const response = await fetch(`${apiBaseUrl}/api/config/stripe-key`);
-      const payload = await response.json();
-      stripePublishableKey = payload?.data?.publishableKey || undefined;
+      await ensureWidgetReady();
+      window.ValeWidget.open();
     } catch {
-      stripePublishableKey = undefined;
+      widgetReadyPromise = null; // allow retry on next click
     }
-
-    window.ValeWidgetConfig = {
-      apiKey,
-      baseUrl: apiBaseUrl,
-      stripePublishableKey,
-      language: locale,
-    };
-    loadWidgetScript();
   }
 
   function distanceKm(from, to) {
@@ -184,8 +195,7 @@ const WIDGET_SCRIPT_URL = 'https://widget.valepark.org/vale-widget-cdn.js';
 
     grid.querySelectorAll('[data-book]').forEach((button) => {
       button.addEventListener('click', () => {
-        loadWidgetScript();
-        window.ValeWidget?.open();
+        void openWidget();
       });
     });
   }
@@ -248,6 +258,6 @@ const WIDGET_SCRIPT_URL = 'https://widget.valepark.org/vale-widget-cdn.js';
   locateButton?.addEventListener('click', locate);
   retryButton?.addEventListener('click', fetchLocations);
 
-  setupWidgetConfig();
+  void ensureWidgetReady();
   fetchLocations();
 </script>
