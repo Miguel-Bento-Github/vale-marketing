@@ -9,6 +9,11 @@ const { locale } = Astro.props;
 const t = getTranslations(locale);
 
 const API_BASE_URL = 'https://vale.up.railway.app';
+// Public widget key for the find-parking booking flow. Rotate before it expires
+// (this key, prefix 51008ecb, expires 2026-10-05 - NOT the vale_dev theme-demo
+// key that expires 2026-07-30): the replacement must allow origins valepark.org
+// and www.valepark.org, or this page 403s on the live site.
+// After swapping the value below, redeploy marketing with `npm run deploy`.
 const WIDGET_API_KEY = '51008ecb5d6ba6f1673aaa124971236c105a2f5d0185c7a1911d7586d35d1c92';
 const WIDGET_SCRIPT_URL = 'https://widget.valepark.org/vale-widget-cdn.js';
 ---
