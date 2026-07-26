@@ -110,6 +110,7 @@ const WIDGET_SCRIPT_URL = 'https://widget.valepark.org/vale-widget-cdn.js';
 
   let locations = [];
   let widgetReadyPromise = null;
+  let widgetScriptPromise = null;
 
   function escapeHtml(value) {
     const div = document.createElement('div');
@@ -117,17 +118,51 @@ const WIDGET_SCRIPT_URL = 'https://widget.valepark.org/vale-widget-cdn.js';
     return div.innerHTML;
   }
 
+  // The CDN bundle only auto-initializes when window.ValeWidgetConfig already exists at
+  // script-execution time, so we deliberately leave that global unset until the bundle has
+  // loaded. That lets the download start immediately instead of queueing behind the API
+  // round trip, and we initialize explicitly through ValeWidget.init(config) afterwards.
+  // Injected once per successful load: a second execution of the bundle with the config
+  // global already set would auto-initialize a duplicate widget instance.
+  function loadWidgetScript() {
+    widgetScriptPromise ??= new Promise((resolve, reject) => {
+      const script = document.createElement('script');
+      script.src = widgetScriptUrl;
+      script.async = true;
+      script.onload = resolve;
+      script.onerror = () => {
+        // The bundle never executed, so re-injecting on a later retry stays safe.
+        widgetScriptPromise = null;
+        script.remove();
+        reject(new Error('widget script failed to load'));
+      };
+      document.head.appendChild(script);
+    });
+    return widgetScriptPromise;
+  }
+
+  // Stripe is optional: without a key the widget still books, it just cannot take payment.
+  // Never reject, so a slow or failing API cannot hold back the bundle.
+  async function fetchStripeKey() {
+    try {
+      const response = await fetch(`${apiBaseUrl}/api/config/stripe-key`);
+      const payload = await response.json();
+      return payload?.data?.publishableKey || undefined;
+    } catch {
+      return undefined;
+    }
+  }
+
   function ensureWidgetReady() {
     widgetReadyPromise ??= (async () => {
-      let stripePublishableKey;
-      try {
-        const response = await fetch(`${apiBaseUrl}/api/config/stripe-key`);
-        const payload = await response.json();
-        stripePublishableKey = payload?.data?.publishableKey || undefined;
-      } catch {
-        stripePublishableKey = undefined;
+      // Both start now, so readiness costs the slower of the two rather than their sum.
+      const [, stripePublishableKey] = await Promise.all([loadWidgetScript(), fetchStripeKey()]);
+
+      if (typeof window.ValeWidget?.init !== 'function') {
+        throw new Error('widget script loaded without exposing ValeWidget.init');
       }
 
+      // Still published on window: it is the documented embed contract for this widget.
       window.ValeWidgetConfig = {
         apiKey,
         baseUrl: apiBaseUrl,
@@ -135,14 +170,7 @@ const WIDGET_SCRIPT_URL = 'https://widget.valepark.org/vale-widget-cdn.js';
         language: locale,
       };
 
-      await new Promise((resolve, reject) => {
-        const script = document.createElement('script');
-        script.src = widgetScriptUrl;
-        script.async = true;
-        script.onload = resolve;
-        script.onerror = () => reject(new Error('widget script failed to load'));
-        document.head.appendChild(script);
-      });
+      await window.ValeWidget.init(window.ValeWidgetConfig);
     })();
     return widgetReadyPromise;
   }
