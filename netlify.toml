@@ -12,6 +12,18 @@
   to = "/en"
   status = 302
 
+# Find-parking is offline: it read from a backend that no longer exists.
+# Old links go to the home page of their language.
+[[redirects]]
+  from = "/:lang/find-parking"
+  to = "/:lang/"
+  status = 302
+
+[[redirects]]
+  from = "/:lang/find-parking/*"
+  to = "/:lang/"
+  status = 302
+
 [[redirects]]
   from = "/en/*"
   to = "/en/index.html"
