@@ -3,28 +3,14 @@ interface Props {
   title: string;
   description?: string;
   locale?: string;
-  /** Warm the third-party origins the booking widget needs. Find-parking pages only. */
-  widgetPreconnect?: boolean;
 }
 
 const {
   title,
   description = 'Vale - Smart Parking Management Platform for Businesses',
   locale,
-  widgetPreconnect = false,
 } = Astro.props;
 
-// Origins the booking flow touches, in the order it reaches them: the widget CDN
-// bundle, the Vale API (Stripe key + locations), then Stripe.js during payment setup.
-// `crossorigin` must mirror how each origin is actually fetched or the warmed socket
-// is unusable: the API is read with fetch() (CORS, anonymous), while the widget bundle
-// and Stripe.js are injected as plain <script src> (no CORS).
-// Keep in sync with API_BASE_URL / WIDGET_SCRIPT_URL in components/FindParking.astro.
-const widgetOrigins: { href: string; anonymous: boolean }[] = [
-  { href: 'https://widget.valepark.org', anonymous: false },
-  { href: 'https://vale.up.railway.app', anonymous: true },
-  { href: 'https://js.stripe.com', anonymous: false },
-];
 const currentLocale = locale || Astro.currentLocale || 'en';
 const isRTL = currentLocale === 'ar';
 
@@ -60,9 +46,6 @@ const ogLocale = localeMap[currentLocale]?.og || 'en_GB';
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    {widgetPreconnect && widgetOrigins.map((origin) => (
-      <link rel="preconnect" href={origin.href} crossorigin={origin.anonymous ? 'anonymous' : undefined} />
-    ))}
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
     <title>{title}</title>
 
