@@ -33,6 +33,17 @@ const badRequest = (error) => ({
   body: JSON.stringify({ error }),
 });
 
+const sent = () => ({
+  statusCode: 200,
+  headers: {
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify({
+    message: 'Email sent successfully',
+    timestamp: new Date().toISOString(),
+  }),
+});
+
 // Returns the submitted JSON object, or null when the body is not one.
 const parseSubmission = (body) => {
   if (!body || body.length > MAX_BODY_LENGTH) return null;
@@ -76,6 +87,13 @@ export const handler = async (event) => {
 
   const submission = parseSubmission(event.body);
   if (!submission) return badRequest('Invalid request');
+
+  // Honeypot: the form hides the "website" field from people, so only bots fill it in.
+  // Answer as if the message went out, so they don't learn to leave it empty.
+  if (submission.website) {
+    console.warn('Contact form: honeypot filled, submission dropped');
+    return sent();
+  }
 
   const { fields, problem } = validate(submission);
   if (problem) return badRequest(problem);
@@ -140,16 +158,7 @@ export const handler = async (event) => {
     // No confirmation mail goes to the visitor. Its address is whatever they typed,
     // so sending one would let anyone make Vale's mailbox write to any address.
 
-    return {
-      statusCode: 200,
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        message: 'Email sent successfully',
-        timestamp: new Date().toISOString(),
-      }),
-    };
+    return sent();
   } catch (error) {
     console.error('Email sending error:', error);
 
