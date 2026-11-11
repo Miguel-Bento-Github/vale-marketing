@@ -1,3 +1,12 @@
+// Visitor input goes into HTML email, so every field is escaped before it is used there.
+const escapeHtml = (value) =>
+  String(value)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+
 export const handler = async (event) => {
   const nodemailer = await import('nodemailer');
 
@@ -54,21 +63,21 @@ export const handler = async (event) => {
           ${(name || company) ? `
           <div style="background: #f9f9f9; padding: 20px; border-radius: 8px; margin: 20px 0;">
             <h3 style="color: #333; margin-top: 0;">Business Information</h3>
-            ${company ? `<p><strong>Company:</strong> ${company}</p>` : ''}
-            ${name ? `<p><strong>Contact Name:</strong> ${name}</p>` : ''}
+            ${company ? `<p><strong>Company:</strong> ${escapeHtml(company)}</p>` : ''}
+            ${name ? `<p><strong>Contact Name:</strong> ${escapeHtml(name)}</p>` : ''}
           </div>
           ` : ''}
 
           <div style="background: #f9f9f9; padding: 20px; border-radius: 8px; margin: 20px 0;">
             <h3 style="color: #333; margin-top: 0;">Contact Information</h3>
-            <p><strong>Email:</strong> <a href="mailto:${email}">${email}</a></p>
-            <p><strong>Phone:</strong> ${phone || 'Not provided'}</p>
+            <p><strong>Email:</strong> <a href="mailto:${escapeHtml(email)}">${escapeHtml(email)}</a></p>
+            <p><strong>Phone:</strong> ${phone ? escapeHtml(phone) : 'Not provided'}</p>
           </div>
 
           ${message ? `
           <div style="background: #f9f9f9; padding: 20px; border-radius: 8px; margin: 20px 0;">
             <h3 style="color: #333; margin-top: 0;">Message</h3>
-            <p style="white-space: pre-wrap;">${message}</p>
+            <p style="white-space: pre-wrap;">${escapeHtml(message)}</p>
           </div>
           ` : ''}
 
