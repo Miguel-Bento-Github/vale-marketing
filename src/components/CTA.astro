@@ -25,12 +25,14 @@ const t = getTranslations(locale);
           <input
             type="text"
             name="name"
+            maxlength="100"
             placeholder={t.cta.form.name}
             class="w-full px-4 py-3 rounded-xl bg-themed-secondary border border-themed text-themed placeholder-gray-400 dark:placeholder-gray-500 focus:border-vale-primary focus:outline-none focus:ring-1 focus:ring-vale-primary transition-colors"
           />
           <input
             type="text"
             name="company"
+            maxlength="100"
             placeholder={t.cta.form.company}
             class="w-full px-4 py-3 rounded-xl bg-themed-secondary border border-themed text-themed placeholder-gray-400 dark:placeholder-gray-500 focus:border-vale-primary focus:outline-none focus:ring-1 focus:ring-vale-primary transition-colors"
           />
@@ -38,6 +40,7 @@ const t = getTranslations(locale);
         <input
           type="email"
           name="email"
+          maxlength="254"
           placeholder="Email"
           required
           class="w-full px-4 py-3 rounded-xl bg-themed-secondary border border-themed text-themed placeholder-gray-400 dark:placeholder-gray-500 focus:border-vale-primary focus:outline-none focus:ring-1 focus:ring-vale-primary transition-colors"
@@ -45,11 +48,13 @@ const t = getTranslations(locale);
         <input
           type="tel"
           name="phone"
+          maxlength="40"
           placeholder={t.cta.form.phone}
           class="w-full px-4 py-3 rounded-xl bg-themed-secondary border border-themed text-themed placeholder-gray-400 dark:placeholder-gray-500 focus:border-vale-primary focus:outline-none focus:ring-1 focus:ring-vale-primary transition-colors"
         />
         <textarea
           name="message"
+          maxlength="5000"
           rows="4"
           placeholder={t.cta.form.message}
           required
