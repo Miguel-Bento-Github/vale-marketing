@@ -7,6 +7,62 @@ const escapeHtml = (value) =>
     .replace(/"/g, '&quot;')
     .replace(/'/g, '&#39;');
 
+// Caps on each field, in characters. The maxlength attributes on the form in
+// src/components/CTA.astro use the same numbers.
+const MAX_LENGTH = {
+  name: 100,
+  company: 100,
+  email: 254,
+  phone: 40,
+  message: 5000,
+};
+
+// A real submission with every field at its cap stays well under this.
+const MAX_BODY_LENGTH = 20000;
+
+// The pattern browsers check <input type="email"> against, with a dot required in the domain.
+// It refuses the commas, quotes and angle brackets the old /^[^\s@]+@[^\s@]+\.[^\s@]+$/ let through.
+const EMAIL_PATTERN =
+  /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)+$/;
+
+// Line breaks and other control characters only belong in the message.
+const CONTROL_CHARACTERS = /[\u0000-\u001f\u007f]/;
+
+const badRequest = (error) => ({
+  statusCode: 400,
+  body: JSON.stringify({ error }),
+});
+
+// Returns the submitted JSON object, or null when the body is not one.
+const parseSubmission = (body) => {
+  if (!body || body.length > MAX_BODY_LENGTH) return null;
+  try {
+    const submission = JSON.parse(body);
+    if (!submission || typeof submission !== 'object' || Array.isArray(submission)) return null;
+    return submission;
+  } catch {
+    return null;
+  }
+};
+
+// Returns the trimmed fields, or the reason the submission was refused.
+const validate = (submission) => {
+  const fields = {};
+  for (const [field, maxLength] of Object.entries(MAX_LENGTH)) {
+    const value = submission[field] ?? '';
+    if (typeof value !== 'string') return { problem: `Invalid ${field}` };
+    const trimmed = value.trim();
+    if (trimmed.length > maxLength) return { problem: `${field} is too long` };
+    if (field !== 'message' && CONTROL_CHARACTERS.test(trimmed)) return { problem: `Invalid ${field}` };
+    fields[field] = trimmed;
+  }
+
+  if (!fields.email || !fields.message) return { problem: 'Email and message are required' };
+  if (!EMAIL_PATTERN.test(fields.email)) return { problem: 'Invalid email format' };
+
+  return { fields };
+};
+
 export const handler = async (event) => {
   const nodemailer = await import('nodemailer');
 
@@ -18,26 +74,14 @@ export const handler = async (event) => {
     };
   }
 
+  const submission = parseSubmission(event.body);
+  if (!submission) return badRequest('Invalid request');
+
+  const { fields, problem } = validate(submission);
+  if (problem) return badRequest(problem);
+  const { name, company, email, phone, message } = fields;
+
   try {
-    const { name, company, email, phone, message } = JSON.parse(event.body);
-
-    // Basic validation
-    if (!email || !message) {
-      return {
-        statusCode: 400,
-        body: JSON.stringify({ error: 'Email and message are required' }),
-      };
-    }
-
-    // Email validation
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
-      return {
-        statusCode: 400,
-        body: JSON.stringify({ error: 'Invalid email format' }),
-      };
-    }
-
     // Create transporter using environment variables
     const transporter = nodemailer.createTransport({
       host: 'smtp.zoho.eu',
