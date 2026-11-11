@@ -93,39 +93,8 @@ export const handler = async (event) => {
     // Send email
     await transporter.sendMail(mailOptions);
 
-    // Send confirmation email to user
-    const confirmationEmail = {
-      from: `"Vale Parking" <${process.env.SMTP_USER}>`,
-      to: email,
-      subject: 'Thank you for contacting Vale',
-      html: `
-        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-          <h2 style="color: #5B5EFF;">Thank you for your interest in Vale!</h2>
-
-          <p>Hello${name ? ` ${name}` : ''},</p>
-
-          <p>We've received your message and will get back to you within 24 hours.</p>
-
-          ${message ? `
-          <div style="background: #f9f9f9; padding: 15px; border-radius: 8px; margin: 20px 0;">
-            <p><strong>Your message:</strong></p>
-            <p style="white-space: pre-wrap;">${message}</p>
-          </div>
-          ` : ''}
-
-          <p>Best regards,<br>
-          The Vale Team</p>
-
-          <hr style="margin: 30px 0; border: none; border-top: 1px solid #ddd;">
-          <p style="color: #666; font-size: 12px;">
-            Vale - Smart Parking Management<br>
-            <a href="https://valepark.org">valepark.org</a>
-          </p>
-        </div>
-      `,
-    };
-
-    await transporter.sendMail(confirmationEmail);
+    // No confirmation mail goes to the visitor. Its address is whatever they typed,
+    // so sending one would let anyone make Vale's mailbox write to any address.
 
     return {
       statusCode: 200,
